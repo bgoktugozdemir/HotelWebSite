@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutContactPage.cshtml";
+}
+
+@section Breadcrumb
+{
+    <section class="breadcrumb_area">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Bize Ulaş</h2>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Ana Sayfa</a></li>
+                    <li class="active">Bize Ulaş</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+}
+
+@section Contact
+{
+    <section class="contact_area section_gap">
+        <div class="container">
+            @*<div id="mapBox" class="mapBox"
+                 data-lat="40.701083"
+                 data-lon="-74.1522848"
+                 data-zoom="13"
+                 data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
+                 data-mlat="40.701083"
+                 data-mlon="-74.1522848">
+            </div>*@
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="lnr lnr-home"></i>
+                            <h6>Yalova Hotel</h6>
+                            <p>Yalova/Merkez</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <h6><a href="#">0226 226 6835</a></h6>
+                            <p>Hafta içi 09:00-18:00 arası bizi arayabilirsiniz!</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-envelope"></i>
+                            <h6><a href="#">support@yalovahotel.com</a></h6>
+                            <p>İstediğiniz zaman bize yazabilirsiniz!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="İsminizi Girin">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail Adresinizi Girin">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Bir Konu Girin">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Mesaj Yazınız"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="submit" value="submit" class="btn theme_btn button_hover">Mesajı Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@section Scripts
+{
+    <script src="~/Scripts/mail-script.js"></script>
+    <script src="~/Vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Vendors/isotope/isotope-min.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="~/Scripts/gmaps.min.js"></script>
+    <!-- contact js -->
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/contact.js"></script>
+}

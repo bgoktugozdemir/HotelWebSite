@@ -5,6 +5,6 @@ namespace WebProje.Models.Home
 {
     public class HomeViewModel
     {
-        public List<Otel> Oteller { get; set; }
+        public List<Rezervasyon_EkHizmet> EkHizmetList { get; set; }
     }
 }
