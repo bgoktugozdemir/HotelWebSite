@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="063025ed6e5b4b848887b018e78e1ebc" Name="Diagram1">
+        <EntityTypeShape EntityType="HOTELModel.Calisan" Width="1.5" PointX="3.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.EkHizmet" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Fiyat" Width="1.5" PointX="8" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Il" Width="1.5" PointX="1.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Ilce" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Musteri" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Oda" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Oda_EkHizmet" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.OdaTipi" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Otel" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Otel_Calisan" Width="1.5" PointX="6" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Otel_OtelOlanaklari" Width="1.5" PointX="9" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.OtelOlanaklari" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Rezervasyon" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Rezervasyon_EkHizmet" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Rezervasyon_Musteri" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Rezervasyon_Oda" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.Rezervasyon_OtelOlanaklari" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HOTELModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_Calisan_Calisan_CalisanId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Fiyat_EkHizmet_EkHizmetId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Oda_EkHizmet_EkHizmet_EkHizmetId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Fiyat_Odatipi_OdaTipiId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Fiyat_OtelOlanaklari_OtelOlanaklariId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Ilce_Il_IlId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_Il_IlId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_Ilce_IlceId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_Musteri_Musteri_MusteriId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_Musteri_MusteriId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Oda_EkHizmet_Oda_OdaId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Oda_Odatipi_OdaTipiId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Oda_Otel_OtelId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_Oda_Oda_OdaId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_Calisan_Otel_OtelId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_OtelOlanaklari_Otel_OtelId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId" ManuallyRouted="false" />
+        <AssociationConnector Association="HOTELModel.FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

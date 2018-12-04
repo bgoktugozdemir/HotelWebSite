@@ -1,0 +1,382 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2CA27E79-230A-4437-A0CF-06C2D73EEECB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebProje</RootNamespace>
+    <AssemblyName>WebProje</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\style %28Mohammad Rocky%27s conflicted copy 2018-05-08%29.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\_elements.css" />
+    <Content Include="Content\_footer.css" />
+    <Content Include="Content\_testimonial.css" />
+    <Content Include="Content\_variables.css" />
+    <Content Include="Fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\about_banner.jpg" />
+    <Content Include="Images\about_bg.jpg" />
+    <Content Include="Images\banner\banner-1.jpg" />
+    <Content Include="Images\banner\banner-2.jpg" />
+    <Content Include="Images\banner_bg.jpg" />
+    <Content Include="Images\blog\add.jpg" />
+    <Content Include="Images\blog\author.png" />
+    <Content Include="Images\blog\blog-1.jpg" />
+    <Content Include="Images\blog\blog-2.jpg" />
+    <Content Include="Images\blog\blog-3.jpg" />
+    <Content Include="Images\blog\c1.jpg" />
+    <Content Include="Images\blog\c2.jpg" />
+    <Content Include="Images\blog\c3.jpg" />
+    <Content Include="Images\blog\c4.jpg" />
+    <Content Include="Images\blog\c5.jpg" />
+    <Content Include="Images\blog\c6.jpg" />
+    <Content Include="Images\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="Images\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="Images\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="Images\blog\feature-img1.jpg" />
+    <Content Include="Images\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="Images\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="Images\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="Images\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="Images\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="Images\blog\next.jpg" />
+    <Content Include="Images\blog\post-img1.jpg" />
+    <Content Include="Images\blog\post-img2.jpg" />
+    <Content Include="Images\blog\post1.jpg" />
+    <Content Include="Images\blog\post2.jpg" />
+    <Content Include="Images\blog\post3.jpg" />
+    <Content Include="Images\blog\post4.jpg" />
+    <Content Include="Images\blog\prev.jpg" />
+    <Content Include="Images\blog\s-img.jpg" />
+    <Content Include="Images\elements\a.jpg" />
+    <Content Include="Images\elements\a2.jpg" />
+    <Content Include="Images\elements\d.jpg" />
+    <Content Include="Images\elements\disabled-check.png" />
+    <Content Include="Images\elements\disabled-radio.png" />
+    <Content Include="Images\elements\f1.jpg" />
+    <Content Include="Images\elements\f2.jpg" />
+    <Content Include="Images\elements\f3.jpg" />
+    <Content Include="Images\elements\f4.jpg" />
+    <Content Include="Images\elements\f5.jpg" />
+    <Content Include="Images\elements\f6.jpg" />
+    <Content Include="Images\elements\f7.jpg" />
+    <Content Include="Images\elements\f8.jpg" />
+    <Content Include="Images\elements\g1.jpg" />
+    <Content Include="Images\elements\g2.jpg" />
+    <Content Include="Images\elements\g3.jpg" />
+    <Content Include="Images\elements\g4.jpg" />
+    <Content Include="Images\elements\g5.jpg" />
+    <Content Include="Images\elements\g6.jpg" />
+    <Content Include="Images\elements\g7.jpg" />
+    <Content Include="Images\elements\g8.jpg" />
+    <Content Include="Images\elements\primary-check.png" />
+    <Content Include="Images\elements\primary-radio.png" />
+    <Content Include="Images\elements\success-check.png" />
+    <Content Include="Images\elements\success-radio.png" />
+    <Content Include="Images\elements\user1.png" />
+    <Content Include="Images\elements\user2.png" />
+    <Content Include="Images\facilites_bg.jpg" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\gallery\01-1.jpg" />
+    <Content Include="Images\gallery\01.jpg" />
+    <Content Include="Images\gallery\02-1.jpg" />
+    <Content Include="Images\gallery\02.jpg" />
+    <Content Include="Images\gallery\03-1.jpg" />
+    <Content Include="Images\gallery\03.jpg" />
+    <Content Include="Images\gallery\04.jpg" />
+    <Content Include="Images\gallery\05.jpg" />
+    <Content Include="Images\gallery\06.jpg" />
+    <Content Include="Images\instagram\Image-01.jpg" />
+    <Content Include="Images\instagram\Image-02.jpg" />
+    <Content Include="Images\instagram\Image-03.jpg" />
+    <Content Include="Images\instagram\Image-04.jpg" />
+    <Content Include="Images\instagram\Image-05.jpg" />
+    <Content Include="Images\instagram\Image-06.jpg" />
+    <Content Include="Images\instagram\Image-07.jpg" />
+    <Content Include="Images\instagram\Image-08.jpg" />
+    <Content Include="Images\logo-2.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\room1.jpg" />
+    <Content Include="Images\room2.jpg" />
+    <Content Include="Images\room3.jpg" />
+    <Content Include="Images\room4.jpg" />
+    <Content Include="Images\testtimonial-1.jpg" />
+    <Content Include="Images\testtimonial-2.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\contact.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\style.css %28Mohammad Rocky%27s conflicted copy 2018-05-08%29.map" />
+    <Content Include="Content\style.css.map" />
+    <Content Include="Images\banner\banner-2_tmp18321" />
+    <Content Include="Images\elements\_DS_Store" />
+    <Content Include="Images\favicon_tmp18091" />
+    <Content Include="Content\style.scss" />
+    <Content Include="Content\_accomodation.scss" />
+    <Content Include="Content\_banner.scss" />
+    <Content Include="Content\_blog.scss" />
+    <Content Include="Content\_button.scss" />
+    <Content Include="Content\_contact.scss" />
+    <Content Include="Content\_elements.scss" />
+    <Content Include="Content\_footer.scss" />
+    <Content Include="Content\_header.scss" />
+    <Content Include="Content\_predefine.scss" />
+    <Content Include="Content\_testimonial.scss" />
+    <Content Include="Content\_variables.scss" />
+    <Content Include="Fonts\fontawesome-webfont.eot" />
+    <Content Include="Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Fonts\fontawesome-webfont.woff" />
+    <Content Include="Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Fonts\FontAwesome.otf" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\gmaps.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.ajaxchimp.min.js" />
+    <Content Include="Scripts\mail-script.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\stellar.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Vendors\bootstrap-datepicker\bootstrap-select.css" />
+    <Content Include="Vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <Content Include="Vendors\imagesloaded\imagesloaded.pkgd.min.js" />
+    <Content Include="Vendors\isotope\isotope-min.js" />
+    <Content Include="Vendors\lightbox\simpleLightbox.css" />
+    <Content Include="Vendors\lightbox\simpleLightbox.min.js" />
+    <Content Include="Vendors\linericon\fonts\Linearicons-Free.svg" />
+    <Content Include="Vendors\linericon\style.css" />
+    <Content Include="Vendors\nice-select\css\nice-select.css" />
+    <Content Include="Vendors\nice-select\css\style.css" />
+    <Content Include="Vendors\nice-select\js\jquery.nice-select.js" />
+    <Content Include="Vendors\nice-select\js\jquery.nice-select.min.js" />
+    <Content Include="Vendors\owl-carousel\assets\ajax-loader.gif" />
+    <Content Include="Vendors\owl-carousel\assets\animated.css" />
+    <Content Include="Vendors\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="Vendors\owl-carousel\owl.carousel.min.css" />
+    <Content Include="Vendors\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Home\HomeViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMainPage.cshtml" />
+    <Content Include="Vendors\linericon\fonts\Linearicons-Free.eot" />
+    <Content Include="Vendors\linericon\fonts\Linearicons-Free.ttf" />
+    <Content Include="Vendors\linericon\fonts\Linearicons-Free.woff" />
+    <Content Include="Vendors\linericon\fonts\Linearicons-Free.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hotel.BI\Hotel.BI.csproj">
+      <Project>{6fbd9d43-3e4f-474c-aa61-07124ad45c9a}</Project>
+      <Name>Hotel.BI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Model\Hotel.Model.csproj">
+      <Project>{867aa6a9-3527-40a0-9d46-cdb1e6f11054}</Project>
+      <Name>Hotel.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50419</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50419/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
