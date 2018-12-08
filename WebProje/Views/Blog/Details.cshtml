@@ -33,23 +33,17 @@
             <div class="col-lg-3  col-md-3">
                 <div class="blog_info text-right">
                     <div class="post_tag">
-                        <a href="#">@Model.Setting.Value</a> @*TODO: Otel Adı Yazacak*@
+                        <a href="#">@Model.Setting.Value.ToUpper()</a> @*TODO: Otel Adı Yazacak*@
                     </div>
                     <ul class="blog_meta list_style">
-                        <li><a href="#">@Model.Post.CreatedAt.ToLongDateString()<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
+                        <li><a href="#">@Model.Post.CreatedAt.ToString("dd MMM yyyy, ddd")<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9 blog_details">
-                <h2>Astronomy Binoculars A Great Alternative</h2>
+                <h2>@Model.Post.Title</h2>
                 <p class="excert">
-                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-                </p>
-                <p>
-                    Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                </p>
-                <p>
-                    Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
+                    @TextHelper.EndLine(Model.Post.BodyText)
                 </p>
             </div>
         </div>

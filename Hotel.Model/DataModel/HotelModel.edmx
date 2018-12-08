@@ -71,7 +71,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderSort" Type="int" />
-          <Property Name="Thumbnail" Type="varchar" MaxLength="255" />
+          <Property Name="Thumbnail" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
           <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="HeaderText" Type="varchar" MaxLength="255" />
@@ -319,7 +319,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderSort" Type="Int32" />
-          <Property Name="Thumbnail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />

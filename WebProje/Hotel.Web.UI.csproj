@@ -146,6 +146,9 @@
     <Content Include="Images\blog\next.jpg" />
     <Content Include="Images\blog\post-img1.jpg" />
     <Content Include="Images\blog\post-img2.jpg" />
+    <Content Include="Images\blog\Post\post7.jpg" />
+    <Content Include="Images\blog\Post\post6.jpg" />
+    <Content Include="Images\blog\Post\post5.jpg" />
     <Content Include="Images\blog\Post\post1.jpg" />
     <Content Include="Images\blog\Post\post2.jpg" />
     <Content Include="Images\blog\Post\post3.jpg" />
@@ -325,6 +328,7 @@
     </Compile>
     <Compile Include="Models\About\AboutViewModel.cs" />
     <Compile Include="Models\Blog\BlogViewModel.cs" />
+    <Compile Include="Models\Contact\ContactViewModel.cs" />
     <Compile Include="Models\Gallery\GalleryViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -364,7 +368,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -377,6 +380,10 @@
     <ProjectReference Include="..\Hotel.BI\Hotel.BI.csproj">
       <Project>{6fbd9d43-3e4f-474c-aa61-07124ad45c9a}</Project>
       <Name>Hotel.BI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Core\Hotel.Core.csproj">
+      <Project>{19fab0c4-27c0-4eac-ae1f-6026042906b8}</Project>
+      <Name>Hotel.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hotel.Model\Hotel.Model.csproj">
       <Project>{3895d37d-7818-4629-a51d-c2497b2ed83b}</Project>

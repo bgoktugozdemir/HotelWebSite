@@ -1,6 +1,6 @@
-﻿
+﻿@model WebProje.Models.Contact.ContactViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_LayoutContactPage.cshtml";
 }
 
@@ -10,74 +10,75 @@
         <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
         <div class="container">
             <div class="page-cover text-center">
-                <h2 class="page-cover-tittle">Bize Ulaş</h2>
+                <h2 class="page-cover-tittle">Contact Us</h2>
                 <ol class="breadcrumb">
-                    <li><a href="@Url.Action("Index","Home")">Ana Sayfa</a></li>
-                    <li class="active">Bize Ulaş</li>
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="active">Contact Us</li>
                 </ol>
             </div>
         </div>
     </section>
 }
 
+@section Contact_Map{
+    <div class="mapBox">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1850.5044576690175!2d29.219475422258487!3d40.65141752833145!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caf00d8e8cd035%3A0x98ffb531e8f00a58!2sYalova+%C3%9Cniversitesi+Fen+Bilimleri+Enstit%C3%BCs%C3%BC!5e1!3m2!1str!2str!4v1544308155586" frameborder="0" style="border:0;height: -webkit-fill-available;width: -webkit-fill-available;" allowfullscreen></iframe>
+    </div>
+}
 @section Contact
 {
-    <section class="contact_area section_gap">
-        <div class="container">
-            @*<div id="mapBox" class="mapBox"
-                 data-lat="40.701083"
-                 data-lon="-74.1522848"
-                 data-zoom="13"
-                 data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
-                 data-mlat="40.701083"
-                 data-mlon="-74.1522848">
-            </div>*@
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="contact_info">
-                        <div class="info_item">
-                            <i class="lnr lnr-home"></i>
-                            <h6>Yalova Hotel</h6>
-                            <p>Yalova/Merkez</p>
-                        </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-phone-handset"></i>
-                            <h6><a href="#">0226 226 6835</a></h6>
-                            <p>Hafta içi 09:00-18:00 arası bizi arayabilirsiniz!</p>
-                        </div>
-                        <div class="info_item">
-                            <i class="lnr lnr-envelope"></i>
-                            <h6><a href="#">support@yalovahotel.com</a></h6>
-                            <p>İstediğiniz zaman bize yazabilirsiniz!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="İsminizi Girin">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail Adresinizi Girin">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Bir Konu Girin">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Mesaj Yazınız"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12 text-right">
-                            <button type="submit" value="submit" class="btn theme_btn button_hover">Mesajı Gönder</button>
-                        </div>
-                    </form>
-                </div>
+    <div class="contact_info">
+        <div class="info_item">
+            <i class="lnr lnr-home"></i>
+            <h6>@Model.SettingsList.Find(n => n.Name == "hotel.name").Value</h6>
+            <p>@Model.SettingsList.Find(n => n.Name == "hotel.address").Value</p>
+        </div>
+        <div class="info_item">
+            <i class="lnr lnr-phone-handset"></i>
+            <h6><a href="phone:@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value">@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value</a></h6>
+            <p>@Model.SettingsList.Find(n => n.Name == "hotel.workinghours").Value on Weekdays</p>
+        </div>
+        <div class="info_item">
+            <i class="lnr lnr-envelope"></i>
+            <h6><a href="mailto:@Model.SettingsList.Find(n => n.Name == "hotel.email").Value">@Model.SettingsList.Find(n => n.Name == "hotel.email").Value</a></h6>
+            <p>Send us your query anytime!</p>
+        </div>
+    </div>
+}
+@section Contact_Form
+{
+    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate"> @*TODO: Post Tamamlanacak*@
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name*">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address*">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject*">
             </div>
         </div>
-    </section>
+        <div class="col-md-6">
+            <div class="form-group">
+                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message*"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12 text-right">
+            <button type="submit" value="submit" class="btn theme_btn button_hover">Send Message</button>
+        </div>
+    </form>
+}
+
+@section Contact_Form_Modal
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-close"></i>
+        </button>
+        <h2>Thank you!</h2>
+        <p>Your message is successfully sent...</p>
+    </div>
 }
 
 @section Scripts

@@ -67,16 +67,16 @@
                 <div class="col-md-3">
                     <div class="blog_info text-right">
                         <div class="post_tag">
-                            <a href="#">@Model.Setting.Value</a> @*TODO: Otel Adı Yazacak*@
+                            <a href="#">@Model.Setting.Value</a> <!--Hotel Name-->
                         </div>
                         <ul class="blog_meta list_style">
-                            <li><a href="#">@post.CreatedAt.ToLongDateString()<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
+                            <li><a href="#">@post.CreatedAt.ToString("dd MMM yyyy, ddd")<i class="lnr lnr-calendar-full"></i></a></li> <!--Posted Date-->
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div class="blog_post">
-                        <img src="~/Images/blog/main-blog/m-blog-1.jpg" alt=""> <!--Blog Post Banner-->
+                        <img src="~/Images/blog/main-blog/@post.Thumbnail" alt=""> <!--Blog Post Banner-->
                         <div class="blog_details">
                             <a href="#">
                                 <h2>@post.Title</h2> <!--Blog Post Title-->
