@@ -4,182 +4,127 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HOTELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Calisan">
+    <Schema Namespace="OTELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Books">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="KimlikNo" Type="char" MaxLength="11" Nullable="false" />
-          <Property Name="Cinsiyet" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="TelefonNumarasi" Type="varchar" MaxLength="13" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="AdSoyad" Type="nvarchar" MaxLength="61" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="DogumTarihi" Type="date" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArrivalDate" Type="datetime" />
+          <Property Name="DepartureDate" Type="datetime" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Discount" Type="real" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="RoomID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
         </EntityType>
-        <EntityType Name="EkHizmet">
+        <EntityType Name="Customers">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Nation" Type="varchar" MaxLength="255" />
+          <Property Name="NationalID" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Fiyat">
+        <EntityType Name="Employees">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Deger" Type="smallmoney" Nullable="false" />
-          <Property Name="BaslangicTarihi" Type="datetime" Nullable="false" />
-          <Property Name="BitisTarihi" Type="datetime" Nullable="false" />
-          <Property Name="OtelOlanaklariId" Type="int" />
-          <Property Name="OdaTipiId" Type="int" />
-          <Property Name="EkHizmetId" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Il">
+        <EntityType Name="Images">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderSort" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Ilce">
+        <EntityType Name="Pages">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="IlId" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="BodyText" Type="text" />
+          <Property Name="IsNavbar" Type="bit" />
+          <Property Name="IsFooter" Type="bit" />
+          <Property Name="ButtonUrl" Type="varchar" MaxLength="255" />
+          <Property Name="ButtonName" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Musteri">
+        <EntityType Name="Posts">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="KimlikNo" Type="char" MaxLength="11" />
-          <Property Name="DogumTarihi" Type="date" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="256" />
-          <Property Name="TelefonNumarasi" Type="varchar" MaxLength="13" />
-          <Property Name="Cinsiyet" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderSort" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="HeaderText" Type="varchar" MaxLength="255" />
+          <Property Name="BodyText" Type="text" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
         </EntityType>
-        <EntityType Name="Oda">
+        <EntityType Name="Rooms">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Kapasite" Type="tinyint" Nullable="false" />
-          <Property Name="OtelId" Type="int" Nullable="false" />
-          <Property Name="OdaTipiId" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="RoomNo" Type="int" />
+          <Property Name="RoomTypeID" Type="int" />
         </EntityType>
-        <EntityType Name="Oda_EkHizmet">
+        <EntityType Name="RoomTypes">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OdaId" Type="int" Nullable="false" />
-          <Property Name="EkHizmetId" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="money" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="OrderSort" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="OdaTipi">
+        <EntityType Name="Services">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderSort" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Icon" Type="varchar" MaxLength="255" />
+          <Property Name="Price" Type="money" />
         </EntityType>
-        <EntityType Name="Otel">
+        <EntityType Name="Settings">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Telefon" Type="varchar" MaxLength="13" Nullable="false" />
-          <Property Name="Adres" Type="varchar(max)" />
-          <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
-          <Property Name="OtelYildizi" Type="int" />
-          <Property Name="OtelPuani" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="OdaSayisi" Type="int" />
-          <Property Name="IlId" Type="int" Nullable="false" />
-          <Property Name="IlceId" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Keyword" Type="varchar" MaxLength="255" />
+          <Property Name="Value" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Otel_Calisan">
+        <EntityType Name="Subscriptions">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OtelId" Type="int" Nullable="false" />
-          <Property Name="CalisanId" Type="int" Nullable="false" />
-          <Property Name="Maas" Type="smallmoney" Nullable="false" />
-          <Property Name="SilinmeTarihi" Type="datetime" />
-          <Property Name="BaslangicTarihi" Type="datetime" Nullable="false" />
-          <Property Name="CikisTarihi" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Otel_OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OtelId" Type="int" Nullable="false" />
-          <Property Name="OtelOlanaklariId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="varchar" MaxLength="40" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rezervasyon">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BaslangicTarihi" Type="datetime" Nullable="false" />
-          <Property Name="CikisTarihi" Type="datetime" />
-          <Property Name="BitisTarihi" Type="datetime" Nullable="false" />
-          <Property Name="SilinmeTarihi" Type="datetime" />
-          <Property Name="MusteriId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_EkHizmet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RezervasyonId" Type="int" Nullable="false" />
-          <Property Name="EkHizmetId" Type="int" Nullable="false" />
-          <Property Name="ToplamTutar" Type="int" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_Musteri">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RezervasyonId" Type="int" Nullable="false" />
-          <Property Name="MusteriId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_Oda">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RezervasyonId" Type="int" Nullable="false" />
-          <Property Name="OdaId" Type="int" Nullable="false" />
-          <Property Name="ToplamTutar" Type="int" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RezervasyonId" Type="int" Nullable="false" />
-          <Property Name="OtelOlanaklariId" Type="int" Nullable="false" />
-          <Property Name="ToplamTutar" Type="int" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="IsSubscribe" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -191,1229 +136,354 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Fiyat_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fiyat_Odatipi_OdaTipiId">
-          <End Role="OdaTipi" Type="Self.OdaTipi" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OdaTipi">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="OdaTipiId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fiyat_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ilce_Il_IlId">
-          <End Role="Il" Type="Self.Il" Multiplicity="1" />
-          <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Il">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ilce">
-              <PropertyRef Name="IlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_EkHizmet_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="1" />
-          <End Role="Oda_EkHizmet" Type="Self.Oda_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda_EkHizmet">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_EkHizmet_Oda_OdaId">
-          <End Role="Oda" Type="Self.Oda" Multiplicity="1" />
-          <End Role="Oda_EkHizmet" Type="Self.Oda_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Oda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda_EkHizmet">
-              <PropertyRef Name="OdaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_Odatipi_OdaTipiId">
-          <End Role="OdaTipi" Type="Self.OdaTipi" Multiplicity="1" />
-          <End Role="Oda" Type="Self.Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OdaTipi">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda">
-              <PropertyRef Name="OdaTipiId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Oda" Type="Self.Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Calisan_Calisan_CalisanId">
-          <End Role="Calisan" Type="Self.Calisan" Multiplicity="1" />
-          <End Role="Otel_Calisan" Type="Self.Otel_Calisan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calisan">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_Calisan">
-              <PropertyRef Name="CalisanId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Calisan_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Otel_Calisan" Type="Self.Otel_Calisan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_Calisan">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Il_IlId">
-          <End Role="Il" Type="Self.Il" Multiplicity="1" />
-          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Il">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel">
-              <PropertyRef Name="IlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Ilce_IlceId">
-          <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
-          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ilce">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel">
-              <PropertyRef Name="IlceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_OtelOlanaklari_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Otel_OtelOlanaklari" Type="Self.Otel_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_OtelOlanaklari">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="1" />
-          <End Role="Otel_OtelOlanaklari" Type="Self.Otel_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_OtelOlanaklari">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="1" />
-          <End Role="Rezervasyon_EkHizmet" Type="Self.Rezervasyon_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_EkHizmet">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_EkHizmet" Type="Self.Rezervasyon_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_EkHizmet">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_Musteri_MusteriId">
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
-          <End Role="Rezervasyon_Musteri" Type="Self.Rezervasyon_Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musteri">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Musteri">
-              <PropertyRef Name="MusteriId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_MusteriId">
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musteri">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon">
-              <PropertyRef Name="MusteriId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_Musteri" Type="Self.Rezervasyon_Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Musteri">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Oda_Oda_OdaId">
-          <End Role="Oda" Type="Self.Oda" Multiplicity="1" />
-          <End Role="Rezervasyon_Oda" Type="Self.Rezervasyon_Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Oda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Oda">
-              <PropertyRef Name="OdaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_Oda" Type="Self.Rezervasyon_Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Oda">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="1" />
-          <End Role="Rezervasyon_OtelOlanaklari" Type="Self.Rezervasyon_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_OtelOlanaklari">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_OtelOlanaklari" Type="Self.Rezervasyon_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_OtelOlanaklari">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="HOTELModelStoreContainer">
-          <EntitySet Name="Calisan" EntityType="Self.Calisan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EkHizmet" EntityType="Self.EkHizmet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Fiyat" EntityType="Self.Fiyat" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ilce" EntityType="Self.Ilce" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Oda" EntityType="Self.Oda" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Oda_EkHizmet" EntityType="Self.Oda_EkHizmet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OdaTipi" EntityType="Self.OdaTipi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Otel" EntityType="Self.Otel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Otel_Calisan" EntityType="Self.Otel_Calisan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Otel_OtelOlanaklari" EntityType="Self.Otel_OtelOlanaklari" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OtelOlanaklari" EntityType="Self.OtelOlanaklari" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rezervasyon" EntityType="Self.Rezervasyon" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rezervasyon_EkHizmet" EntityType="Self.Rezervasyon_EkHizmet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rezervasyon_Musteri" EntityType="Self.Rezervasyon_Musteri" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rezervasyon_Oda" EntityType="Self.Rezervasyon_Oda" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rezervasyon_OtelOlanaklari" EntityType="Self.Rezervasyon_OtelOlanaklari" Schema="dbo" store:Type="Tables" />
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderSort" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Message" Type="varchar" MaxLength="255" />
+          <Property Name="IsShow" Type="bit" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="OTELModelStoreContainer">
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomTypes" EntityType="Self.RoomTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Fiyat_EkHizmet_EkHizmetId" Association="Self.FK_Fiyat_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fiyat_Odatipi_OdaTipiId" Association="Self.FK_Fiyat_Odatipi_OdaTipiId">
-            <End Role="OdaTipi" EntitySet="OdaTipi" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fiyat_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Fiyat_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ilce_Il_IlId" Association="Self.FK_Ilce_Il_IlId">
-            <End Role="Il" EntitySet="Il" />
-            <End Role="Ilce" EntitySet="Ilce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_EkHizmet_EkHizmet_EkHizmetId" Association="Self.FK_Oda_EkHizmet_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Oda_EkHizmet" EntitySet="Oda_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_EkHizmet_Oda_OdaId" Association="Self.FK_Oda_EkHizmet_Oda_OdaId">
-            <End Role="Oda" EntitySet="Oda" />
-            <End Role="Oda_EkHizmet" EntitySet="Oda_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_Odatipi_OdaTipiId" Association="Self.FK_Oda_Odatipi_OdaTipiId">
-            <End Role="OdaTipi" EntitySet="OdaTipi" />
-            <End Role="Oda" EntitySet="Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_Otel_OtelId" Association="Self.FK_Oda_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Oda" EntitySet="Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Calisan_Calisan_CalisanId" Association="Self.FK_Otel_Calisan_Calisan_CalisanId">
-            <End Role="Calisan" EntitySet="Calisan" />
-            <End Role="Otel_Calisan" EntitySet="Otel_Calisan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Calisan_Otel_OtelId" Association="Self.FK_Otel_Calisan_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Otel_Calisan" EntitySet="Otel_Calisan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Il_IlId" Association="Self.FK_Otel_Il_IlId">
-            <End Role="Il" EntitySet="Il" />
-            <End Role="Otel" EntitySet="Otel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Ilce_IlceId" Association="Self.FK_Otel_Ilce_IlceId">
-            <End Role="Ilce" EntitySet="Ilce" />
-            <End Role="Otel" EntitySet="Otel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_OtelOlanaklari_Otel_OtelId" Association="Self.FK_Otel_OtelOlanaklari_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Otel_OtelOlanaklari" EntitySet="Otel_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Otel_OtelOlanaklari" EntitySet="Otel_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId" Association="Self.FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Rezervasyon_EkHizmet" EntitySet="Rezervasyon_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_EkHizmet" EntitySet="Rezervasyon_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_Musteri_MusteriId" Association="Self.FK_Rezervasyon_Musteri_Musteri_MusteriId">
-            <End Role="Musteri" EntitySet="Musteri" />
-            <End Role="Rezervasyon_Musteri" EntitySet="Rezervasyon_Musteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_MusteriId" Association="Self.FK_Rezervasyon_Musteri_MusteriId">
-            <End Role="Musteri" EntitySet="Musteri" />
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_Musteri" EntitySet="Rezervasyon_Musteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Oda_Oda_OdaId" Association="Self.FK_Rezervasyon_Oda_Oda_OdaId">
-            <End Role="Oda" EntitySet="Oda" />
-            <End Role="Rezervasyon_Oda" EntitySet="Rezervasyon_Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_Oda" EntitySet="Rezervasyon_Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Rezervasyon_OtelOlanaklari" EntitySet="Rezervasyon_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_OtelOlanaklari" EntitySet="Rezervasyon_OtelOlanaklari" />
-          </AssociationSet>
+          <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HOTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Calisan">
+      <Schema Namespace="OTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OTELEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="OTELModel.Books" />
+          <EntitySet Name="Customers" EntityType="OTELModel.Customers" />
+          <EntitySet Name="Employees" EntityType="OTELModel.Employees" />
+          <EntitySet Name="Images" EntityType="OTELModel.Images" />
+          <EntitySet Name="Pages" EntityType="OTELModel.Pages" />
+          <EntitySet Name="Posts" EntityType="OTELModel.Posts" />
+          <EntitySet Name="Rooms" EntityType="OTELModel.Rooms" />
+          <EntitySet Name="RoomTypes" EntityType="OTELModel.RoomTypes" />
+          <EntitySet Name="Services" EntityType="OTELModel.Services" />
+          <EntitySet Name="Settings" EntityType="OTELModel.Settings" />
+          <EntitySet Name="Subscriptions" EntityType="OTELModel.Subscriptions" />
+          <EntitySet Name="sysdiagrams" EntityType="OTELModel.sysdiagrams" />
+          <EntitySet Name="Testimonials" EntityType="OTELModel.Testimonials" />
+        </EntityContainer>
+        <EntityType Name="Books">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KimlikNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="TelefonNumarasi" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Soyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdSoyad" Type="String" MaxLength="61" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="DogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Otel_Calisan" Relationship="Self.FK_Otel_Calisan_Calisan_CalisanId" FromRole="Calisan" ToRole="Otel_Calisan" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
+          <Property Name="DepartureDate" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Single" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
         </EntityType>
-        <EntityType Name="EkHizmet">
+        <EntityType Name="Customers">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Fiyat" Relationship="Self.FK_Fiyat_EkHizmet_EkHizmetId" FromRole="EkHizmet" ToRole="Fiyat" />
-          <NavigationProperty Name="Oda_EkHizmet" Relationship="Self.FK_Oda_EkHizmet_EkHizmet_EkHizmetId" FromRole="EkHizmet" ToRole="Oda_EkHizmet" />
-          <NavigationProperty Name="Rezervasyon_EkHizmet" Relationship="Self.FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId" FromRole="EkHizmet" ToRole="Rezervasyon_EkHizmet" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NationalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Fiyat">
+        <EntityType Name="Employees">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Deger" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OtelOlanaklariId" Type="Int32" />
-          <Property Name="OdaTipiId" Type="Int32" />
-          <Property Name="EkHizmetId" Type="Int32" />
-          <NavigationProperty Name="EkHizmet" Relationship="Self.FK_Fiyat_EkHizmet_EkHizmetId" FromRole="Fiyat" ToRole="EkHizmet" />
-          <NavigationProperty Name="OdaTipi" Relationship="Self.FK_Fiyat_Odatipi_OdaTipiId" FromRole="Fiyat" ToRole="OdaTipi" />
-          <NavigationProperty Name="OtelOlanaklari" Relationship="Self.FK_Fiyat_OtelOlanaklari_OtelOlanaklariId" FromRole="Fiyat" ToRole="OtelOlanaklari" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Il">
+        <EntityType Name="Images">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Ilce" Relationship="Self.FK_Ilce_Il_IlId" FromRole="Il" ToRole="Ilce" />
-          <NavigationProperty Name="Otel" Relationship="Self.FK_Otel_Il_IlId" FromRole="Il" ToRole="Otel" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Ilce">
+        <EntityType Name="Pages">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IlId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Il" Relationship="Self.FK_Ilce_Il_IlId" FromRole="Ilce" ToRole="Il" />
-          <NavigationProperty Name="Otel" Relationship="Self.FK_Otel_Ilce_IlceId" FromRole="Ilce" ToRole="Otel" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsNavbar" Type="Boolean" />
+          <Property Name="IsFooter" Type="Boolean" />
+          <Property Name="ButtonUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ButtonName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Musteri">
+        <EntityType Name="Posts">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Soyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="KimlikNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="DogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="TelefonNumarasi" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="Cinsiyet" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Rezervasyon_Musteri" Relationship="Self.FK_Rezervasyon_Musteri_Musteri_MusteriId" FromRole="Musteri" ToRole="Rezervasyon_Musteri" />
-          <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_Musteri_MusteriId" FromRole="Musteri" ToRole="Rezervasyon" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Oda">
+        <EntityType Name="Rooms">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Kapasite" Type="Byte" Nullable="false" />
-          <Property Name="OtelId" Type="Int32" Nullable="false" />
-          <Property Name="OdaTipiId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Oda_EkHizmet" Relationship="Self.FK_Oda_EkHizmet_Oda_OdaId" FromRole="Oda" ToRole="Oda_EkHizmet" />
-          <NavigationProperty Name="OdaTipi" Relationship="Self.FK_Oda_Odatipi_OdaTipiId" FromRole="Oda" ToRole="OdaTipi" />
-          <NavigationProperty Name="Otel" Relationship="Self.FK_Oda_Otel_OtelId" FromRole="Oda" ToRole="Otel" />
-          <NavigationProperty Name="Rezervasyon_Oda" Relationship="Self.FK_Rezervasyon_Oda_Oda_OdaId" FromRole="Oda" ToRole="Rezervasyon_Oda" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="RoomNo" Type="Int32" />
+          <Property Name="RoomTypeID" Type="Int32" />
         </EntityType>
-        <EntityType Name="Oda_EkHizmet">
+        <EntityType Name="RoomTypes">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OdaId" Type="Int32" Nullable="false" />
-          <Property Name="EkHizmetId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="EkHizmet" Relationship="Self.FK_Oda_EkHizmet_EkHizmet_EkHizmetId" FromRole="Oda_EkHizmet" ToRole="EkHizmet" />
-          <NavigationProperty Name="Oda" Relationship="Self.FK_Oda_EkHizmet_Oda_OdaId" FromRole="Oda_EkHizmet" ToRole="Oda" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="OdaTipi">
+        <EntityType Name="Services">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Fiyat" Relationship="Self.FK_Fiyat_Odatipi_OdaTipiId" FromRole="OdaTipi" ToRole="Fiyat" />
-          <NavigationProperty Name="Oda" Relationship="Self.FK_Oda_Odatipi_OdaTipiId" FromRole="OdaTipi" ToRole="Oda" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Icon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
-        <EntityType Name="Otel">
+        <EntityType Name="Settings">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Telefon" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="OtelYildizi" Type="Int32" />
-          <Property Name="OtelPuani" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="OdaSayisi" Type="Int32" />
-          <Property Name="IlId" Type="Int32" Nullable="false" />
-          <Property Name="IlceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Il" Relationship="Self.FK_Otel_Il_IlId" FromRole="Otel" ToRole="Il" />
-          <NavigationProperty Name="Ilce" Relationship="Self.FK_Otel_Ilce_IlceId" FromRole="Otel" ToRole="Ilce" />
-          <NavigationProperty Name="Oda" Relationship="Self.FK_Oda_Otel_OtelId" FromRole="Otel" ToRole="Oda" />
-          <NavigationProperty Name="Otel_Calisan" Relationship="Self.FK_Otel_Calisan_Otel_OtelId" FromRole="Otel" ToRole="Otel_Calisan" />
-          <NavigationProperty Name="Otel_OtelOlanaklari" Relationship="Self.FK_Otel_OtelOlanaklari_Otel_OtelId" FromRole="Otel" ToRole="Otel_OtelOlanaklari" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Otel_Calisan">
+        <EntityType Name="Subscriptions">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OtelId" Type="Int32" Nullable="false" />
-          <Property Name="CalisanId" Type="Int32" Nullable="false" />
-          <Property Name="Maas" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="SilinmeTarihi" Type="DateTime" Precision="3" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Calisan" Relationship="Self.FK_Otel_Calisan_Calisan_CalisanId" FromRole="Otel_Calisan" ToRole="Calisan" />
-          <NavigationProperty Name="Otel" Relationship="Self.FK_Otel_Calisan_Otel_OtelId" FromRole="Otel_Calisan" ToRole="Otel" />
-        </EntityType>
-        <EntityType Name="Otel_OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OtelId" Type="Int32" Nullable="false" />
-          <Property Name="OtelOlanaklariId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Otel" Relationship="Self.FK_Otel_OtelOlanaklari_Otel_OtelId" FromRole="Otel_OtelOlanaklari" ToRole="Otel" />
-          <NavigationProperty Name="OtelOlanaklari" Relationship="Self.FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" FromRole="Otel_OtelOlanaklari" ToRole="OtelOlanaklari" />
-        </EntityType>
-        <EntityType Name="OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Fiyat" Relationship="Self.FK_Fiyat_OtelOlanaklari_OtelOlanaklariId" FromRole="OtelOlanaklari" ToRole="Fiyat" />
-          <NavigationProperty Name="Otel_OtelOlanaklari" Relationship="Self.FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" FromRole="OtelOlanaklari" ToRole="Otel_OtelOlanaklari" />
-          <NavigationProperty Name="Rezervasyon_OtelOlanaklari" Relationship="Self.FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" FromRole="OtelOlanaklari" ToRole="Rezervasyon_OtelOlanaklari" />
-        </EntityType>
-        <EntityType Name="Rezervasyon">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
-          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SilinmeTarihi" Type="DateTime" Precision="3" />
-          <Property Name="MusteriId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Musteri" Relationship="Self.FK_Rezervasyon_Musteri_MusteriId" FromRole="Rezervasyon" ToRole="Musteri" />
-          <NavigationProperty Name="Rezervasyon_EkHizmet" Relationship="Self.FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId" FromRole="Rezervasyon" ToRole="Rezervasyon_EkHizmet" />
-          <NavigationProperty Name="Rezervasyon_Musteri" Relationship="Self.FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId" FromRole="Rezervasyon" ToRole="Rezervasyon_Musteri" />
-          <NavigationProperty Name="Rezervasyon_Oda" Relationship="Self.FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId" FromRole="Rezervasyon" ToRole="Rezervasyon_Oda" />
-          <NavigationProperty Name="Rezervasyon_OtelOlanaklari" Relationship="Self.FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId" FromRole="Rezervasyon" ToRole="Rezervasyon_OtelOlanaklari" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_EkHizmet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RezervasyonId" Type="Int32" Nullable="false" />
-          <Property Name="EkHizmetId" Type="Int32" Nullable="false" />
-          <Property Name="ToplamTutar" Type="Int32" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EkHizmet" Relationship="Self.FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId" FromRole="Rezervasyon_EkHizmet" ToRole="EkHizmet" />
-          <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId" FromRole="Rezervasyon_EkHizmet" ToRole="Rezervasyon" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_Musteri">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RezervasyonId" Type="Int32" Nullable="false" />
-          <Property Name="MusteriId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Musteri" Relationship="Self.FK_Rezervasyon_Musteri_Musteri_MusteriId" FromRole="Rezervasyon_Musteri" ToRole="Musteri" />
-          <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId" FromRole="Rezervasyon_Musteri" ToRole="Rezervasyon" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_Oda">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RezervasyonId" Type="Int32" Nullable="false" />
-          <Property Name="OdaId" Type="Int32" Nullable="false" />
-          <Property Name="ToplamTutar" Type="Int32" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Oda" Relationship="Self.FK_Rezervasyon_Oda_Oda_OdaId" FromRole="Rezervasyon_Oda" ToRole="Oda" />
-          <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId" FromRole="Rezervasyon_Oda" ToRole="Rezervasyon" />
-        </EntityType>
-        <EntityType Name="Rezervasyon_OtelOlanaklari">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RezervasyonId" Type="Int32" Nullable="false" />
-          <Property Name="OtelOlanaklariId" Type="Int32" Nullable="false" />
-          <Property Name="ToplamTutar" Type="Int32" Nullable="false" />
-          <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="OtelOlanaklari" Relationship="Self.FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" FromRole="Rezervasyon_OtelOlanaklari" ToRole="OtelOlanaklari" />
-          <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId" FromRole="Rezervasyon_OtelOlanaklari" ToRole="Rezervasyon" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubscribe" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Otel_Calisan_Calisan_CalisanId">
-          <End Role="Calisan" Type="Self.Calisan" Multiplicity="1" />
-          <End Role="Otel_Calisan" Type="Self.Otel_Calisan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Calisan">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_Calisan">
-              <PropertyRef Name="CalisanId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fiyat_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_EkHizmet_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="1" />
-          <End Role="Oda_EkHizmet" Type="Self.Oda_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda_EkHizmet">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId">
-          <End Role="EkHizmet" Type="Self.EkHizmet" Multiplicity="1" />
-          <End Role="Rezervasyon_EkHizmet" Type="Self.Rezervasyon_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EkHizmet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_EkHizmet">
-              <PropertyRef Name="EkHizmetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fiyat_Odatipi_OdaTipiId">
-          <End Role="OdaTipi" Type="Self.OdaTipi" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OdaTipi">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="OdaTipiId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fiyat_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="0..1" />
-          <End Role="Fiyat" Type="Self.Fiyat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Fiyat">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ilce_Il_IlId">
-          <End Role="Il" Type="Self.Il" Multiplicity="1" />
-          <End Role="Ilce" Type="Self.Ilce" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Il">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Ilce">
-              <PropertyRef Name="IlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Il_IlId">
-          <End Role="Il" Type="Self.Il" Multiplicity="1" />
-          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Il">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel">
-              <PropertyRef Name="IlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Ilce_IlceId">
-          <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
-          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ilce">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel">
-              <PropertyRef Name="IlceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_Musteri_MusteriId">
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
-          <End Role="Rezervasyon_Musteri" Type="Self.Rezervasyon_Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musteri">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Musteri">
-              <PropertyRef Name="MusteriId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_MusteriId">
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musteri">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon">
-              <PropertyRef Name="MusteriId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_EkHizmet_Oda_OdaId">
-          <End Role="Oda" Type="Self.Oda" Multiplicity="1" />
-          <End Role="Oda_EkHizmet" Type="Self.Oda_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Oda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda_EkHizmet">
-              <PropertyRef Name="OdaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_Odatipi_OdaTipiId">
-          <End Role="OdaTipi" Type="Self.OdaTipi" Multiplicity="1" />
-          <End Role="Oda" Type="Self.Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OdaTipi">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda">
-              <PropertyRef Name="OdaTipiId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Oda_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Oda" Type="Self.Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Oda">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Oda_Oda_OdaId">
-          <End Role="Oda" Type="Self.Oda" Multiplicity="1" />
-          <End Role="Rezervasyon_Oda" Type="Self.Rezervasyon_Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Oda">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Oda">
-              <PropertyRef Name="OdaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_Calisan_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Otel_Calisan" Type="Self.Otel_Calisan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_Calisan">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_OtelOlanaklari_Otel_OtelId">
-          <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
-          <End Role="Otel_OtelOlanaklari" Type="Self.Otel_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Otel">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_OtelOlanaklari">
-              <PropertyRef Name="OtelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="1" />
-          <End Role="Otel_OtelOlanaklari" Type="Self.Otel_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Otel_OtelOlanaklari">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-          <End Role="OtelOlanaklari" Type="Self.OtelOlanaklari" Multiplicity="1" />
-          <End Role="Rezervasyon_OtelOlanaklari" Type="Self.Rezervasyon_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OtelOlanaklari">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_OtelOlanaklari">
-              <PropertyRef Name="OtelOlanaklariId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_EkHizmet" Type="Self.Rezervasyon_EkHizmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_EkHizmet">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_Musteri" Type="Self.Rezervasyon_Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Musteri">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_Oda" Type="Self.Rezervasyon_Oda" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_Oda">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId">
-          <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="1" />
-          <End Role="Rezervasyon_OtelOlanaklari" Type="Self.Rezervasyon_OtelOlanaklari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rezervasyon">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Rezervasyon_OtelOlanaklari">
-              <PropertyRef Name="RezervasyonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="HOTELEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Calisan" EntityType="Self.Calisan" />
-          <EntitySet Name="EkHizmet" EntityType="Self.EkHizmet" />
-          <EntitySet Name="Fiyat" EntityType="Self.Fiyat" />
-          <EntitySet Name="Il" EntityType="Self.Il" />
-          <EntitySet Name="Ilce" EntityType="Self.Ilce" />
-          <EntitySet Name="Musteri" EntityType="Self.Musteri" />
-          <EntitySet Name="Oda" EntityType="Self.Oda" />
-          <EntitySet Name="Oda_EkHizmet" EntityType="Self.Oda_EkHizmet" />
-          <EntitySet Name="OdaTipi" EntityType="Self.OdaTipi" />
-          <EntitySet Name="Otel" EntityType="Self.Otel" />
-          <EntitySet Name="Otel_Calisan" EntityType="Self.Otel_Calisan" />
-          <EntitySet Name="Otel_OtelOlanaklari" EntityType="Self.Otel_OtelOlanaklari" />
-          <EntitySet Name="OtelOlanaklari" EntityType="Self.OtelOlanaklari" />
-          <EntitySet Name="Rezervasyon" EntityType="Self.Rezervasyon" />
-          <EntitySet Name="Rezervasyon_EkHizmet" EntityType="Self.Rezervasyon_EkHizmet" />
-          <EntitySet Name="Rezervasyon_Musteri" EntityType="Self.Rezervasyon_Musteri" />
-          <EntitySet Name="Rezervasyon_Oda" EntityType="Self.Rezervasyon_Oda" />
-          <EntitySet Name="Rezervasyon_OtelOlanaklari" EntityType="Self.Rezervasyon_OtelOlanaklari" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Otel_Calisan_Calisan_CalisanId" Association="Self.FK_Otel_Calisan_Calisan_CalisanId">
-            <End Role="Calisan" EntitySet="Calisan" />
-            <End Role="Otel_Calisan" EntitySet="Otel_Calisan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fiyat_EkHizmet_EkHizmetId" Association="Self.FK_Fiyat_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_EkHizmet_EkHizmet_EkHizmetId" Association="Self.FK_Oda_EkHizmet_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Oda_EkHizmet" EntitySet="Oda_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId" Association="Self.FK_Rezervasyon_EkHizmet_EkHizmet_EkHizmetId">
-            <End Role="EkHizmet" EntitySet="EkHizmet" />
-            <End Role="Rezervasyon_EkHizmet" EntitySet="Rezervasyon_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fiyat_Odatipi_OdaTipiId" Association="Self.FK_Fiyat_Odatipi_OdaTipiId">
-            <End Role="OdaTipi" EntitySet="OdaTipi" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fiyat_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Fiyat_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Fiyat" EntitySet="Fiyat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ilce_Il_IlId" Association="Self.FK_Ilce_Il_IlId">
-            <End Role="Il" EntitySet="Il" />
-            <End Role="Ilce" EntitySet="Ilce" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Il_IlId" Association="Self.FK_Otel_Il_IlId">
-            <End Role="Il" EntitySet="Il" />
-            <End Role="Otel" EntitySet="Otel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Ilce_IlceId" Association="Self.FK_Otel_Ilce_IlceId">
-            <End Role="Ilce" EntitySet="Ilce" />
-            <End Role="Otel" EntitySet="Otel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_Musteri_MusteriId" Association="Self.FK_Rezervasyon_Musteri_Musteri_MusteriId">
-            <End Role="Musteri" EntitySet="Musteri" />
-            <End Role="Rezervasyon_Musteri" EntitySet="Rezervasyon_Musteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_MusteriId" Association="Self.FK_Rezervasyon_Musteri_MusteriId">
-            <End Role="Musteri" EntitySet="Musteri" />
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_EkHizmet_Oda_OdaId" Association="Self.FK_Oda_EkHizmet_Oda_OdaId">
-            <End Role="Oda" EntitySet="Oda" />
-            <End Role="Oda_EkHizmet" EntitySet="Oda_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_Odatipi_OdaTipiId" Association="Self.FK_Oda_Odatipi_OdaTipiId">
-            <End Role="OdaTipi" EntitySet="OdaTipi" />
-            <End Role="Oda" EntitySet="Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Oda_Otel_OtelId" Association="Self.FK_Oda_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Oda" EntitySet="Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Oda_Oda_OdaId" Association="Self.FK_Rezervasyon_Oda_Oda_OdaId">
-            <End Role="Oda" EntitySet="Oda" />
-            <End Role="Rezervasyon_Oda" EntitySet="Rezervasyon_Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_Calisan_Otel_OtelId" Association="Self.FK_Otel_Calisan_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Otel_Calisan" EntitySet="Otel_Calisan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_OtelOlanaklari_Otel_OtelId" Association="Self.FK_Otel_OtelOlanaklari_Otel_OtelId">
-            <End Role="Otel" EntitySet="Otel" />
-            <End Role="Otel_OtelOlanaklari" EntitySet="Otel_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Otel_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Otel_OtelOlanaklari" EntitySet="Otel_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId" Association="Self.FK_Rezervasyon_OtelOlanaklari_OtelOlanaklari_OtelOlanaklariId">
-            <End Role="OtelOlanaklari" EntitySet="OtelOlanaklari" />
-            <End Role="Rezervasyon_OtelOlanaklari" EntitySet="Rezervasyon_OtelOlanaklari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_EkHizmet_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_EkHizmet" EntitySet="Rezervasyon_EkHizmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_Musteri_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_Musteri" EntitySet="Rezervasyon_Musteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_Oda_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_Oda" EntitySet="Rezervasyon_Oda" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId" Association="Self.FK_Rezervasyon_OtelOlanaklari_Rezervasyon_RezervasyonId">
-            <End Role="Rezervasyon" EntitySet="Rezervasyon" />
-            <End Role="Rezervasyon_OtelOlanaklari" EntitySet="Rezervasyon_OtelOlanaklari" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsShow" Type="Boolean" />
+          <Property Name="CustomerID" Type="Int32" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HOTELModelStoreContainer" CdmEntityContainer="HOTELEntities">
-          <EntitySetMapping Name="Calisan">
-            <EntityTypeMapping TypeName="HOTELModel.Calisan">
-              <MappingFragment StoreEntitySet="Calisan">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="KimlikNo" ColumnName="KimlikNo" />
-                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
-                <ScalarProperty Name="TelefonNumarasi" ColumnName="TelefonNumarasi" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
-                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
-                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+        <EntityContainerMapping StorageEntityContainer="OTELModelStoreContainer" CdmEntityContainer="OTELEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="OTELModel.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="OTELModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+                <ScalarProperty Name="Nation" ColumnName="Nation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="OTELModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="OTELModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="OTELModel.Pages">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+                <ScalarProperty Name="ButtonUrl" ColumnName="ButtonUrl" />
+                <ScalarProperty Name="IsFooter" ColumnName="IsFooter" />
+                <ScalarProperty Name="IsNavbar" ColumnName="IsNavbar" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="OTELModel.Posts">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="OTELModel.Rooms">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="OTELModel.RoomTypes">
+              <MappingFragment StoreEntitySet="RoomTypes">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="OTELModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="OTELModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="OTELModel.Subscriptions">
+              <MappingFragment StoreEntitySet="Subscriptions">
+                <ScalarProperty Name="IsSubscribe" ColumnName="IsSubscribe" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EkHizmet">
-            <EntityTypeMapping TypeName="HOTELModel.EkHizmet">
-              <MappingFragment StoreEntitySet="EkHizmet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fiyat">
-            <EntityTypeMapping TypeName="HOTELModel.Fiyat">
-              <MappingFragment StoreEntitySet="Fiyat">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Deger" ColumnName="Deger" />
-                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
-                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
-                <ScalarProperty Name="OtelOlanaklariId" ColumnName="OtelOlanaklariId" />
-                <ScalarProperty Name="OdaTipiId" ColumnName="OdaTipiId" />
-                <ScalarProperty Name="EkHizmetId" ColumnName="EkHizmetId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Il">
-            <EntityTypeMapping TypeName="HOTELModel.Il">
-              <MappingFragment StoreEntitySet="Il">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ilce">
-            <EntityTypeMapping TypeName="HOTELModel.Ilce">
-              <MappingFragment StoreEntitySet="Ilce">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="IlId" ColumnName="IlId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Musteri">
-            <EntityTypeMapping TypeName="HOTELModel.Musteri">
-              <MappingFragment StoreEntitySet="Musteri">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
-                <ScalarProperty Name="KimlikNo" ColumnName="KimlikNo" />
-                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TelefonNumarasi" ColumnName="TelefonNumarasi" />
-                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Oda">
-            <EntityTypeMapping TypeName="HOTELModel.Oda">
-              <MappingFragment StoreEntitySet="Oda">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Kapasite" ColumnName="Kapasite" />
-                <ScalarProperty Name="OtelId" ColumnName="OtelId" />
-                <ScalarProperty Name="OdaTipiId" ColumnName="OdaTipiId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Oda_EkHizmet">
-            <EntityTypeMapping TypeName="HOTELModel.Oda_EkHizmet">
-              <MappingFragment StoreEntitySet="Oda_EkHizmet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OdaId" ColumnName="OdaId" />
-                <ScalarProperty Name="EkHizmetId" ColumnName="EkHizmetId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OdaTipi">
-            <EntityTypeMapping TypeName="HOTELModel.OdaTipi">
-              <MappingFragment StoreEntitySet="OdaTipi">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Otel">
-            <EntityTypeMapping TypeName="HOTELModel.Otel">
-              <MappingFragment StoreEntitySet="Otel">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="OtelYildizi" ColumnName="OtelYildizi" />
-                <ScalarProperty Name="OtelPuani" ColumnName="OtelPuani" />
-                <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
-                <ScalarProperty Name="IlId" ColumnName="IlId" />
-                <ScalarProperty Name="IlceId" ColumnName="IlceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Otel_Calisan">
-            <EntityTypeMapping TypeName="HOTELModel.Otel_Calisan">
-              <MappingFragment StoreEntitySet="Otel_Calisan">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OtelId" ColumnName="OtelId" />
-                <ScalarProperty Name="CalisanId" ColumnName="CalisanId" />
-                <ScalarProperty Name="Maas" ColumnName="Maas" />
-                <ScalarProperty Name="SilinmeTarihi" ColumnName="SilinmeTarihi" />
-                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
-                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Otel_OtelOlanaklari">
-            <EntityTypeMapping TypeName="HOTELModel.Otel_OtelOlanaklari">
-              <MappingFragment StoreEntitySet="Otel_OtelOlanaklari">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OtelId" ColumnName="OtelId" />
-                <ScalarProperty Name="OtelOlanaklariId" ColumnName="OtelOlanaklariId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OtelOlanaklari">
-            <EntityTypeMapping TypeName="HOTELModel.OtelOlanaklari">
-              <MappingFragment StoreEntitySet="OtelOlanaklari">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rezervasyon">
-            <EntityTypeMapping TypeName="HOTELModel.Rezervasyon">
-              <MappingFragment StoreEntitySet="Rezervasyon">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
-                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
-                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
-                <ScalarProperty Name="SilinmeTarihi" ColumnName="SilinmeTarihi" />
-                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rezervasyon_EkHizmet">
-            <EntityTypeMapping TypeName="HOTELModel.Rezervasyon_EkHizmet">
-              <MappingFragment StoreEntitySet="Rezervasyon_EkHizmet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RezervasyonId" ColumnName="RezervasyonId" />
-                <ScalarProperty Name="EkHizmetId" ColumnName="EkHizmetId" />
-                <ScalarProperty Name="ToplamTutar" ColumnName="ToplamTutar" />
-                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rezervasyon_Musteri">
-            <EntityTypeMapping TypeName="HOTELModel.Rezervasyon_Musteri">
-              <MappingFragment StoreEntitySet="Rezervasyon_Musteri">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RezervasyonId" ColumnName="RezervasyonId" />
-                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rezervasyon_Oda">
-            <EntityTypeMapping TypeName="HOTELModel.Rezervasyon_Oda">
-              <MappingFragment StoreEntitySet="Rezervasyon_Oda">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RezervasyonId" ColumnName="RezervasyonId" />
-                <ScalarProperty Name="OdaId" ColumnName="OdaId" />
-                <ScalarProperty Name="ToplamTutar" ColumnName="ToplamTutar" />
-                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rezervasyon_OtelOlanaklari">
-            <EntityTypeMapping TypeName="HOTELModel.Rezervasyon_OtelOlanaklari">
-              <MappingFragment StoreEntitySet="Rezervasyon_OtelOlanaklari">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RezervasyonId" ColumnName="RezervasyonId" />
-                <ScalarProperty Name="OtelOlanaklariId" ColumnName="OtelOlanaklariId" />
-                <ScalarProperty Name="ToplamTutar" ColumnName="ToplamTutar" />
-                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="HOTELModel.sysdiagrams">
+            <EntityTypeMapping TypeName="OTELModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="OTELModel.Testimonials">
+              <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -50,12 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IEkHizmetYonetim.cs" />
-    <Compile Include="Interface\IAnaSayfaYonetim.cs" />
+    <Compile Include="Interface\IPagesManagement.cs" />
+    <Compile Include="Interface\IRoomTypesManagement.cs" />
+    <Compile Include="Interface\IServicesManagement.cs" />
+    <Compile Include="Interface\ICustomersManagement.cs" />
+    <Compile Include="Interface\ITestimonialsManagement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\EkHizmetYonetim.cs" />
-    <Compile Include="Repository\AnaSayfaYonetim.cs" />
+    <Compile Include="Repository\PagesManagement.cs" />
+    <Compile Include="Repository\RoomTypesManagement.cs" />
+    <Compile Include="Repository\ServicesManagement.cs" />
+    <Compile Include="Repository\CustomersManagement.cs" />
+    <Compile Include="Repository\TestimonialsManagement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -63,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hotel.Model\Hotel.Model.csproj">
-      <Project>{867AA6A9-3527-40A0-9D46-CDB1E6F11054}</Project>
+      <Project>{3895D37D-7818-4629-A51D-C2497B2ED83B}</Project>
       <Name>Hotel.Model</Name>
     </ProjectReference>
   </ItemGroup>

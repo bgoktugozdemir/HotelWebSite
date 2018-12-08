@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBlogPage.cshtml";
+}
+
+@section Banner
+{
+    <section class="banner_area blog_banner d_flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h4>Dude You’re Getting <br />a Telescope</h4>
+                <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first</p>
+                <a href="#" class="btn white_btn button_hover">View More</a>
+            </div>
+        </div>
+    </section>
+}
+
+@section BlogCatories
+{
+    <div class="col-lg-4">
+        <div class="categories_post">
+            <img src="~/Images/blog/cat-post/cat-post-3.jpg" alt="post">
+            <div class="categories_details">
+                <div class="categories_text">
+                    <a href="blog-details.html"><h5>Social Life</h5></a>
+                    <div class="border_line"></div>
+                    <p>Enjoy your social life together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="categories_post">
+            <img src="~/Images/blog/cat-post/cat-post-2.jpg" alt="post">
+            <div class="categories_details">
+                <div class="categories_text">
+                    <a href="blog-details.html"><h5>Politics</h5></a>
+                    <div class="border_line"></div>
+                    <p>Be a part of politics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="categories_post">
+            <img src="~/Images/blog/cat-post/cat-post-1.jpg" alt="post">
+            <div class="categories_details">
+                <div class="categories_text">
+                    <a href="blog-details.html"><h5>Food</h5></a>
+                    <div class="border_line"></div>
+                    <p>Let the food be finished</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section BlogArea{
+    <div class="blog_left_sidebar">
+        <article class="row blog_item">
+            <div class="col-md-3">
+                <div class="blog_info text-right">
+                    <div class="post_tag">
+                        <a href="#">Otel Adı</a> @*TODO: Otel Adı Yazacak*@
+                    </div>
+                    <ul class="blog_meta list_style">
+                        <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="blog_post">
+                    <img src="~/Images/blog/main-blog/m-blog-1.jpg" alt=""> <!--Blog Post Banner-->
+                    <div class="blog_details">
+                        <a href="#">
+                            <h2>Astronomy Binoculars A Great Alternative</h2> <!--Blog Post Title-->
+                        </a>
+                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p> <!--Blog Post Header Text-->
+                        <a href="#" class="view_btn button_hover">View More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <nav class="blog-pagination justify-content-center d-flex">
+            <!--Pagination-->
+            <ul class="pagination">
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">
+                            <span class="lnr lnr-chevron-left"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="page-item active"><a href="#" class="page-link">01</a></li>
+                <li class="page-item"><a href="#" class="page-link">02</a></li>
+                <li class="page-item"><a href="#" class="page-link">03</a></li>
+                <li class="page-item"><a href="#" class="page-link">04</a></li>
+                <li class="page-item"><a href="#" class="page-link">09</a></li>
+                <li class="page-item">
+                    <a href="#" class="page-link" aria-label="Next">
+                        <span aria-hidden="true">
+                            <span class="lnr lnr-chevron-right"></span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}

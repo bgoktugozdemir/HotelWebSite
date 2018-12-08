@@ -1,0 +1,52 @@
+﻿@using Hotel.Model.DataModel
+@model List<Hotel.Model.DataModel.Testimonials>
+<section class="testimonial_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_color">Testimonial from our Clients</h2>
+            <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </p>
+        </div>
+        <div class="testimonial_slider owl-carousel">
+            @foreach (Testimonials testimonial in Model)
+            {
+                <div class="media testimonial_item">
+                    @if (String.IsNullOrEmpty(@testimonial.Image))
+                    {
+                        <img class="rounded-circle" src="/Images/Customers/default.png" alt="" width="80" height="80">
+                    }
+                    else
+                    {
+                        <img class="rounded-circle" src="/Images/Customers/@testimonial.Image" alt="" width="80" height="80">
+                    }
+                    <div class="media-body">
+                        <p>@testimonial.Message</p> @*Customer Message*@ @*TODO: Sadece ilk 3 satırı görüntülenecek*@
+                        <a href="#"><h4 class="sec_h4">@testimonial.CustomerID</h4></a> @*Customer Name*@ @*TODO: Tıklandığında yorumun tamamı görüntülenecek*@
+                        @*TODO: Yıldızlama Yapılacak*@
+                        @*<div class="star">
+                            <a href="#"><i class="fa fa-star"></i></a>
+                            <a href="#"><i class="fa fa-star-half-o"></i></a>
+                            <a href="#"><i class="fa fa-star-half-empty"></i></a>
+                            <a href="#"><i class="fa fa-star-half-full"></i></a>
+                            <a href="#"><i class="fa fa-star-o"></i></a>
+                        </div>*@
+                        <div class="star">
+                            <span id="rate">@testimonial.Rate</span><span>/10</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .star span {
+        font-size: 20px;
+        color: #222222;
+        font-weight: 300;
+    }
+    .star span#rate {
+        font-weight: 900;
+        color: #F3C300;
+    }
+</style>

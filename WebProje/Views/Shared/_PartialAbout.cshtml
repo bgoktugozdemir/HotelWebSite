@@ -1,0 +1,24 @@
+﻿@model Hotel.Model.DataModel.Pages
+<section class="about_history_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d_flex align-items-center">
+                <div class="about_content ">
+                    <h2 class="title title_color">@Model.Title</h2>
+                    <p>@Model.BodyText</p>
+                    <a href="@Model.ButtonUrl" class="button_hover theme_btn_two">@Model.ButtonName</a> @*TODO*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                @if (String.IsNullOrEmpty(Model.Image))
+                {
+                    <img class="img-fluid" src="/Images/about_bg.jpg" alt="img">
+                }
+                else
+                {
+                    <img class="img-fluid" src="/Images/@Model.Image" alt="img">
+                }
+            </div>
+        </div>
+    </div>
+</section>

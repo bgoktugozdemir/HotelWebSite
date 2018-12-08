@@ -11,58 +11,58 @@ using Hotel.Model.DataModel;
 
 namespace Hotel.BI.Repository
 {
-    public class EkHizmetYonetim: IEkHizmetYonetim
+    public class CustomersManagement: ICustomersManagement
     {
-        private HOTELEntities _db = new HOTELEntities();
-        public void Add(Rezervasyon_EkHizmet entity)
+        private OTELEntities _db = new OTELEntities();
+        public void Add(Customers entity)
         {
-            _db.Rezervasyon_EkHizmet.Add(entity);
+            _db.Customers.Add(entity);
             _db.SaveChanges();
         }
 
-        public void Delete(Rezervasyon_EkHizmet entity)
+        public void Delete(Customers entity)
         {
-            _db.Rezervasyon_EkHizmet.Remove(entity);
+            _db.Customers.Remove(entity);
             _db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            _db.Rezervasyon_EkHizmet.Remove(GetById(id));
+            _db.Customers.Remove(GetById(id));
             _db.SaveChanges();
         }
 
-        public Rezervasyon_EkHizmet Get(Expression<Func<Rezervasyon_EkHizmet, bool>> predicate)
+        public Customers Get(Expression<Func<Customers, bool>> predicate)
         {
-            return _db.Rezervasyon_EkHizmet.FirstOrDefault(predicate);
+            return _db.Customers.FirstOrDefault(predicate);
         }
 
-        public IQueryable<Rezervasyon_EkHizmet> GetAll()
+        public IQueryable<Customers> GetAll()
         {
-            return _db.Rezervasyon_EkHizmet.AsQueryable();
+            return _db.Customers.AsQueryable();
 
         }
 
-        public IQueryable<Rezervasyon_EkHizmet> GetAll(Expression<Func<Rezervasyon_EkHizmet, bool>> predicate)
+        public IQueryable<Customers> GetAll(Expression<Func<Customers, bool>> predicate)
         {
-            return _db.Rezervasyon_EkHizmet.Where(predicate);
+            return _db.Customers.Where(predicate);
         }
 
-        public Rezervasyon_EkHizmet GetById(int id)
+        public Customers GetById(int id)
         {
-            return _db.Rezervasyon_EkHizmet.FirstOrDefault(d => d.Id == id);
+            return _db.Customers.FirstOrDefault(d => d.ID == id);
         }
 
-        public void Update(Rezervasyon_EkHizmet entity)
+        public void Update(Customers entity)
         {
             _db.Entry(entity).State = EntityState.Modified;
             _db.SaveChanges();
         }
-        public Rezervasyon_EkHizmet AddOrUpdate(Rezervasyon_EkHizmet entity)
+        public Customers AddOrUpdate(Customers entity)
         {
             try
             {
-                _db.Entry(entity).State = entity.Id == 0 ?
+                _db.Entry(entity).State = entity.ID == 0 ?
                     EntityState.Added :
                     EntityState.Modified;
                 _db.SaveChanges();

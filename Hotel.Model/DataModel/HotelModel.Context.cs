@@ -13,10 +13,10 @@ namespace Hotel.Model.DataModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HOTELEntities : DbContext
+    public partial class OTELEntities : DbContext
     {
-        public HOTELEntities()
-            : base("name=HOTELEntities")
+        public OTELEntities()
+            : base("name=OTELEntities")
         {
         }
     
@@ -25,24 +25,18 @@ namespace Hotel.Model.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Calisan> Calisan { get; set; }
-        public virtual DbSet<EkHizmet> EkHizmet { get; set; }
-        public virtual DbSet<Fiyat> Fiyat { get; set; }
-        public virtual DbSet<Il> Il { get; set; }
-        public virtual DbSet<Ilce> Ilce { get; set; }
-        public virtual DbSet<Musteri> Musteri { get; set; }
-        public virtual DbSet<Oda> Oda { get; set; }
-        public virtual DbSet<Oda_EkHizmet> Oda_EkHizmet { get; set; }
-        public virtual DbSet<OdaTipi> OdaTipi { get; set; }
-        public virtual DbSet<Otel> Otel { get; set; }
-        public virtual DbSet<Otel_Calisan> Otel_Calisan { get; set; }
-        public virtual DbSet<Otel_OtelOlanaklari> Otel_OtelOlanaklari { get; set; }
-        public virtual DbSet<OtelOlanaklari> OtelOlanaklari { get; set; }
-        public virtual DbSet<Rezervasyon> Rezervasyon { get; set; }
-        public virtual DbSet<Rezervasyon_EkHizmet> Rezervasyon_EkHizmet { get; set; }
-        public virtual DbSet<Rezervasyon_Musteri> Rezervasyon_Musteri { get; set; }
-        public virtual DbSet<Rezervasyon_Oda> Rezervasyon_Oda { get; set; }
-        public virtual DbSet<Rezervasyon_OtelOlanaklari> Rezervasyon_OtelOlanaklari { get; set; }
+        public virtual DbSet<Books> Books { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Images> Images { get; set; }
+        public virtual DbSet<Pages> Pages { get; set; }
+        public virtual DbSet<Posts> Posts { get; set; }
+        public virtual DbSet<Rooms> Rooms { get; set; }
+        public virtual DbSet<RoomTypes> RoomTypes { get; set; }
+        public virtual DbSet<Services> Services { get; set; }
+        public virtual DbSet<Settings> Settings { get; set; }
+        public virtual DbSet<Subscriptions> Subscriptions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Testimonials> Testimonials { get; set; }
     }
 }

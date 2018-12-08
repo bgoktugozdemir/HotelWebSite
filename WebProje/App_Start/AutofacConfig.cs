@@ -17,10 +17,16 @@ namespace WebProje.App_Start
         public static void RegisterComponents()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<EkHizmetYonetim>().As<IEkHizmetYonetim>();
+            builder.RegisterType<ServicesManagement>().As<IServicesManagement>();
+            builder.RegisterType<RoomTypesManagement>().As<IRoomTypesManagement>();
+            builder.RegisterType<PagesManagement>().As<IPagesManagement>();
+            builder.RegisterType<TestimonialsManagement>().As<ITestimonialsManagement>();
+            builder.RegisterType<CustomersManagement>().As<ICustomersManagement>();
 
             builder.RegisterType<HomeController>();
+            builder.RegisterType<AboutController>();
             builder.RegisterType<ContactController>();
+            builder.RegisterType<BlogController>();
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             var container = builder.Build();
