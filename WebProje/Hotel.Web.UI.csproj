@@ -146,10 +146,10 @@
     <Content Include="Images\blog\next.jpg" />
     <Content Include="Images\blog\post-img1.jpg" />
     <Content Include="Images\blog\post-img2.jpg" />
-    <Content Include="Images\blog\post1.jpg" />
-    <Content Include="Images\blog\post2.jpg" />
-    <Content Include="Images\blog\post3.jpg" />
-    <Content Include="Images\blog\post4.jpg" />
+    <Content Include="Images\blog\Post\post1.jpg" />
+    <Content Include="Images\blog\Post\post2.jpg" />
+    <Content Include="Images\blog\Post\post3.jpg" />
+    <Content Include="Images\blog\Post\post4.jpg" />
     <Content Include="Images\blog\prev.jpg" />
     <Content Include="Images\blog\s-img.jpg" />
     <Content Include="Images\Customers\default.png" />

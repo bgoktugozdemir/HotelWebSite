@@ -49,7 +49,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderSort" Type="int" />
-          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="Image" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Pages">
           <Key>
@@ -60,7 +60,7 @@
           <Property Name="BodyText" Type="text" />
           <Property Name="IsNavbar" Type="bit" />
           <Property Name="IsFooter" Type="bit" />
-          <Property Name="ButtonUrl" Type="varchar" MaxLength="255" />
+          <Property Name="ButtonUrl" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ButtonName" Type="varchar" MaxLength="255" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
@@ -71,12 +71,13 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderSort" Type="int" />
+          <Property Name="Thumbnail" Type="varchar" MaxLength="255" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
-          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="HeaderText" Type="varchar" MaxLength="255" />
           <Property Name="BodyText" Type="text" />
           <Property Name="EmployeeID" Type="int" />
-          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CreatedAt" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Rooms">
           <Key>
@@ -173,7 +174,6 @@
           <EntitySet Name="Employees" EntityType="OTELModel.Employees" />
           <EntitySet Name="Images" EntityType="OTELModel.Images" />
           <EntitySet Name="Pages" EntityType="OTELModel.Pages" />
-          <EntitySet Name="Posts" EntityType="OTELModel.Posts" />
           <EntitySet Name="Rooms" EntityType="OTELModel.Rooms" />
           <EntitySet Name="RoomTypes" EntityType="OTELModel.RoomTypes" />
           <EntitySet Name="Services" EntityType="OTELModel.Services" />
@@ -181,6 +181,7 @@
           <EntitySet Name="Subscriptions" EntityType="OTELModel.Subscriptions" />
           <EntitySet Name="sysdiagrams" EntityType="OTELModel.sysdiagrams" />
           <EntitySet Name="Testimonials" EntityType="OTELModel.Testimonials" />
+          <EntitySet Name="Posts" EntityType="OTELModel.Posts" />
         </EntityContainer>
         <EntityType Name="Books">
           <Key>
@@ -226,7 +227,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderSort" Type="Int32" />
-          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Pages">
           <Key>
@@ -237,23 +238,10 @@
           <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsNavbar" Type="Boolean" />
           <Property Name="IsFooter" Type="Boolean" />
-          <Property Name="ButtonUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ButtonUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ButtonName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Posts">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderSort" Type="Int32" />
-          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeID" Type="Int32" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Rooms">
           <Key>
@@ -325,6 +313,20 @@
           <Property Name="IsShow" Type="Boolean" />
           <Property Name="CustomerID" Type="Int32" />
         </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Thumbnail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -392,20 +394,6 @@
                 <ScalarProperty Name="IsNavbar" ColumnName="IsNavbar" />
                 <ScalarProperty Name="BodyText" ColumnName="BodyText" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="OTELModel.Posts">
-              <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
-                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -482,6 +470,21 @@
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="OTELModel.Posts">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
                 <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

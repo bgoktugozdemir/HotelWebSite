@@ -16,11 +16,12 @@ namespace Hotel.Model.DataModel
     {
         public int ID { get; set; }
         public Nullable<int> OrderSort { get; set; }
+        public string Thumbnail { get; set; }
         public string Image { get; set; }
         public string Title { get; set; }
         public string HeaderText { get; set; }
         public string BodyText { get; set; }
         public Nullable<int> EmployeeID { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     }
 }
