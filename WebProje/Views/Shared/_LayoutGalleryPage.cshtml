@@ -1,13 +1,24 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section CSS
+{
+    <link rel="stylesheet" href="~/Vendors/lightbox/simpleLightbox.css">
+}
 <!--================Breadcrumb Area =================-->
 @RenderSection("Breadcrumb")
 <!--================Breadcrumb Area =================-->
-
 <!--================ Gallery Area  =================-->
-@RenderSection("Gallery")
+<section class="gallery_area section_gap">
+    <div class="container">
+        <div class="section_title text-center">
+            @RenderSection("Gallery_Title", false)
+        </div>
+        <div class="row imageGallery1" id="gallery">
+            @RenderSection("Gallery", true)
+        </div>
+    </div>
+</section>
 <!--================ Gallery Area  =================-->
 
 @RenderSection("Scripts")

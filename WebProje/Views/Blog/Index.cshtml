@@ -1,4 +1,5 @@
-﻿
+﻿@using Hotel.Model.DataModel
+@model WebProje.Models.Blog.BlogViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutBlogPage.cshtml";
@@ -60,30 +61,33 @@
 
 @section BlogArea{
     <div class="blog_left_sidebar">
-        <article class="row blog_item">
-            <div class="col-md-3">
-                <div class="blog_info text-right">
-                    <div class="post_tag">
-                        <a href="#">Otel Adı</a> @*TODO: Otel Adı Yazacak*@
-                    </div>
-                    <ul class="blog_meta list_style">
-                        <li><a href="#">12 Dec, 2017<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="blog_post">
-                    <img src="~/Images/blog/main-blog/m-blog-1.jpg" alt=""> <!--Blog Post Banner-->
-                    <div class="blog_details">
-                        <a href="#">
-                            <h2>Astronomy Binoculars A Great Alternative</h2> <!--Blog Post Title-->
-                        </a>
-                        <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.</p> <!--Blog Post Header Text-->
-                        <a href="#" class="view_btn button_hover">View More</a>
+        @foreach (Posts post in Model.PostsList)
+        {
+            <article class="row blog_item">
+                <div class="col-md-3">
+                    <div class="blog_info text-right">
+                        <div class="post_tag">
+                            <a href="#">@Model.Setting.Value</a> @*TODO: Otel Adı Yazacak*@
+                        </div>
+                        <ul class="blog_meta list_style">
+                            <li><a href="#">@post.CreatedAt<i class="lnr lnr-calendar-full"></i></a></li> @*TODO: Blog Post Tarihi yazılacak.*@
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </article>
+                <div class="col-md-9">
+                    <div class="blog_post">
+                        <img src="~/Images/blog/main-blog/m-blog-1.jpg" alt=""> <!--Blog Post Banner-->
+                        <div class="blog_details">
+                            <a href="#">
+                                <h2>@post.Title</h2> <!--Blog Post Title-->
+                            </a>
+                            <p>@post.HeaderText</p> <!--Blog Post Header Text-->
+                            <a href="@Url.Action("Details","Blog",new {id=post.ID})" class="view_btn button_hover">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        }
         <nav class="blog-pagination justify-content-center d-flex">
             <!--Pagination-->
             <ul class="pagination">

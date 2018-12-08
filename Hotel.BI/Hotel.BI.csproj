@@ -50,17 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\ISettingsManagement.cs" />
+    <Compile Include="Interface\IPostsManagement.cs" />
     <Compile Include="Interface\IPagesManagement.cs" />
     <Compile Include="Interface\IRoomTypesManagement.cs" />
     <Compile Include="Interface\IServicesManagement.cs" />
     <Compile Include="Interface\ICustomersManagement.cs" />
+    <Compile Include="Interface\IImagesManagement.cs" />
     <Compile Include="Interface\ITestimonialsManagement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PostsManagement.cs" />
     <Compile Include="Repository\PagesManagement.cs" />
     <Compile Include="Repository\RoomTypesManagement.cs" />
+    <Compile Include="Repository\SettingsManagement.cs" />
     <Compile Include="Repository\ServicesManagement.cs" />
     <Compile Include="Repository\CustomersManagement.cs" />
+    <Compile Include="Repository\ImagesManagement.cs" />
     <Compile Include="Repository\TestimonialsManagement.cs" />
   </ItemGroup>
   <ItemGroup>

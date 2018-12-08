@@ -22,11 +22,15 @@ namespace WebProje.App_Start
             builder.RegisterType<PagesManagement>().As<IPagesManagement>();
             builder.RegisterType<TestimonialsManagement>().As<ITestimonialsManagement>();
             builder.RegisterType<CustomersManagement>().As<ICustomersManagement>();
+            builder.RegisterType<ImagesManagement>().As<IImagesManagement>();
+            builder.RegisterType<PostsManagement>().As<IPostsManagement>();
+            builder.RegisterType<SettingsManagement>().As<ISettingsManagement>();
 
             builder.RegisterType<HomeController>();
             builder.RegisterType<AboutController>();
-            builder.RegisterType<ContactController>();
+            builder.RegisterType<GalleryController>();
             builder.RegisterType<BlogController>();
+            builder.RegisterType<ContactController>();
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             var container = builder.Build();
