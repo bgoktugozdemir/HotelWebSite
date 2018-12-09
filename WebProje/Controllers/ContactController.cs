@@ -36,19 +36,19 @@ namespace WebProje.Controllers
         {
             try
             {
-                //string ip = System.Web.HttpContext.Current.Request.UserHostAddress;
+                string ip = System.Web.HttpContext.Current.Request.UserHostAddress;
 
-                //ContactForms contact = new ContactForms
-                //{
-                //    Name = model.Name,
-                //    Email = model.Email,
-                //    Subject = model.Subject,
-                //    Message = model.Message,
-                //    IpAddress = ip,
-                //    SendedAt = DateTime.Now
-                //};
+                ContactForms contact = new ContactForms
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Subject = model.Subject,
+                    Message = model.Message,
+                    IpAddress = ip,
+                    SendedAt = DateTime.Now
+                };
 
-                //_contactFormsManagement.Add(contact);
+                _contactFormsManagement.Add(contact);
                 TempData["IsPosted"] = true;
             }
             catch
