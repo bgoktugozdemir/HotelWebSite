@@ -53,6 +53,9 @@
     <Compile Include="DataModel\Books.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\ContactForms.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Customers.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>

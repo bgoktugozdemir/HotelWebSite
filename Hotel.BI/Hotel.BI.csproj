@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IContactFormsManagement.cs" />
     <Compile Include="Interface\ISettingsManagement.cs" />
     <Compile Include="Interface\IPostsManagement.cs" />
     <Compile Include="Interface\IPagesManagement.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Interface\ITestimonialsManagement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ContactFormsManagement.cs" />
     <Compile Include="Repository\PostsManagement.cs" />
     <Compile Include="Repository\PagesManagement.cs" />
     <Compile Include="Repository\RoomTypesManagement.cs" />

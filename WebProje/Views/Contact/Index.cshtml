@@ -1,4 +1,5 @@
-﻿@model WebProje.Models.Contact.ContactViewModel
+﻿@using System.Web.UI.WebControls
+@model WebProje.Models.Contact.ContactViewModel
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_LayoutContactPage.cshtml";
@@ -25,6 +26,30 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1850.5044576690175!2d29.219475422258487!3d40.65141752833145!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caf00d8e8cd035%3A0x98ffb531e8f00a58!2sYalova+%C3%9Cniversitesi+Fen+Bilimleri+Enstit%C3%BCs%C3%BC!5e1!3m2!1str!2str!4v1544308155586" frameborder="0" style="border:0;height: -webkit-fill-available;width: -webkit-fill-available;" allowfullscreen></iframe>
     </div>
 }
+@section Contact_Status
+{
+    @if (TempData["IsPosted"] != null)
+    {
+        if ((bool)TempData["IsPosted"] == true)
+         {
+             <div class="col-lg-12">
+                 <blockquote class="generic-blockquote">
+                     <h2 style="color: green;">Thank you!</h2>
+                     <h5>Your message is successfully sent...</h5>
+                 </blockquote>
+             </div>
+         }
+         else if ((bool)TempData["IsPosted"] == false)
+         {
+             <div class="col-lg-12">
+                 <blockquote class="generic-blockquote">
+                     <h2 style="color: red;">Sorry!</h2>
+                     <h5>Something went wrong...</h5>
+                 </blockquote>
+             </div>
+         }
+    }
+}
 @section Contact
 {
     <div class="contact_info">
@@ -35,7 +60,7 @@
         </div>
         <div class="info_item">
             <i class="lnr lnr-phone-handset"></i>
-            <h6><a href="phone:@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value">@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value</a></h6>
+            <h6><a href="phone:@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value.Replace(" ", String.Empty)">@Model.SettingsList.Find(n => n.Name == "hotel.phone").Value</a></h6>
             <p>@Model.SettingsList.Find(n => n.Name == "hotel.workinghours").Value on Weekdays</p>
         </div>
         <div class="info_item">
@@ -47,42 +72,41 @@
 }
 @section Contact_Form
 {
-    <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate"> @*TODO: Post Tamamlanacak*@
+    @using (Ajax.BeginForm("Index", "Contact", new AjaxOptions { UpdateTargetId = "result", OnSuccess = "list" }, new { @class = "row contact_form", @id = "contactForm" }))
+    {
+        @Html.HiddenFor(model => model.ID)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="col-md-6">
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name*">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control required", type = "text", id = "name", name = "name", placeholder = "Enter your name*", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address*">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control required", type = "email", id = "email", name = "email", placeholder = "Enter email address*", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject*">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control required", type = "subject", id = "", name = "subject", placeholder = "Enter Subject*", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message*"></textarea>
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control required", id = "message", name = "message", rows = "1", placeholder = "Enter Message*", required = "required" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-12 text-right">
-            <button type="submit" value="submit" class="btn theme_btn button_hover">Send Message</button>
+            <input name="form_botcheck" class="form-control" type="hidden" value="">
+            <input onclick="ShowPopUp" type="submit" class="btn theme_btn button_hover" value="Send Message" data-loading-text="Please wait..." />
         </div>
-    </form>
-}
-
-@section Contact_Form_Modal
-{
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <i class="fa fa-close"></i>
-        </button>
-        <h2>Thank you!</h2>
-        <p>Your message is successfully sent...</p>
-    </div>
+    }
 }
 
 @section Scripts
 {
+    <script src="~/Scripts/Modal.js"></script>
     <script src="~/Scripts/mail-script.js"></script>
     <script src="~/Vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="~/Vendors/isotope/isotope-min.js"></script>
@@ -92,5 +116,6 @@
     <!-- contact js -->
     <script src="~/Scripts/jquery.form.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.ajaxchimp.min.js"></script>
     <script src="~/Scripts/contact.js"></script>
 }

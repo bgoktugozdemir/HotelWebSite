@@ -25,6 +25,7 @@ namespace WebProje.App_Start
             builder.RegisterType<ImagesManagement>().As<IImagesManagement>();
             builder.RegisterType<PostsManagement>().As<IPostsManagement>();
             builder.RegisterType<SettingsManagement>().As<ISettingsManagement>();
+            builder.RegisterType<ContactFormsManagement>().As<IContactFormsManagement>();
 
             builder.RegisterType<HomeController>();
             builder.RegisterType<AboutController>();

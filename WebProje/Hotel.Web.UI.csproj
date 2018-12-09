@@ -276,6 +276,7 @@
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\mail-script.js" />
+    <Content Include="Scripts\Modal.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Shared\_PartialAbout.cshtml" />
     <Content Include="Views\Shared\_PartialFacilities.cshtml" />
     <Content Include="Views\Shared\_PartialTestimonial.cshtml" />
+    <Content Include="Views\Contact\ModalPopUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

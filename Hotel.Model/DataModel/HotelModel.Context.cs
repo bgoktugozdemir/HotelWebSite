@@ -38,5 +38,6 @@ namespace Hotel.Model.DataModel
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Testimonials> Testimonials { get; set; }
         public virtual DbSet<Posts> Posts { get; set; }
+        public virtual DbSet<ContactForms> ContactForms { get; set; }
     }
 }
