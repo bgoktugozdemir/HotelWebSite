@@ -14,6 +14,13 @@ namespace Hotel.Model.DataModel
     
     public partial class Employees
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employees()
+        {
+            this.Books = new HashSet<Books>();
+            this.Posts = new HashSet<Posts>();
+        }
+    
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -22,5 +29,10 @@ namespace Hotel.Model.DataModel
         public string Title { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Books> Books { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Posts> Posts { get; set; }
     }
 }

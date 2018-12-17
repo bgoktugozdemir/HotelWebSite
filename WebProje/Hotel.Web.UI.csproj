@@ -137,7 +137,7 @@
     <Content Include="Images\blog\cat-post\cat-post-1.jpg" />
     <Content Include="Images\blog\cat-post\cat-post-2.jpg" />
     <Content Include="Images\blog\cat-post\cat-post-3.jpg" />
-    <Content Include="Images\blog\feature-img1.jpg" />
+    <Content Include="Images\blog\Post\default.jpg" />
     <Content Include="Images\blog\main-blog\m-blog-1.jpg" />
     <Content Include="Images\blog\main-blog\m-blog-2.jpg" />
     <Content Include="Images\blog\main-blog\m-blog-3.jpg" />
@@ -332,6 +332,7 @@
     <Compile Include="Models\Contact\ContactViewModel.cs" />
     <Compile Include="Models\Gallery\GalleryViewModel.cs" />
     <Compile Include="Models\Home\HomeViewModel.cs" />
+    <Compile Include="Models\Shared\TestimonialsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -23,5 +23,7 @@ namespace Hotel.Model.DataModel
         public string BodyText { get; set; }
         public Nullable<int> EmployeeID { get; set; }
         public System.DateTime CreatedAt { get; set; }
+    
+        public virtual Employees Employees { get; set; }
     }
 }

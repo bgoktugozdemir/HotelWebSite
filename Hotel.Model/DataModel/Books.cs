@@ -14,6 +14,12 @@ namespace Hotel.Model.DataModel
     
     public partial class Books
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Books()
+        {
+            this.Testimonials = new HashSet<Testimonials>();
+        }
+    
         public int ID { get; set; }
         public Nullable<System.DateTime> ArrivalDate { get; set; }
         public Nullable<System.DateTime> DepartureDate { get; set; }
@@ -22,5 +28,11 @@ namespace Hotel.Model.DataModel
         public Nullable<int> CustomerID { get; set; }
         public Nullable<int> RoomID { get; set; }
         public Nullable<int> EmployeeID { get; set; }
+    
+        public virtual Customers Customers { get; set; }
+        public virtual Employees Employees { get; set; }
+        public virtual Rooms Rooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Testimonials> Testimonials { get; set; }
     }
 }

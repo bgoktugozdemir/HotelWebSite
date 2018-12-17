@@ -8,5 +8,6 @@ namespace WebProje.Models.Blog
         public List<Posts> PostsList { get; set; }
         public Posts Post { get; set; }
         public Settings Setting { get; set; }
+        public Pages Page { get; set; }
     }
 }

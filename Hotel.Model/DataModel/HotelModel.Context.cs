@@ -26,10 +26,12 @@ namespace Hotel.Model.DataModel
         }
     
         public virtual DbSet<Books> Books { get; set; }
+        public virtual DbSet<ContactForms> ContactForms { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Images> Images { get; set; }
         public virtual DbSet<Pages> Pages { get; set; }
+        public virtual DbSet<Posts> Posts { get; set; }
         public virtual DbSet<Rooms> Rooms { get; set; }
         public virtual DbSet<RoomTypes> RoomTypes { get; set; }
         public virtual DbSet<Services> Services { get; set; }
@@ -37,7 +39,5 @@ namespace Hotel.Model.DataModel
         public virtual DbSet<Subscriptions> Subscriptions { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Testimonials> Testimonials { get; set; }
-        public virtual DbSet<Posts> Posts { get; set; }
-        public virtual DbSet<ContactForms> ContactForms { get; set; }
     }
 }

@@ -27,7 +27,14 @@
         <div class="single-post row">
             <div class="col-lg-12">
                 <div class="feature-img">
-                    <img class="img-fluid" src="~/Images/blog/@Model.Post.Image" alt="">
+                    @if (String.IsNullOrEmpty(Model.Post.Image))
+                    {
+                        <img class="img-fluid" src="~/Images/blog/Post/default.jpg" alt="">
+                    }
+                    else
+                    {
+                        <img class="img-fluid" src="~/Images/blog/Post/@Model.Post.Image" alt="">
+                    }
                 </div>
             </div>
             <div class="col-lg-3  col-md-3">

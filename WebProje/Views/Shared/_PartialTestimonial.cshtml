@@ -1,5 +1,5 @@
 ﻿@using Hotel.Model.DataModel
-@model List<Hotel.Model.DataModel.Testimonials>
+@model List<Testimonials>
 <section class="testimonial_area section_gap">
     <div class="container">
         <div class="section_title text-center">
@@ -7,7 +7,7 @@
             <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall from </p>
         </div>
         <div class="testimonial_slider owl-carousel">
-            @foreach (Testimonials testimonial in Model)
+            @foreach(Testimonials testimonial in Model)
             {
                 <div class="media testimonial_item">
                     @if (String.IsNullOrEmpty(@testimonial.Image))
@@ -20,7 +20,7 @@
                     }
                     <div class="media-body">
                         <p>@testimonial.Message</p> @*Customer Message*@ @*TODO: Sadece ilk 3 satırı görüntülenecek*@
-                        <a href="#"><h4 class="sec_h4">@testimonial.CustomerID</h4></a> @*Customer Name*@ @*TODO: Tıklandığında yorumun tamamı görüntülenecek*@
+                        <a href="#"><h4 class="sec_h4">@testimonial.Customers.Name @testimonial.Customers.Surname</h4></a> @*Customer Name*@
                         @*TODO: Yıldızlama Yapılacak*@
                         @*<div class="star">
                             <a href="#"><i class="fa fa-star"></i></a>

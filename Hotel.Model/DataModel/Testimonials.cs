@@ -20,6 +20,10 @@ namespace Hotel.Model.DataModel
         public Nullable<double> Rate { get; set; }
         public string Message { get; set; }
         public Nullable<bool> IsShow { get; set; }
-        public Nullable<int> CustomerID { get; set; }
+        public int CustomerID { get; set; }
+        public int BookID { get; set; }
+    
+        public virtual Books Books { get; set; }
+        public virtual Customers Customers { get; set; }
     }
 }

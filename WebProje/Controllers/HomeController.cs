@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Hotel.BI.Interface;
 using Hotel.Model.DataModel;
 using WebProje.Models.Home;
+using WebProje.Models.Shared;
 
 namespace WebProje.Controllers
 {
@@ -15,13 +16,17 @@ namespace WebProje.Controllers
         private IServicesManagement _servicesManagement;
         private IPagesManagement _pagesManagement;
         private ITestimonialsManagement _testimonialsManagement;
+        private IPostsManagement _postsManagement;
+        private ICustomersManagement _customersManagement;
 
-        public HomeController(IRoomTypesManagement roomTypesManagement, IServicesManagement servicesManagement, IPagesManagement pagesManagement, ITestimonialsManagement testimonialsManagement)
+        public HomeController(IRoomTypesManagement roomTypesManagement, IServicesManagement servicesManagement, IPagesManagement pagesManagement, ITestimonialsManagement testimonialsManagement, IPostsManagement postsManagement, ICustomersManagement customersManagement)
         {
             _roomTypesManagement = roomTypesManagement;
             _servicesManagement = servicesManagement;
             _pagesManagement = pagesManagement;
             _testimonialsManagement = testimonialsManagement;
+            _postsManagement = postsManagement;
+            _customersManagement = customersManagement;
         }
 
         // GET: Home
@@ -31,9 +36,11 @@ namespace WebProje.Controllers
             {
                 RoomTypesList = _roomTypesManagement.GetAll().OrderBy(m => m.OrderSort).ToList(), //Get All Room Types
                 ServicesList = _servicesManagement.GetAll().OrderBy(m => m.OrderSort).ToList(), //Get All Additional Services
-                Page = _pagesManagement.Get(m => m.Name== "About"), //Get About Page
-                TestimonialsList = _testimonialsManagement.GetAll(m => m.IsShow == true).OrderBy(m => m.OrderSort).ToList() //Get All Showable Testimonials
+                PostsList = _postsManagement.GetAll().OrderBy(m => m.OrderSort).Take(3).ToList(),
+                Page = _pagesManagement.Get(m => m.Name == "About"), //Get About Page
+                TestimonialsList = _testimonialsManagement.GetAll(m => m.IsShow == true).OrderBy(m => m.OrderSort).ToList()//Get All Showable Testimonials
                 //TestimonialsList = _testimonialsManagement.GetAll(m => m.IsShow == true).Join(, t => t.CustomerID, c => c.ID, (t, c) => new { t, c }).OrderBy(m => m.OrderSort).ToList() //Get All Showable Testimonials
+
             };
 
             return View(model);

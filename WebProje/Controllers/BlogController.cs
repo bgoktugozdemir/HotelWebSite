@@ -13,11 +13,13 @@ namespace WebProje.Controllers
     {
         private IPostsManagement _postsManagement;
         private ISettingsManagement _settingsManagement;
+        private IPagesManagement _pagesManagement;
 
-        public BlogController(IPostsManagement postsManagement, ISettingsManagement settingsManagement)
+        public BlogController(IPostsManagement postsManagement, ISettingsManagement settingsManagement, IPagesManagement pagesManagement)
         {
             _postsManagement = postsManagement;
             _settingsManagement = settingsManagement;
+            _pagesManagement = pagesManagement;
         }
 
         // GET: Blog
@@ -26,7 +28,8 @@ namespace WebProje.Controllers
             BlogViewModel model = new BlogViewModel
             {
                 PostsList = _postsManagement.GetAll().OrderBy(m => m.OrderSort).ToList(),
-                Setting = _settingsManagement.Get(m=>m.Name == "hotel.name")
+                Setting = _settingsManagement.Get(m=>m.Name == "hotel.name"),
+                Page = _pagesManagement.Get(p => p.Name == "blog-banner")
             };
             return View(model);
         }

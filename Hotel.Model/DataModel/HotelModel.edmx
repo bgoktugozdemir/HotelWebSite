@@ -160,8 +160,93 @@
           <Property Name="Rate" Type="float" />
           <Property Name="Message" Type="varchar" MaxLength="255" />
           <Property Name="IsShow" Type="bit" />
-          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Books_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypes">
+          <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="0..1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonials_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonials_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Testimonials" Type="Self.Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="OTELModelStoreContainer">
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactForms" EntityType="Self.ContactForms" Schema="dbo" store:Type="Tables" />
@@ -177,6 +262,34 @@
           <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Books_Customers" Association="Self.FK_Books_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Employees" Association="Self.FK_Books_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Rooms" Association="Self.FK_Books_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Employees" Association="Self.FK_Posts_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypes" Association="Self.FK_Rooms_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonials_Books" Association="Self.FK_Testimonials_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonials_Customers" Association="Self.FK_Testimonials_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -184,10 +297,12 @@
       <Schema Namespace="OTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="OTELEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="OTELModel.Books" />
+          <EntitySet Name="ContactForms" EntityType="OTELModel.ContactForms" />
           <EntitySet Name="Customers" EntityType="OTELModel.Customers" />
           <EntitySet Name="Employees" EntityType="OTELModel.Employees" />
           <EntitySet Name="Images" EntityType="OTELModel.Images" />
           <EntitySet Name="Pages" EntityType="OTELModel.Pages" />
+          <EntitySet Name="Posts" EntityType="OTELModel.Posts" />
           <EntitySet Name="Rooms" EntityType="OTELModel.Rooms" />
           <EntitySet Name="RoomTypes" EntityType="OTELModel.RoomTypes" />
           <EntitySet Name="Services" EntityType="OTELModel.Services" />
@@ -195,8 +310,34 @@
           <EntitySet Name="Subscriptions" EntityType="OTELModel.Subscriptions" />
           <EntitySet Name="sysdiagrams" EntityType="OTELModel.sysdiagrams" />
           <EntitySet Name="Testimonials" EntityType="OTELModel.Testimonials" />
-          <EntitySet Name="Posts" EntityType="OTELModel.Posts" />
-          <EntitySet Name="ContactForms" EntityType="OTELModel.ContactForms" />
+          <AssociationSet Name="FK_Books_Customers" Association="OTELModel.FK_Books_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Employees" Association="OTELModel.FK_Books_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Rooms" Association="OTELModel.FK_Books_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonials_Books" Association="OTELModel.FK_Testimonials_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Testimonials_Customers" Association="OTELModel.FK_Testimonials_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Testimonials" EntitySet="Testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Employees" Association="OTELModel.FK_Posts_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypes" Association="OTELModel.FK_Rooms_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Books">
           <Key>
@@ -210,6 +351,23 @@
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="RoomID" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="OTELModel.FK_Books_Customers" FromRole="Books" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Books_Employees" FromRole="Books" ToRole="Employees" />
+          <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Books_Rooms" FromRole="Books" ToRole="Rooms" />
+          <NavigationProperty Name="Testimonials" Relationship="OTELModel.FK_Testimonials_Books" FromRole="Books" ToRole="Testimonials" />
+        </EntityType>
+        <EntityType Name="ContactForms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="SendedAt" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -222,6 +380,8 @@
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Nation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="NationalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Customers" FromRole="Customers" ToRole="Books" />
+          <NavigationProperty Name="Testimonials" Relationship="OTELModel.FK_Testimonials_Customers" FromRole="Customers" ToRole="Testimonials" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -235,6 +395,8 @@
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Employees" FromRole="Employees" ToRole="Books" />
+          <NavigationProperty Name="Posts" Relationship="OTELModel.FK_Posts_Employees" FromRole="Employees" ToRole="Posts" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -242,7 +404,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderSort" Type="Int32" />
-          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Pages">
           <Key>
@@ -253,10 +415,25 @@
           <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsNavbar" Type="Boolean" />
           <Property Name="IsFooter" Type="Boolean" />
-          <Property Name="ButtonUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ButtonUrl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ButtonName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="Thumbnail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Posts_Employees" FromRole="Posts" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Rooms">
           <Key>
@@ -266,6 +443,8 @@
           <Property Name="Floor" Type="Int32" />
           <Property Name="RoomNo" Type="Int32" />
           <Property Name="RoomTypeID" Type="Int32" />
+          <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Rooms" FromRole="Rooms" ToRole="Books" />
+          <NavigationProperty Name="RoomTypes" Relationship="OTELModel.FK_Rooms_RoomTypes" FromRole="Rooms" ToRole="RoomTypes" />
         </EntityType>
         <EntityType Name="RoomTypes">
           <Key>
@@ -277,6 +456,7 @@
           <Property Name="Capacity" Type="Int32" />
           <Property Name="OrderSort" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Rooms_RoomTypes" FromRole="RoomTypes" ToRole="Rooms" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -326,35 +506,95 @@
           <Property Name="Rate" Type="Double" />
           <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsShow" Type="Boolean" />
-          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="OTELModel.FK_Testimonials_Books" FromRole="Testimonials" ToRole="Books" />
+          <NavigationProperty Name="Customers" Relationship="OTELModel.FK_Testimonials_Customers" FromRole="Testimonials" ToRole="Customers" />
         </EntityType>
-        <EntityType Name="Posts">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderSort" Type="Int32" />
-          <Property Name="Thumbnail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="HeaderText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="BodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EmployeeID" Type="Int32" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="ContactForms">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Subject" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IsRead" Type="Boolean" Nullable="false" />
-          <Property Name="SendedAt" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
+        <Association Name="FK_Books_Customers">
+          <End Type="OTELModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="OTELModel.Books" Role="Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Employees">
+          <End Type="OTELModel.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="OTELModel.Books" Role="Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Rooms">
+          <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="OTELModel.Books" Role="Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonials_Books">
+          <End Type="OTELModel.Books" Role="Books" Multiplicity="1" />
+          <End Type="OTELModel.Testimonials" Role="Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Testimonials_Customers">
+          <End Type="OTELModel.Customers" Role="Customers" Multiplicity="1" />
+          <End Type="OTELModel.Testimonials" Role="Testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Testimonials">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Employees">
+          <End Type="OTELModel.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="OTELModel.Posts" Role="Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypes">
+          <End Type="OTELModel.RoomTypes" Role="RoomTypes" Multiplicity="0..1" />
+          <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -371,6 +611,20 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
                 <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactForms">
+            <EntityTypeMapping TypeName="OTELModel.ContactForms">
+              <MappingFragment StoreEntitySet="ContactForms">
+                <ScalarProperty Name="SendedAt" ColumnName="SendedAt" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -422,6 +676,21 @@
                 <ScalarProperty Name="IsNavbar" ColumnName="IsNavbar" />
                 <ScalarProperty Name="BodyText" ColumnName="BodyText" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="OTELModel.Posts">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -493,41 +762,13 @@
           <EntitySetMapping Name="Testimonials">
             <EntityTypeMapping TypeName="OTELModel.Testimonials">
               <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="IsShow" ColumnName="IsShow" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="OTELModel.Posts">
-              <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="BodyText" ColumnName="BodyText" />
-                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
-                <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ContactForms">
-            <EntityTypeMapping TypeName="OTELModel.ContactForms">
-              <MappingFragment StoreEntitySet="ContactForms">
-                <ScalarProperty Name="SendedAt" ColumnName="SendedAt" />
-                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
-                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
