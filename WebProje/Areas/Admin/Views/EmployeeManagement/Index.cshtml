@@ -1,0 +1,93 @@
+﻿@using Hotel.Core.Enum
+@model WebProje.Areas.Admin.Models.EmployeeManagement.ShowEmployeeViewModel
+@{
+    ViewBag.Title = "Employee Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- EMPLOYEES DATA TABLE -->
+    <h3 class="title-5 m-b-35">Employees</h3>
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+
+        </div>
+        <div class="table-data__tool-right">
+            <a href="@Url.Action("NewEmployee","EmployeeManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Add New Employee
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2">
+            <thead>
+                <tr>
+                    <th>national id</th>
+                    <th>name</th>
+                    <th>birth date</th>
+                    <th>gender</th>
+                    <th>email</th>
+                    <th>phone</th>
+                    <th>title</th>
+                    <th>tooltips</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.EmployeeList)
+                {
+                <tr class="tr-shadow">
+                    <td>@employee.NationalID</td>
+                    <td>@employee.Name.ToUpper() @employee.Surname.ToUpper()</td>
+                    <td>@employee.BirthDate.ToShortDateString()</td>
+                    @if (employee.Gender == "F")
+                    {
+                        <td class="desc">@Enum.GetName(typeof(Genders), 2)</td>
+                    }
+                    else
+                    {
+                        <td class="desc">@Enum.GetName(typeof(Genders), 1)</td>
+                    }
+                    <td>
+                        <a href="mailto:@employee.Email"><span class="block-email">@employee.Email</span></a>
+                    </td>
+                    <td>
+                        <span class="status--process">@employee.Phone</span>
+                    </td>
+                    <td>
+                        <span class="status--denied">@employee.Title</span>
+                    </td>
+                    <td>
+                        <div class="table-data-feature">
+                            <a href="@Url.Action("NewEmployee","EmployeeManagement",new{id=employee.ID})" class="item item-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                <i class="zmdi zmdi-edit"></i>
+                            </a>
+                            <a href="@Url.Action("DeleteEmployee","EmployeeManagement",new{id=employee.ID})" class="item item-delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                    <tr class="spacer"></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- END DATA TABLE -->
+</div>
+
+@section Style
+{
+    <style>
+        .table-data-feature a.item:hover i {
+            color: white;
+        }
+
+        .table-data-feature a.item-edit:hover {
+            background: #fad562;
+        }
+
+        .table-data-feature a.item-delete:hover {
+            background: #f55d5d;
+        }
+    </style>
+}

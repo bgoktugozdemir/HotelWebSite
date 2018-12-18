@@ -1,0 +1,89 @@
+﻿@using Hotel.Core.Enum
+@model WebProje.Areas.Admin.Models.CustomerManagement.ShowCustomerViewModel
+@{
+    ViewBag.Title = "Customer Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- CUSTOMERS DATA TABLE -->
+    <h3 class="title-5 m-b-35">Customers</h3>
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+            
+        </div>
+        <div class="table-data__tool-right">
+            <a href="@Url.Action("NewCustomer","CustomerManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Add New Customer
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2">
+            <thead>
+            <tr>
+                <th>national id</th>
+                <th>name</th>
+                <th>birth date</th>
+                <th>gender</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>nation</th>
+                <th>tooltips</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var customer in Model.CustomerList)
+            {
+                <tr class="tr-shadow">
+                    <td>@customer.NationalID</td>
+                    <td>@customer.Name.ToUpper() @customer.Surname.ToUpper()</td>
+                    <td>@customer.BirthDate.ToShortDateString()</td>
+                    @if (customer.Gender == "F")
+                    {
+                        <td class="desc">@Enum.GetName(typeof(Genders), 2)</td>
+                    }
+                    else
+                    {
+                        <td class="desc">@Enum.GetName(typeof(Genders), 1)</td>
+                    }
+                    <td>
+                        <a href="mailto:@customer.Email"><span class="block-email">@customer.Email</span></a>
+                    </td>
+                    <td>
+                        <span class="status--process">@customer.Phone</span>
+                    </td>
+                    <td>@customer.Nation</td>
+                    <td>
+                        <div class="table-data-feature">
+                            <a href="@Url.Action("NewCustomer","CustomerManagement",new{id=customer.ID})" class="item item-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                <i class="zmdi zmdi-edit"></i>
+                            </a>
+                            <a href="@Url.Action("DeleteCustomer","CustomerManagement",new{id=customer.ID})" class="item item-delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <!-- END DATA TABLE -->
+</div>
+
+@section Style
+{
+    <style>
+        .table-data-feature a.item:hover i {
+            color: white;
+        }
+        .table-data-feature a.item-edit:hover {
+            background: #fad562;
+        }
+        .table-data-feature a.item-delete:hover {
+            background: #f55d5d;
+        }
+    </style>
+}

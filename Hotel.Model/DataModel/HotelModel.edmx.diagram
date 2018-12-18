@@ -5,26 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9411e1dcdc044f90a33dc8bf528153b9" Name="Diagram1">
-        <EntityTypeShape EntityType="OTELModel.Books" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="OTELModel.ContactForms" Width="1.5" PointX="5.75" PointY="5.75" />
-        <EntityTypeShape EntityType="OTELModel.Customers" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="OTELModel.Employees" Width="1.5" PointX="0.75" PointY="6.375" />
-        <EntityTypeShape EntityType="OTELModel.Images" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="OTELModel.Pages" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="OTELModel.Posts" Width="1.5" PointX="3" PointY="6.375" />
-        <EntityTypeShape EntityType="OTELModel.Rooms" Width="1.5" PointX="0.75" PointY="10.125" />
-        <EntityTypeShape EntityType="OTELModel.RoomTypes" Width="1.5" PointX="1.5" PointY="14" />
-        <EntityTypeShape EntityType="OTELModel.Services" Width="1.5" PointX="7.75" PointY="7.75" />
-        <EntityTypeShape EntityType="OTELModel.Settings" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="OTELModel.Subscriptions" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="OTELModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="6.75" />
-        <EntityTypeShape EntityType="OTELModel.Testimonials" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="OTELModel.Books" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="OTELModel.ContactForms" Width="1.5" PointX="7.75" PointY="1.5" />
+        <EntityTypeShape EntityType="OTELModel.Countries" Width="1.5" PointX="7.75" PointY="5.5" />
+        <EntityTypeShape EntityType="OTELModel.Customers" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="OTELModel.Employees" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="OTELModel.Images" Width="1.5" PointX="2.75" PointY="1.5" />
+        <EntityTypeShape EntityType="OTELModel.Pages" Width="1.5" PointX="5.75" PointY="8.5" />
+        <EntityTypeShape EntityType="OTELModel.Posts" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="OTELModel.Rooms" Width="1.5" PointX="0.75" PointY="9.875" />
+        <EntityTypeShape EntityType="OTELModel.RoomTypes" Width="1.5" PointX="1.5" PointY="14.875" />
+        <EntityTypeShape EntityType="OTELModel.Services" Width="1.5" PointX="7.75" PointY="8.5" />
+        <EntityTypeShape EntityType="OTELModel.Settings" Width="1.5" PointX="4.75" PointY="1.5" />
+        <EntityTypeShape EntityType="OTELModel.Subscriptions" Width="1.5" PointX="9.75" PointY="1.5" />
+        <EntityTypeShape EntityType="OTELModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="4.5" />
+        <EntityTypeShape EntityType="OTELModel.Testimonials" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="OTELModel.Users" Width="1.5" PointX="3" PointY="8.5" />
         <AssociationConnector Association="OTELModel.FK_Books_Customers" />
         <AssociationConnector Association="OTELModel.FK_Books_Employees" />
         <AssociationConnector Association="OTELModel.FK_Books_Rooms" />
         <AssociationConnector Association="OTELModel.FK_Testimonials_Books" />
         <AssociationConnector Association="OTELModel.FK_Testimonials_Customers" />
         <AssociationConnector Association="OTELModel.FK_Posts_Employees" />
+        <AssociationConnector Association="OTELModel.FK_Users_Employees" />
         <AssociationConnector Association="OTELModel.FK_Rooms_RoomTypes" />
       </Diagram>
     </edmx:Diagrams>

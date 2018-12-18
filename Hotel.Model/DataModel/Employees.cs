@@ -19,20 +19,25 @@ namespace Hotel.Model.DataModel
         {
             this.Books = new HashSet<Books>();
             this.Posts = new HashSet<Posts>();
+            this.Users = new HashSet<Users>();
         }
     
         public int ID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Title { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public string Email { get; set; }
+        public string Gender { get; set; }
+        public System.DateTime BirthDate { get; set; }
+        public string NationalID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Books> Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Posts> Posts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

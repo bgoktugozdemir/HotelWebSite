@@ -16,6 +16,6 @@ namespace Hotel.Model.DataModel
     {
         public int ID { get; set; }
         public string Email { get; set; }
-        public Nullable<bool> IsSubscribe { get; set; }
+        public bool IsSubscribe { get; set; }
     }
 }

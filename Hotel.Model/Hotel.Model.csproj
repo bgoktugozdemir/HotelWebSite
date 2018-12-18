@@ -56,6 +56,9 @@
     <Compile Include="DataModel\ContactForms.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Countries.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Customers.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -105,6 +108,9 @@
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Testimonials.cs">
+      <DependentUpon>HotelModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Users.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

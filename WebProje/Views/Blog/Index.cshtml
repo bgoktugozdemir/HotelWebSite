@@ -67,7 +67,7 @@
                 <div class="col-md-3">
                     <div class="blog_info text-right">
                         <div class="post_tag">
-                            <a href="#">@Model.Setting.Value</a> <!--Hotel Name-->
+                            <a href="@Url.Action("Index","Home")">@Model.Setting.Value</a> <!--Hotel Name-->
                         </div>
                         <ul class="blog_meta list_style">
                             <li><a href="#">@post.CreatedAt.ToString("dd MMM yyyy, ddd")<i class="lnr lnr-calendar-full"></i></a></li> <!--Posted Date-->
@@ -78,7 +78,7 @@
                     <div class="blog_post">
                         <img src="~/Images/blog/main-blog/@post.Thumbnail" alt=""> <!--Blog Post Banner-->
                         <div class="blog_details">
-                            <a href="#">
+                            <a href="@Url.Action("Details","Blog",new {id=post.ID})">
                                 <h2>@post.Title</h2> <!--Blog Post Title-->
                             </a>
                             <p>@post.HeaderText</p> <!--Blog Post Header Text-->

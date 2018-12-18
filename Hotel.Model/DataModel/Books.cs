@@ -21,13 +21,14 @@ namespace Hotel.Model.DataModel
         }
     
         public int ID { get; set; }
-        public Nullable<System.DateTime> ArrivalDate { get; set; }
-        public Nullable<System.DateTime> DepartureDate { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public Nullable<float> Discount { get; set; }
+        public System.DateTime ArrivalDate { get; set; }
+        public System.DateTime DepartureDate { get; set; }
+        public decimal Price { get; set; }
+        public float Discount { get; set; }
         public Nullable<int> CustomerID { get; set; }
         public Nullable<int> RoomID { get; set; }
         public Nullable<int> EmployeeID { get; set; }
+        public System.DateTime BookingDate { get; set; }
     
         public virtual Customers Customers { get; set; }
         public virtual Employees Employees { get; set; }

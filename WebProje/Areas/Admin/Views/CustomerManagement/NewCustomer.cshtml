@@ -1,0 +1,111 @@
+﻿@model WebProje.Areas.Admin.Models.CustomerManagement.NewCustomerViewModel
+@{
+    ViewBag.Title = "New Customer";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        New <strong>Customer</strong>
+    </div>
+    @using (Html.BeginForm("NewCustomer","CustomerManagement", FormMethod.Post, new { enctype="multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Customer.ID)
+        <div class="card-body card-block">
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="nationalid" class="form-control-label">National ID<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model=>model.Customer.NationalID, new { htmlAttributes = new { @class="form-control", id="nationalid", name="nationalid", type="number", placeholder="National ID", required=""}})
+                    <small class="form-text text-muted">This is customer's national identity number</small>
+                </div>
+            </div> <!--NATIONAL ID-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="name" class="form-control-label">Name<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", id = "name", name = "name", type = "text", placeholder = "Name", required = "" } })
+                    <small class="form-text text-muted">This is customer's name</small>
+                </div>
+            </div> <!--NAME-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="surname" class="form-control-label">Surname<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Customer.Surname, new { htmlAttributes = new { @class = "form-control", id = "surname", name = "surname", type = "text", placeholder = "Surname", required = "" } })
+                    <small class="form-text text-muted">This is customer's surname</small>
+                </div>
+            </div> <!--SURNAME-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="birthdate" class="form-control-label">Birth Date<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Customer.BirthDate, new {htmlAttributes = new {@class = "form-control datepicker", id = "birthdate", name = "birthdate", type = "date", required = "", @Value = Model.Customer.BirthDate.ToString("yyyy-MM-dd")}})
+                    <small class="form-text text-muted">This is customer's birth date.</small>
+                </div>
+            </div> <!--BIRTHDAY-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="gender" class="form-control-label">Gender<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownListFor(x=>x.Customer.Gender, new SelectList(Model.GenderList, "Description","Name"), "Please Select", new { @class="form-control", name="gender", id="gender", required = "" })
+                    <small class="form-text text-muted">This is customer's gender</small>
+                </div>
+            </div> <!--GENDER-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="Customer.Nation" class="form-control-label">Nation<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownListFor(model => model.Customer.Nation, new SelectList(ViewBag.CountryList), new { @class = "form-control", id = "nation", required = "" })
+                    <small class="form-text text-muted">This is customer's nation</small>
+                </div>
+            </div> <!--NATION-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="phone" class="form-control-label">Phone Number</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Customer.Phone, new { htmlAttributes = new { @class = "form-control", id = "phone", name = "phone", placeholder="Phone", type = "tel" } })
+                    <small class="form-text text-muted">This is customer's phone number</small>
+                </div>
+            </div> <!--PHONE-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="email" class="form-control-label">E-Mail</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", id = "email", name = "email", type = "email", placeholder = "E-Mail" } })
+                    <small class="help-block form-text">This is customer's e-mail</small>
+                </div>
+            </div> <!--E-MAIL-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="address" class="form-control-label">Address</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.TextAreaFor(model => model.Customer.Address, new { @class = "form-control", id = "address", name = "address", rows="3", placeholder="Address" })
+                </div>
+            </div> <!--ADDRESS-->
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    }
+</div>
+
+@section Style
+{
+    <style>
+        label .required {
+            color: red;
+        }
+    </style>
+}

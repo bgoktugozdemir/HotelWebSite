@@ -1,0 +1,25 @@
+﻿@model WebProje.Areas.Admin.Models.Home.ChatViewModel
+<div class="au-chat">
+    <div class="au-chat__title">
+        <div class="au-chat-info">
+            <div class="avatar-wrap online">
+                <div class="avatar avatar--small">
+                    <img src="~/Areas/Admin/Images/icon/avatar-04.jpg" alt="@Model.ContactForm.Name">
+                </div>
+            </div>
+            <span class="nick">
+                <a href="#">@Model.ContactForm.Name</a>
+            </span>
+        </div>
+    </div>
+    <div class="au-chat__content">
+        <div class="send-mess-wrap">
+            <span class="mess-time">@Model.ContactForm.SendedAt.ToString("dd.MM.yyyy HH:mm")</span>
+            <div class="send-mess__inner">
+                <div class="send-mess-list">
+                    <div class="send-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

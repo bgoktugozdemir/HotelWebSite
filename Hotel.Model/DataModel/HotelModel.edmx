@@ -10,13 +10,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ArrivalDate" Type="datetime" />
-          <Property Name="DepartureDate" Type="datetime" />
-          <Property Name="Price" Type="money" />
-          <Property Name="Discount" Type="real" />
+          <Property Name="ArrivalDate" Type="datetime" Nullable="false" />
+          <Property Name="DepartureDate" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Discount" Type="real" Nullable="false" />
           <Property Name="CustomerID" Type="int" />
           <Property Name="RoomID" Type="int" />
           <Property Name="EmployeeID" Type="int" />
+          <Property Name="BookingDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ContactForms">
           <Key>
@@ -31,30 +32,45 @@
           <Property Name="IsRead" Type="bit" Nullable="false" />
           <Property Name="SendedAt" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISO" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="NiceName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="PhoneCode" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Surname" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="255" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
-          <Property Name="Nation" Type="varchar" MaxLength="255" />
-          <Property Name="NationalID" Type="varchar" MaxLength="255" />
+          <Property Name="Nation" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="NationalID" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="255" />
-          <Property Name="Password" Type="varchar" MaxLength="255" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Surname" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="255" />
-          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="NationalID" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -137,8 +153,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="255" />
-          <Property Name="IsSubscribe" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsSubscribe" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -162,6 +178,14 @@
           <Property Name="IsShow" Type="bit" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Books_Customers">
           <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
@@ -247,9 +271,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="OTELModelStoreContainer">
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactForms" EntityType="Self.ContactForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
@@ -262,6 +299,7 @@
           <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Testimonials" EntityType="Self.Testimonials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Books_Customers" Association="Self.FK_Books_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Books" EntitySet="Books" />
@@ -290,6 +328,10 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Testimonials" EntitySet="Testimonials" />
           </AssociationSet>
+          <AssociationSet Name="FK_Users_Employees" Association="Self.FK_Users_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -298,6 +340,7 @@
         <EntityContainer Name="OTELEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="OTELModel.Books" />
           <EntitySet Name="ContactForms" EntityType="OTELModel.ContactForms" />
+          <EntitySet Name="Countries" EntityType="OTELModel.Countries" />
           <EntitySet Name="Customers" EntityType="OTELModel.Customers" />
           <EntitySet Name="Employees" EntityType="OTELModel.Employees" />
           <EntitySet Name="Images" EntityType="OTELModel.Images" />
@@ -310,6 +353,7 @@
           <EntitySet Name="Subscriptions" EntityType="OTELModel.Subscriptions" />
           <EntitySet Name="sysdiagrams" EntityType="OTELModel.sysdiagrams" />
           <EntitySet Name="Testimonials" EntityType="OTELModel.Testimonials" />
+          <EntitySet Name="Users" EntityType="OTELModel.Users" />
           <AssociationSet Name="FK_Books_Customers" Association="OTELModel.FK_Books_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Books" EntitySet="Books" />
@@ -334,6 +378,10 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Posts" EntitySet="Posts" />
           </AssociationSet>
+          <AssociationSet Name="FK_Users_Employees" Association="OTELModel.FK_Users_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK_Rooms_RoomTypes" Association="OTELModel.FK_Rooms_RoomTypes">
             <End Role="RoomTypes" EntitySet="RoomTypes" />
             <End Role="Rooms" EntitySet="Rooms" />
@@ -344,13 +392,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ArrivalDate" Type="DateTime" Precision="3" />
-          <Property Name="DepartureDate" Type="DateTime" Precision="3" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Discount" Type="Single" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Single" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="RoomID" Type="Int32" />
           <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Customers" Relationship="OTELModel.FK_Books_Customers" FromRole="Books" ToRole="Customers" />
           <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Books_Employees" FromRole="Books" ToRole="Employees" />
           <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Books_Rooms" FromRole="Books" ToRole="Rooms" />
@@ -369,17 +418,30 @@
           <Property Name="IsRead" Type="Boolean" Nullable="false" />
           <Property Name="SendedAt" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISO" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NiceName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneCode" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Nation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="NationalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nation" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NationalID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Customers" FromRole="Customers" ToRole="Books" />
           <NavigationProperty Name="Testimonials" Relationship="OTELModel.FK_Testimonials_Customers" FromRole="Customers" ToRole="Testimonials" />
         </EntityType>
@@ -388,15 +450,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Employees" FromRole="Employees" ToRole="Books" />
           <NavigationProperty Name="Posts" Relationship="OTELModel.FK_Posts_Employees" FromRole="Employees" ToRole="Posts" />
+          <NavigationProperty Name="Users" Relationship="OTELModel.FK_Users_Employees" FromRole="Employees" ToRole="Users" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NationalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -483,8 +548,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IsSubscribe" Type="Boolean" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsSubscribe" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -510,6 +575,15 @@
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Testimonials_Books" FromRole="Testimonials" ToRole="Books" />
           <NavigationProperty Name="Customers" Relationship="OTELModel.FK_Testimonials_Customers" FromRole="Testimonials" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Users_Employees" FromRole="Users" ToRole="Employees" />
         </EntityType>
         <Association Name="FK_Books_Customers">
           <End Type="OTELModel.Customers" Role="Customers" Multiplicity="0..1" />
@@ -583,6 +657,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Employees">
+          <End Type="OTELModel.Employees" Role="Employees" Multiplicity="1" />
+          <End Type="OTELModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Rooms_RoomTypes">
           <End Type="OTELModel.RoomTypes" Role="RoomTypes" Multiplicity="0..1" />
           <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="*" />
@@ -604,6 +690,7 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="OTELModel.Books">
               <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
@@ -629,6 +716,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="OTELModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+                <ScalarProperty Name="NiceName" ColumnName="NiceName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="OTELModel.Customers">
               <MappingFragment StoreEntitySet="Customers">
@@ -636,6 +734,9 @@
                 <ScalarProperty Name="Nation" ColumnName="Nation" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -645,13 +746,15 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="OTELModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -770,6 +873,15 @@
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="OrderSort" ColumnName="OrderSort" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OTELModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
