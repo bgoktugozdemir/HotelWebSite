@@ -123,7 +123,7 @@
                             <td class="denied text-center"><i class="fas fa-ban"></i></td>
                         }
                         <td>@book.Customers.Name @book.Customers.Surname</td>
-                        <td class="text-right">@book.Rooms.RoomNo</td>
+                        <td class="text-right">@book.Rooms.ID</td>
                         <td class="text-right">@book.Rooms.RoomTypes.Capacity</td>
                         <td class="text-right">$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
                     </tr>

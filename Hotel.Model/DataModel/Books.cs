@@ -23,7 +23,7 @@ namespace Hotel.Model.DataModel
         public int ID { get; set; }
         public System.DateTime BookingDate { get; set; }
         public System.DateTime ArrivalDate { get; set; }
-        public Nullable<System.DateTime> DepartureDate { get; set; }
+        public System.DateTime DepartureDate { get; set; }
         public int Night { get; set; }
         public decimal Price { get; set; }
         public double Discount { get; set; }

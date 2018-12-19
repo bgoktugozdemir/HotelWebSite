@@ -38,7 +38,7 @@
                     <td>@book.ID</td>
                     <td>@book.BookingDate</td>
                     <td>@book.ArrivalDate.ToString("dd.MM.yyyy")</td>
-                    <td>@(book.DepartureDate.HasValue ? book.DepartureDate.Value.ToString("dd.MM.yyyy") : " ")</td>
+                    <td>@book.DepartureDate.ToString("dd.MM.yyyy")</td>
                     <td>@book.Night</td>
                     @if (book.IsCancelled)
                     {
@@ -53,7 +53,7 @@
                         <td class="denied">No Check In</td>
                     }
                     <td>@(book.Customers.Name + " " + book.Customers.Surname)</td>
-                    <td><span class="font-weight-bold">@book.Rooms.RoomNo</span> - @book.Rooms.RoomTypes.Name</td>
+                    <td><span class="font-weight-bold">@book.Rooms.ID</span> - @book.Rooms.RoomTypes.Name</td>
                     <td>$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
                 </tr>
                 }
@@ -66,6 +66,9 @@
     <style>
         table {
             text-transform: uppercase;
+        }
+        .process, .denied, .cancelled {
+            font-weight: bold;
         }
     </style>
 }

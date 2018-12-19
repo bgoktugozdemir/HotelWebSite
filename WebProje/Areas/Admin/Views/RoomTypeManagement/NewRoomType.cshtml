@@ -1,0 +1,71 @@
+﻿@model WebProje.Areas.Admin.Models.RoomTypeManagement.NewRoomTypeViewModel
+@{
+    ViewBag.Title = "New Room Type";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        New <strong>Room Type</strong>
+    </div>
+    @using (Html.BeginForm("NewRoomType", "RoomTypeManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.RoomType.ID)
+    <div class="card-body card-block">
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="name" class="form-control-label">Name<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.EditorFor(model => model.RoomType.Name, new { htmlAttributes = new { @class = "form-control", id = "name", name = "name", type = "text", placeholder = "Name", required = "" } })
+                <small class="form-text text-muted">This is room type's name.</small>
+            </div>
+        </div> <!--NAME-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="price" class="form-control-label">Price<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                    </div>
+                    @Html.EditorFor(model => model.RoomType.Price, new { htmlAttributes = new { @class = "form-control", id = "price", name = "price", type = "number", placeholder = "Price", min = "0", step = "0.01", required = "" } })
+                </div>
+                <small class="form-text text-muted">This is room's price.</small>
+            </div>
+        </div> <!--PRICE-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="capacity" class="form-control-label">Capacity<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.EditorFor(model => model.RoomType.Capacity, new { htmlAttributes = new { @class = "form-control", id = "capacity", name = "capacity", type = "number", placeholder = "Capacity", min = "1", step = "1", required = "" } })
+                <small class="form-text text-muted">This is room's capacity.</small>
+            </div>
+        </div> <!--CAPACITY-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="image" class=" form-control-label">Image</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="file" id="ImageUrl" name="ImageUrl" class="form-control-file form-control">
+            </div>
+        </div> <!--IMAGE-->
+    </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    }
+</div>
+
+@section Style
+{
+    <style>
+        label .required {
+            color: red;
+        }
+    </style>
+}

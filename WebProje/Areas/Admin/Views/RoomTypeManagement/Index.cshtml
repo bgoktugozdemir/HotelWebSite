@@ -1,0 +1,55 @@
+﻿@model WebProje.Areas.Admin.Models.RoomTypeManagement.ShowRoomTypeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="table-data__tool">
+    <div class="table-data__tool-left">
+        <h3 class="title-5 m-b-35">Room Types</h3>
+    </div>
+    <div class="table-data__tool-right">
+        <a href="@Url.Action("NewRoomType","RoomTypeManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+            <i class="zmdi zmdi-plus"></i>Add New Room Type
+        </a>
+    </div>
+</div>
+<div class="row">
+    @foreach (var roomType in Model.RoomTypeList)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                @if (String.IsNullOrEmpty(roomType.Image))
+                {
+                    <img class="card-img-top" src="~/Images/Rooms/default.jpg" alt="@roomType.Name">
+                }
+                else
+                {
+                    <img class="card-img-top" src="~/Images/@roomType.Image" alt="@roomType.Name">
+                }
+                <div class="card-body">
+                    <h4 class="card-title mb-3">@roomType.Name</h4>
+                    <p class="card-text">
+                        <div class="table-responsive">
+                            <table class="table table-top-campaign">
+                                <thead>
+                                <tr>
+                                    <td>Room Count</td>
+                                    <td>Capacity</td>
+                                    <td>Price</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>@roomType.Rooms.Count</td>
+                                    <td>@roomType.Capacity</td>
+                                    <td>$@roomType.Price.ToString("N")</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

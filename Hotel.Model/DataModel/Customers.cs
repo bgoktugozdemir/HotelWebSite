@@ -24,7 +24,7 @@ namespace Hotel.Model.DataModel
         public int ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public System.DateTime BirthDate { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
         public string Gender { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }

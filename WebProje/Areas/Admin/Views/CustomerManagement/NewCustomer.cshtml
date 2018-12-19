@@ -41,10 +41,10 @@
             </div> <!--SURNAME-->
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="birthdate" class="form-control-label">Birth Date<span class="required"> *</span></label>
+                    <label for="birthdate" class="form-control-label">Birth Date</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.Customer.BirthDate, new {htmlAttributes = new {@class = "form-control datepicker", id = "birthdate", name = "birthdate", type = "date", required = "", @Value = Model.Customer.BirthDate.ToString("yyyy-MM-dd")}})
+                    @Html.EditorFor(model => model.Customer.BirthDate, new {htmlAttributes = new {@class = "form-control datepicker", id = "birthdate", name = "birthdate", type = "date", @Value = (Model.Customer.BirthDate.HasValue ? Model.Customer.BirthDate.Value.ToString("yyyy-MM-dd") : "") }})
                     <small class="form-text text-muted">This is customer's birth date.</small>
                 </div>
             </div> <!--BIRTHDAY-->

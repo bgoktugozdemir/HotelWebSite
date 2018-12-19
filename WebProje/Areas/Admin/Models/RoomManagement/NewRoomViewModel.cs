@@ -5,9 +5,9 @@ using Hotel.Model.DataModel;
 
 namespace WebProje.Areas.Admin.Models.RoomManagement
 {
-    public class ShowRoomViewModel
+    public class NewRoomViewModel
     {
-        public List<Rooms> RoomList { get; set; }
-        public List<Books> BookList { get; set; }
+        public Rooms Room { get; set; }
+        public List<RoomTypes> RoomTypeList { get; set; }
     }
 }

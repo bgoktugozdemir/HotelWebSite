@@ -37,7 +37,7 @@
                 <tr class="tr-shadow">
                     <td>@customer.NationalID</td>
                     <td>@customer.Name.ToUpper() @customer.Surname.ToUpper()</td>
-                    <td>@customer.BirthDate.ToShortDateString()</td>
+                    <td>@(customer.BirthDate.HasValue ? customer.BirthDate.Value.ToShortDateString() : String.Empty)</td>
                     @if (customer.Gender == "F")
                     {
                         <td class="desc">@Enum.GetName(typeof(Genders), 2)</td>
