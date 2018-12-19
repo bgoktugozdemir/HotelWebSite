@@ -29,7 +29,6 @@ namespace WebProje.Areas.Admin.Controllers
         {
             double totalEarning = 0;
             var book = _booksManagement.Get(d => d.ID == 7);
-            book.DepartureDate = book.ArrivalDate.AddDays(book.Night);
             var booksList = _booksManagement.GetAll(b => DateTime.Equals(b.ArrivalDate, DateTime.Today) && !b.IsCancelled && !b.IsCheckIn).OrderBy(m => m.BookingDate).ToList();
             var allBooksList = _booksManagement.GetAll(d=>!d.IsCancelled).ToList();
 

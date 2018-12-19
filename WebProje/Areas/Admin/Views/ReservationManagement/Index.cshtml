@@ -39,7 +39,7 @@
                     <td>@book.BookingDate</td>
                     <td>@book.ArrivalDate.ToString("dd.MM.yyyy")</td>
                     <td>@book.DepartureDate.ToString("dd.MM.yyyy")</td>
-                    <td>@book.Night</td>
+                    <td>@((book.DepartureDate - book.ArrivalDate).TotalDays)</td>
                     @if (book.IsCancelled)
                     {
                         <td class="cancelled">CANCELED</td>
