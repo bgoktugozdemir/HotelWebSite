@@ -16,7 +16,7 @@
           <Property Name="Night" Type="int" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="Discount" Type="float" Nullable="false" />
-          <Property Name="CustomerID" Type="int" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="RoomID" Type="int" Nullable="false" />
           <Property Name="EmployeeID" Type="int" />
           <Property Name="IsCheckIn" Type="bit" Nullable="false" />
@@ -147,9 +147,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Keyword" Type="varchar" MaxLength="255" />
-          <Property Name="Value" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Keyword" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Subscriptions">
           <Key>
@@ -191,7 +191,7 @@
           <Property Name="EmployeeID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Books_Customers">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -401,7 +401,7 @@
           <Property Name="Night" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Discount" Type="Double" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="RoomID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeID" Type="Int32" />
           <Property Name="IsCheckIn" Type="Boolean" Nullable="false" />
@@ -545,9 +545,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Keyword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Keyword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Subscriptions">
           <Key>
@@ -592,7 +592,7 @@
           <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Users_Employees" FromRole="Users" ToRole="Employees" />
         </EntityType>
         <Association Name="FK_Books_Customers">
-          <End Type="OTELModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="OTELModel.Customers" Role="Customers" Multiplicity="1" />
           <End Type="OTELModel.Books" Role="Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">

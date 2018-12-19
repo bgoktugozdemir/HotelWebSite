@@ -27,7 +27,7 @@ namespace Hotel.Model.DataModel
         public int Night { get; set; }
         public decimal Price { get; set; }
         public double Discount { get; set; }
-        public Nullable<int> CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public int RoomID { get; set; }
         public Nullable<int> EmployeeID { get; set; }
         public bool IsCheckIn { get; set; }

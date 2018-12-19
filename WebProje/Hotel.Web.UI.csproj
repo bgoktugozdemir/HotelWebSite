@@ -500,6 +500,8 @@
     <Content Include="Areas\Admin\Views\RoomTypeManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RoomTypeManagement\NewRoomType.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialHeaderMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SettingManagement\NewSetting.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gmaps.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -564,6 +566,7 @@
     <Compile Include="Areas\Admin\Controllers\ReservationManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomTypeManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingManagementController.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\NewEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\ShowEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerManagement\ShowCustomerViewModel.cs" />
@@ -576,6 +579,8 @@
     <Compile Include="Areas\Admin\Models\RoomManagement\ShowRoomViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoomTypeManagement\NewRoomTypeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoomTypeManagement\ShowRoomTypeViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SettingManagement\NewSettingViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SettingManagement\ShowSettingViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />

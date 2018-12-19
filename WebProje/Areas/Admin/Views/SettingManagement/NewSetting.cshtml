@@ -1,0 +1,75 @@
+﻿@model WebProje.Areas.Admin.Models.SettingManagement.NewSettingViewModel
+@{
+    ViewBag.Title = "NewSetting";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        New <strong>Setting</strong>
+    </div>
+    @using (Html.BeginForm("NewSetting", "SettingManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Setting.ID)
+            <div class="card-body card-block">
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="name" class="form-control-label">Name<span class="required"> *</span></label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        @if (Model.Setting.ID == 0)
+                        {
+                            @Html.EditorFor(model => model.Setting.Name, new { htmlAttributes = new { @class = "form-control", id = "name", name = "name", type = "text", placeholder = "Name", required = "" } })
+                        }
+                        else
+                        {
+                            @Html.HiddenFor(model => model.Setting.Name)
+                            @Html.EditorFor(model => model.Setting.Name, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+                        }
+                        <small class="form-text text-muted">This is setting's name.</small>
+                    </div>
+                </div> <!--NAME-->
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="keyword" class="form-control-label">Keyword<span class="required"> *</span></label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="input-group">
+                            </div>,@if (Model.Setting.ID == 0)
+                                   {
+                                       @Html.EditorFor(model => model.Setting.Keyword, new { htmlAttributes = new { @class = "form-control", id = "keyword", name = "keyword", type = "text", placeholder = "Keyword", required = "" } })
+                                   }
+                                   else
+                                   {
+                                       @Html.HiddenFor(model => model.Setting.Keyword)
+                                       @Html.EditorFor(model => model.Setting.Keyword, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+                                   }
+                        <small class="form-text text-muted">This is setting's keyword.</small>
+                    </div>
+                </div> <!--KEYWORD-->
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="name" class="form-control-label">Value<span class="required"> *</span></label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        @Html.EditorFor(model => model.Setting.Value, new { htmlAttributes = new { @class = "form-control", id = "value", name = "value", type = "text", placeholder = "Name", required = "" } })
+                        <small class="form-text text-muted">This is setting's value.</small>
+                    </div>
+                </div> <!--NAME-->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                </div>
+            </div>
+        }
+</div>
+
+@section Style
+{
+    <style>
+        label .required {
+            color: red;
+        }
+    </style>
+}
