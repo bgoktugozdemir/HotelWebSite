@@ -8,10 +8,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1">overview</h2>
-            <button class="au-btn au-btn-icon au-btn--blue">
-                <i class="zmdi zmdi-plus"></i>add item
-            </button>
+            <h2 class="title-1">Dashboard</h2>
         </div>
     </div>
 </div>
@@ -78,7 +75,7 @@
                         <i class="zmdi zmdi-money"></i>
                     </div>
                     <div class="text">
-                        <h2>$@Model.TotalEarning</h2>
+                        <h2>$@Model.TotalEarning.ToString("N")</h2>
                         <span>total earnings</span>
                     </div>
                 </div>
@@ -91,37 +88,52 @@
 </div> <!-- TOP CARDS -->
 <div class="row">
     <div class="col-lg-9">
-        <h2 class="title-1 m-b-25">Earnings By Items</h2>
+        <h2 class="title-1 m-b-25">Today's Reservations</h2>
         <div class="table-responsive table--no-card m-b-40">
             <table class="table table-borderless table-striped table-earning">
                 <thead>
                     <tr>
-                        <th>Reservation ID</th>
+                        <th>R.ID</th>
                         <th>Arrival Date</th>
-                        <th>Departure Date</th>
-                        <th>Customer Name</th>
-                        <th class="text-right">Room No</th>
+                        <th>Night</th>
+                        <th>Status</th>
+                        <th>Name</th>
+                        <th class="text-right">Room</th>
+                        <th class="text-right">Cap.</th>
                         <th class="text-right">total</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (Books book in Model.BooksList)
                     {
-                        <tr>
-                            <td>@book.ID</td>
-                            <td>@book.ArrivalDate.ToString("yyyy-MM-dd")</td>
-                            <td>@book.DepartureDate.ToString("yyyy-MM-dd")</td>
-                            <td>@book.Customers.Name @book.Customers.Surname</td>
-                            <td class="text-right">@book.Rooms.RoomNo</td>
-                            <td class="text-right">$@((float)book.Price*(1-book.Discount))</td>
-                        </tr>
+                    <tr>
+                        <td>@book.ID</td>
+                        <td>@book.ArrivalDate.ToString("yyyy-MM-dd")</td>
+                        <td>@book.Night</td>
+                        @if (book.IsCancelled)
+                        {
+                            <td class="cancelled text-center"><i class="fas fa-eraser"></i></td>
+                        }
+                        else if (book.IsCheckIn)
+                        {
+                            <td class="process text-center"><i class="fas fa-check"></i></td>
+                        }
+                        else
+                        {
+                            <td class="denied text-center"><i class="fas fa-ban"></i></td>
+                        }
+                        <td>@book.Customers.Name @book.Customers.Surname</td>
+                        <td class="text-right">@book.Rooms.RoomNo</td>
+                        <td class="text-right">@book.Rooms.RoomTypes.Capacity</td>
+                        <td class="text-right">$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
+                    </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div> <!-- LAST 8 RESERVATIONS-->
     <div class="col-lg-3">
-        <h2 class="title-1 m-b-25">Top countries</h2>
+        <h2 class="title-1 m-b-25">Room Types</h2>
         <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
             <div class="au-card-inner">
                 <div class="table-responsive">
@@ -223,17 +235,14 @@
                 <i class="zmdi zmdi-comment-text"></i>New Messages
             </h3>
             <button class="au-btn-plus">
-                <i class="zmdi zmdi-plus"></i>
+                <i class="zmdi zmdi-arrow-back"></i>
             </button>
         </div>
         <div class="au-inbox-wrap js-inbox-wrap">
             <div class="au-message js-list-load">
                 <div class="au-message__noti">
                     <p>
-                        You Have
-                        <span>2</span>
-
-                        new messages
+                        <span>Contact Forms</span>
                     </p>
                 </div>
                 <div class="au-message-list">
@@ -290,55 +299,58 @@
             <div class="au-chat">
                 <div class="au-chat__title">
                     <div class="au-chat-info">
-                        <div class="avatar-wrap online">
-                            <div class="avatar avatar--small">
-                                <img src="images/icon/avatar-02.jpg" alt="John Smith">
-                            </div>
-                        </div>
                         <span class="nick">
-                            <a href="#">John Smith</a>
+                            <span>@Model.ContactFormsList[0].Name</span> - <a href="mailto:@Model.ContactFormsList[0].Email">@Model.ContactFormsList[0].Email</a>
                         </span>
                     </div>
                 </div>
                 <div class="au-chat__content">
                     <div class="recei-mess-wrap">
-                        <span class="mess-time">12 Min ago</span>
+                        <span class="mess-time">@Model.ContactFormsList[0].SendedAt.ToString("dd.MM.yyyy HH:mm:ss")</span>
                         <div class="recei-mess__inner">
-                            <div class="avatar avatar--tiny">
-                                <img src="images/icon/avatar-02.jpg" alt="John Smith">
-                            </div>
                             <div class="recei-mess-list">
-                                <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                <div class="recei-mess">Donec tempor, sapien ac viverra</div>
+                                <div class="send-mess">@Model.ContactFormsList[0].Message</div>
                             </div>
                         </div>
                     </div>
-                    <div class="send-mess-wrap">
+                    @*<div class="send-mess-wrap">
                         <span class="mess-time">30 Sec ago</span>
                         <div class="send-mess__inner">
                             <div class="send-mess-list">
                                 <div class="send-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
-                <div class="au-chat-textfield">
+                @*<div class="au-chat-textfield">
                     <form class="au-form-icon">
                         <input class="au-input au-input--full au-input--h65" type="text" placeholder="Type a message">
                         <button class="au-input-icon">
                             <i class="zmdi zmdi-camera"></i>
                         </button>
                     </form>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
 </div>
 </div> <!-- LIST & CONTACT FORM MESSAGES -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="copyright">
-            <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-        </div>
-    </div>
-</div>
+
+@section Style
+{
+    <style>
+        table.table td.process {
+            color: #00ad5f;
+        }
+        table.table td.denied {
+            color: #fa4251;
+        }
+        table.table td.cancelled {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        table {
+            text-transform: uppercase;
+        }
+    </style>
+}

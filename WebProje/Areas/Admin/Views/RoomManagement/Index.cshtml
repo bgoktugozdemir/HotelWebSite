@@ -1,0 +1,46 @@
+﻿@model WebProje.Areas.Admin.Models.RoomManagement.ShowRoomViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <!-- ROOMS DATA TABLE -->
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+            <h3 class="title-5 m-b-35">Rooms</h3>
+        </div>
+        <div class="table-data__tool-right">
+            <a href="@Url.Action("NewRoom","RoomManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Add New Room
+            </a>
+        </div>
+    </div>
+    <div class="top-campaign">
+        <h3 class="title-3 m-b-30">top campaigns</h3>
+        <div class="table-responsive">
+            <table class="table table-top-campaign">
+                <thead>
+                    <tr>
+                        <td>Room No</td>
+                        <td>Floor</td>
+                        <td>Type</td>
+                        <td>Capacity</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var room in Model.RoomList)
+                {
+                    <tr>
+                        <td>@room.RoomNo</td>
+                        <td>@room.Floor</td>
+                        <td>@room.RoomTypes.Name</td>
+                        <td class="text-center">@room.RoomTypes.Capacity</td>
+                        <td>$@room.RoomTypes.Price.ToString("N")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

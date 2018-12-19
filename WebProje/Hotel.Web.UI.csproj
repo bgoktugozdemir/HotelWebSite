@@ -494,6 +494,9 @@
     <Content Include="Areas\Admin\Views\EmployeeManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EmployeeManagement\NewEmployee.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_PartialChat.cshtml" />
+    <Content Include="Areas\Admin\Views\ReservationManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReservationManagement\NewReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\RoomManagement\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gmaps.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -555,12 +558,17 @@
     <Compile Include="Areas\Admin\Controllers\EmployeeManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReservationManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomManagementController.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\NewEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\ShowEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerManagement\ShowCustomerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerManagement\NewCustomerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Home\ChatViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Home\HomeViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ReservationManagement\NewReservationViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ReservationManagement\ShowReservationViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\RoomManagement\ShowRoomViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />

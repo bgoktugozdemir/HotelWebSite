@@ -4734,6 +4734,11 @@ section {
     color: #fa4251;
 }
 
+.table-data3 tbody td.cancelled {
+    color: #ffc107;
+    font-weight: bold;
+}
+
 /* ----- Footer ----- */
 .copyright {
     text-align: center;

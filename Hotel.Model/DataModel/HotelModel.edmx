@@ -10,14 +10,17 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ArrivalDate" Type="datetime" Nullable="false" />
-          <Property Name="DepartureDate" Type="datetime" Nullable="false" />
-          <Property Name="Price" Type="money" Nullable="false" />
-          <Property Name="Discount" Type="real" Nullable="false" />
-          <Property Name="CustomerID" Type="int" />
-          <Property Name="RoomID" Type="int" />
-          <Property Name="EmployeeID" Type="int" />
           <Property Name="BookingDate" Type="datetime" Nullable="false" />
+          <Property Name="ArrivalDate" Type="date" Nullable="false" />
+          <Property Name="DepartureDate" Type="date" />
+          <Property Name="Night" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="IsCheckIn" Type="bit" Nullable="false" />
+          <Property Name="IsCancelled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ContactForms">
           <Key>
@@ -70,7 +73,7 @@
           <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="BirthDate" Type="date" Nullable="false" />
-          <Property Name="NationalID" Type="varchar" MaxLength="255" />
+          <Property Name="NationalID" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -114,17 +117,17 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Floor" Type="int" />
-          <Property Name="RoomNo" Type="int" />
-          <Property Name="RoomTypeID" Type="int" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
+          <Property Name="RoomTypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RoomTypes">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Price" Type="money" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Capacity" Type="int" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
           <Property Name="OrderSort" Type="int" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -212,7 +215,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Rooms">
-          <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rooms">
@@ -235,8 +238,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rooms_RoomTypes">
-          <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="0..1" />
+        <Association Name="FK_Rooms_RoomTypes1">
+          <End Role="RoomTypes" Type="Self.RoomTypes" Multiplicity="1" />
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RoomTypes">
@@ -316,7 +319,7 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Posts" EntitySet="Posts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rooms_RoomTypes" Association="Self.FK_Rooms_RoomTypes">
+          <AssociationSet Name="FK_Rooms_RoomTypes1" Association="Self.FK_Rooms_RoomTypes1">
             <End Role="RoomTypes" EntitySet="RoomTypes" />
             <End Role="Rooms" EntitySet="Rooms" />
           </AssociationSet>
@@ -382,7 +385,7 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rooms_RoomTypes" Association="OTELModel.FK_Rooms_RoomTypes">
+          <AssociationSet Name="FK_Rooms_RoomTypes1" Association="OTELModel.FK_Rooms_RoomTypes1">
             <End Role="RoomTypes" EntitySet="RoomTypes" />
             <End Role="Rooms" EntitySet="Rooms" />
           </AssociationSet>
@@ -392,14 +395,17 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Discount" Type="Single" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" />
-          <Property Name="RoomID" Type="Int32" />
-          <Property Name="EmployeeID" Type="Int32" />
           <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DepartureDate" Type="DateTime" Precision="0" />
+          <Property Name="Night" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="IsCheckIn" Type="Boolean" Nullable="false" />
+          <Property Name="IsCancelled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="OTELModel.FK_Books_Customers" FromRole="Books" ToRole="Customers" />
           <NavigationProperty Name="Employees" Relationship="OTELModel.FK_Books_Employees" FromRole="Books" ToRole="Employees" />
           <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Books_Rooms" FromRole="Books" ToRole="Rooms" />
@@ -457,11 +463,11 @@
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NationalID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Employees" FromRole="Employees" ToRole="Books" />
           <NavigationProperty Name="Posts" Relationship="OTELModel.FK_Posts_Employees" FromRole="Employees" ToRole="Posts" />
           <NavigationProperty Name="Users" Relationship="OTELModel.FK_Users_Employees" FromRole="Employees" ToRole="Users" />
-          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NationalID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -506,22 +512,22 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Floor" Type="Int32" />
-          <Property Name="RoomNo" Type="Int32" />
-          <Property Name="RoomTypeID" Type="Int32" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
+          <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Rooms" FromRole="Rooms" ToRole="Books" />
-          <NavigationProperty Name="RoomTypes" Relationship="OTELModel.FK_Rooms_RoomTypes" FromRole="Rooms" ToRole="RoomTypes" />
+          <NavigationProperty Name="RoomTypes" Relationship="OTELModel.FK_Rooms_RoomTypes1" FromRole="Rooms" ToRole="RoomTypes" />
         </EntityType>
         <EntityType Name="RoomTypes">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
           <Property Name="OrderSort" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Rooms_RoomTypes" FromRole="RoomTypes" ToRole="Rooms" />
+          <NavigationProperty Name="Rooms" Relationship="OTELModel.FK_Rooms_RoomTypes1" FromRole="RoomTypes" ToRole="Rooms" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -610,7 +616,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Rooms">
-          <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="0..1" />
+          <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="1" />
           <End Type="OTELModel.Books" Role="Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rooms">
@@ -669,8 +675,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rooms_RoomTypes">
-          <End Type="OTELModel.RoomTypes" Role="RoomTypes" Multiplicity="0..1" />
+        <Association Name="FK_Rooms_RoomTypes1">
+          <End Type="OTELModel.RoomTypes" Role="RoomTypes" Multiplicity="1" />
           <End Type="OTELModel.Rooms" Role="Rooms" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RoomTypes">
@@ -690,14 +696,17 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="OTELModel.Books">
               <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="IsCheckIn" ColumnName="IsCheckIn" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Night" ColumnName="Night" />
                 <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
                 <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

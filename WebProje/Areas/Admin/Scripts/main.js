@@ -1662,7 +1662,7 @@
       var that = $(this);
 
       that.on('click', function(){
-        $(this).parent().parent().parent().toggleClass('show-chat-box');
+          $(this).parent().parent().parent().toggleClass('show-chat-box');
       });
     });
     

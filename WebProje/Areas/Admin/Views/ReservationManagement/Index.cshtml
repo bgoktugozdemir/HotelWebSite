@@ -1,0 +1,71 @@
+﻿@using Hotel.Model.DataModel
+@model WebProje.Areas.Admin.Models.ReservationManagement.ShowReservationViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <!-- RESERVATIONS DATA TABLE -->
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+            <h3 class="title-5 m-b-35">Reservations</h3>
+        </div>
+        <div class="table-data__tool-right">
+            <a href="@Url.Action("NewReservation","ReservationManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Add New Reservation
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive m-b-40">
+        <table class="table table-borderless table-data3">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Booking Date</th>
+                <th>Arrival Date</th>
+                <th>Departure Date</th>
+                <th>Night</th>
+                <th>Status</th>
+                <th>Customer</th>
+                <th>Room No - Type</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (Books book in Model.BookList.Concat(Model.OldBookList))
+                {
+                <tr>
+                    <td>@book.ID</td>
+                    <td>@book.BookingDate</td>
+                    <td>@book.ArrivalDate.ToString("dd.MM.yyyy")</td>
+                    <td>@(book.DepartureDate.HasValue ? book.DepartureDate.Value.ToString("dd.MM.yyyy") : " ")</td>
+                    <td>@book.Night</td>
+                    @if (book.IsCancelled)
+                    {
+                        <td class="cancelled">CANCELED</td>
+                    }
+                    else if (book.IsCheckIn)
+                    {
+                        <td class="process">Checked In</td>
+                    }
+                    else
+                    {
+                        <td class="denied">No Check In</td>
+                    }
+                    <td>@(book.Customers.Name + " " + book.Customers.Surname)</td>
+                    <td><span class="font-weight-bold">@book.Rooms.RoomNo</span> - @book.Rooms.RoomTypes.Name</td>
+                    <td>$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Style
+{
+    <style>
+        table {
+            text-transform: uppercase;
+        }
+    </style>
+}

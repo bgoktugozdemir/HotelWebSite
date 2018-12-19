@@ -21,9 +21,9 @@ namespace Hotel.Model.DataModel
         }
     
         public int ID { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public decimal Price { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Capacity { get; set; }
+        public int Capacity { get; set; }
         public Nullable<int> OrderSort { get; set; }
         public string Image { get; set; }
     

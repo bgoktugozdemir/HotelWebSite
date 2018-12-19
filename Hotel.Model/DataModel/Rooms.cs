@@ -22,8 +22,8 @@ namespace Hotel.Model.DataModel
     
         public int ID { get; set; }
         public Nullable<int> Floor { get; set; }
-        public Nullable<int> RoomNo { get; set; }
-        public Nullable<int> RoomTypeID { get; set; }
+        public int RoomNo { get; set; }
+        public int RoomTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Books> Books { get; set; }

@@ -1,0 +1,121 @@
+﻿@model WebProje.Areas.Admin.Models.ReservationManagement.NewReservationViewModel
+@{
+    ViewBag.Title = "New Reservation";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        New <strong>Reservation</strong>
+    </div>
+    @using (Html.BeginForm("NewReservation", "ReservationManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Book.ID)
+        @Html.HiddenFor(model => model.Book.BookingDate)
+        @Html.HiddenFor(model => model.Book.EmployeeID)
+        @Html.HiddenFor(model => model.Book.Employees)
+        @Html.HiddenFor(model => model.Book.Rooms)
+        @Html.HiddenFor(model => model.Book.Price)
+    <div class="card-body card-block">
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="title" class="form-control-label">Customer<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.DropDownListFor(model => model.Book.CustomerID, new SelectList(Model.CustomerList, "ID", "Name"), new { htmlAttributes = new { @class = "form-control", id = "title", name = "title", placeholder = "Title", type = "text", required="" } })
+                <small class="form-text text-muted">This is customer's name.</small>
+            </div>
+        </div> <!--Customer-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="birthdate" class="form-control-label">Arrival Date<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control datepicker", id = "arrivaldate", name = "arrivaldate", type = "date", required = "", @Value = Model.Book.ArrivalDate.ToString("yyyy-MM-dd") } })
+                <small class="form-text text-muted">This is arrival date.</small>
+            </div>
+        </div> <!--ARRIVAL DATE-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="surname" class="form-control-label">Night<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.EditorFor(model => model.Book.Night, new { htmlAttributes = new { @class = "form-control", id = "night", name = "night", type = "number", placeholder = "Night", required = "" } })
+                <small class="form-text text-muted">How many night?</small>
+            </div>
+        </div> <!--NIGHT-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="title" class="form-control-label">Room No<span class="required"> *</span></label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.DropDownListFor(model => model.Book.RoomID, new SelectList(Model.RoomList, "ID", "RoomNo"), new { htmlAttributes = new { @class = "form-control", id = "title", name = "title", placeholder = "Title", type = "text", required="" } })
+                <small class="form-text text-muted">This is room no.</small>
+            </div>
+        </div> <!--ROOM-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="surname" class="form-control-label">Discount</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-percent"></i>
+                    </div>
+                    @Html.EditorFor(model => model.Book.Discount, new { htmlAttributes = new { @class = "form-control", id = "discount", name = "discount", type = "number", placeholder = "Discount", min = "0", max = "1", step = "0.01", lang = "en" } })
+                </div>
+                <small class="form-text text-muted">This is discount amount. (0-1)</small>
+            </div>
+        </div> <!--DISCOUNT-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="title" class="form-control-label">Status of Check In</label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.DropDownListFor(model => model.Book.IsCheckIn, new[] { new SelectListItem { Value = "0", Text = "No Checked In" }, new SelectListItem { Text = "Checked In", Value = "1" } }, new { htmlAttributes = new { @class = "form-control", id = "checkin", name = "checkin", type = "text" } })
+                <small class="form-text text-muted">This is status of check in.</small>
+            </div>
+        </div> <!--IS CHECKED IN-->
+        <div class="row form-group">
+            <div class="col col-md-3">
+                <label for="title" class="form-control-label">Room No</label>
+            </div>
+            <div class="col-12 col-md-9">
+                @Html.DropDownListFor(model => model.Book.IsCancelled, new[] { new SelectListItem { Value = "0", Text = "Not Cancelled"}, new SelectListItem { Text = "Cancelled", Value = "1" } }, new { htmlAttributes = new { @class = "form-control", id = "cancelled", name = "cancelled", type = "text" } })
+                <small class="form-text text-muted">This is status of cancel.</small>
+            </div>
+        </div> <!--IS CANCELLED-->
+        @if (Model.Book.ID != 0)
+        {
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="phone" class="form-control-label">Total Price<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </div>
+                        @Html.EditorFor(model => model.Book.Price, new { htmlAttributes = new { @class = "form-control", id = "price", name = "price", placeholder = "Phone", type = "number", disabled = "", @Value = ((float)Model.Book.Price * (1 - Model.Book.Discount) * Model.Book.Night) } })
+                    </div>
+                    <small class="form-text text-muted">This is total price. (Discount is include)</small>
+                </div>
+            </div> <!--PRICE-->
+        }
+    </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    }
+</div>
+
+@section Style
+{
+    <style>
+        label .required {
+            color: red;
+        }
+    </style>
+}
