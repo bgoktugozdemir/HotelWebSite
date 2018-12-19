@@ -49,7 +49,7 @@
                 <label for="title" class="form-control-label">Room No<span class="required"> *</span></label>
             </div>
             <div class="col-12 col-md-9">
-                @Html.DropDownListFor(model => model.Book.RoomID, new SelectList(Model.RoomList, "ID", "ID"), new { htmlAttributes = new { @class = "form-control", id = "roomid", name = "roomid", required="" } })
+                @Html.DropDownListFor(model => model.Book.RoomID, new SelectList(Model.RoomList, "ID", "RoomNo"), new { htmlAttributes = new { @class = "form-control", id = "roomid", name = "roomid", required="" } })
                 <small class="form-text text-muted">This is room no.</small>
             </div>
         </div> <!--ROOM-->

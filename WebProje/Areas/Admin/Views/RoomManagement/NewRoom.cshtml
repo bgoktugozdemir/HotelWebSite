@@ -10,6 +10,7 @@
     </div>
     @using (Html.BeginForm("NewRoom", "RoomManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
+        @Html.HiddenFor(model=>model.Room.ID)
         <div class="card-body card-block">
             <div class="row form-group">
                 <div class="col col-md-3">
@@ -22,10 +23,10 @@
             </div> <!--ROOM TYPE-->
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="roomno" class="form-control-label">Arrival Date<span class="required"> *</span></label>
+                    <label for="roomno" class="form-control-label">Room No<span class="required"> *</span></label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.Room.ID, new { htmlAttributes = new { @class = "form-control", id = "roomno", name = "roomno", type = "number", min = "100", step = "1", placeholder ="Room No", required = ""} })
+                    @Html.EditorFor(model => model.Room.RoomNo, new { htmlAttributes = new { @class = "form-control", id = "roomno", name = "roomno", type = "number", min = "100", step = "1", placeholder ="Room No", required = ""} })
                     <small class="form-text text-muted">This is room's no.</small>
                 </div>
             </div> <!--ROOM NO-->

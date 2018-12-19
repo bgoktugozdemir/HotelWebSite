@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -51,7 +53,11 @@ namespace WebProje.Areas.Admin.Controllers
                 RoomTypeList = _roomTypesManagement.GetAll().OrderBy(r => r.Capacity).ToList()
             };
 
-            if (id != null)
+            if (id == null)
+            {
+                model.Room = new Rooms();
+            }
+            else
             {
                 model.Room = _roomsManagement.Get(r => r.ID == id);
             }
@@ -65,13 +71,33 @@ namespace WebProje.Areas.Admin.Controllers
             {
                 _roomsManagement.AddOrUpdate(model.Room);
 
-                this.SuccessMessage("Room has been added!");
+                this.SuccessMessage($"Room <b>({model.Room.RoomNo})</b> has been saved!");
+            }
+            catch (DbUpdateException e)
+            {
+                this.ErrorMessage($"Room <b>({model.Room.RoomNo})</b> already exist! ({e.Message})");
             }
             catch (Exception e)
             {
-                this.ErrorMessage("Room could not add! ("+e.Message+")");
+                this.ErrorMessage($"Room <b>({model.Room.RoomNo})</b> could not add! ({e.Message})");
             }
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteRoom(int id)
+        {
+            try
+            {
+                var room = _roomsManagement.Get(r => r.ID == id);
+                _roomsManagement.Delete(id);
+
+                this.WarningMessage($"<b>{room.RoomNo}</b> has been deleted!");
+            }
+            catch
+            {
+                this.ErrorMessage($"Room No <b>{id}</b> not found!");
+            }
             return RedirectToAction("Index");
         }
     }

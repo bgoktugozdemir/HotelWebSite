@@ -26,13 +26,14 @@
                     <td>Capacity</td>
                     <td>Status</td>
                     <td>Price</td>
+                    <td>Tooltip</td>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach (var room in Model.RoomList)
                 {
                     <tr>
-                        <td>@room.ID</td>
+                        <td>@room.RoomNo</td>
                         <td>@room.Floor</td>
                         <td>@room.RoomTypes.Name</td>
                         <td class="text-center">@room.RoomTypes.Capacity</td>
@@ -53,6 +54,14 @@
                             <td class="process">Available</td>
                         }
                         <td>$@room.RoomTypes.Price.ToString("N")</td>
+                        <td>
+                            <a href="@Url.Action("NewRoom", "RoomManagement", new {id = room.ID})" class="au-btn au-btn-icon  au-btn--orange au-btn--small text-center">
+                                <i class="zmdi zmdi-edit"></i>
+                            </a>
+                            <a href="@Url.Action("DeleteRoom", "RoomManagement", new {id = room.ID})" class="au-btn au-btn-icon au-btn--red au-btn--small text-center">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </td>
                     </tr>
                 }
                 </tbody>

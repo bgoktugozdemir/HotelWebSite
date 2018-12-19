@@ -34,14 +34,7 @@ namespace WebProje.Areas.Admin.Controllers
         public ActionResult NewRoomType(int? id)
         {
             NewRoomTypeViewModel model = new NewRoomTypeViewModel();
-            if (id == null)
-            {
-                model.RoomType = new RoomTypes();
-            }
-            else
-            {
-                model.RoomType = _roomTypesManagement.Get(r => r.ID == id);
-            }
+            model.RoomType = id == null ? new RoomTypes() : _roomTypesManagement.Get(r => r.ID == id);
 
             return View(model);
         }
@@ -63,13 +56,30 @@ namespace WebProje.Areas.Admin.Controllers
 
                 _roomTypesManagement.AddOrUpdate(model.RoomType);
 
-                this.SuccessMessage("Room Type has been saved!");
+                this.SuccessMessage($"<b>{model.RoomType.Name}</b> has been saved!");
             }
             catch (Exception e)
             {
-                this.ErrorMessage("Room Type could not be saved! ("+e.Message+")");
+                this.ErrorMessage($"<b>{model.RoomType.Name}</b> could not be saved! ({e.Message})");
             }
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteRoomType(int id)
+        {
+            try
+            {
+                var roomType = _roomTypesManagement.Get(r => r.ID == id);
+
+                _roomTypesManagement.Delete(id);
+
+                this.WarningMessage($"<b>{roomType.Name}</b> has been deleted!");
+            }
+            catch
+            {
+                this.ErrorMessage("Room Type not found!");
+            }
             return RedirectToAction("Index");
         }
     }

@@ -499,6 +499,7 @@
     <Content Include="Areas\Admin\Views\RoomManagement\NewRoom.cshtml" />
     <Content Include="Areas\Admin\Views\RoomTypeManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\RoomTypeManagement\NewRoomType.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_PartialHeaderMenu.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gmaps.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

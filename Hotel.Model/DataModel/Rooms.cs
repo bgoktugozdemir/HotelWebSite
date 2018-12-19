@@ -22,6 +22,7 @@ namespace Hotel.Model.DataModel
     
         public int ID { get; set; }
         public Nullable<int> Floor { get; set; }
+        public int RoomNo { get; set; }
         public int RoomTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

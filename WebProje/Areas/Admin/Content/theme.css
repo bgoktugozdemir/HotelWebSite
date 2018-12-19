@@ -485,6 +485,22 @@ section {
     background: #59bd60;
 }
 
+.au-btn--orange {
+    background: #e79b33;
+}
+
+.au-btn--orange:hover {
+    background: #e28a11;
+}
+
+.au-btn--red {
+    background: #e73333;
+}
+
+.au-btn--red:hover {
+    background: #e21111;
+}
+
 .au-btn-plus {
     position: absolute;
     height: 45px;

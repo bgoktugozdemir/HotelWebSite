@@ -15,8 +15,6 @@ namespace WebProje.Areas.Admin.Controllers
         private IRoomsManagement _roomsManagement;
         private IRoomTypesManagement _roomTypesManagement;
 
-        private string _version = "0.8.1";
-
         public HomeController(IContactFormsManagement contactFormsManagement, IBooksManagement booksManagement, ICustomersManagement customersManagement, IRoomsManagement roomsManagement, IRoomTypesManagement roomTypesManagement)
         {
             _contactFormsManagement = contactFormsManagement;
@@ -50,8 +48,6 @@ namespace WebProje.Areas.Admin.Controllers
                 TotalEarning = totalEarning,
                 RoomTypeList = _roomTypesManagement.GetAll().ToList()
             };
-
-            ViewBag.Version = _version;
 
             return View(model);
         }

@@ -27,23 +27,33 @@
                     <img class="card-img-top" src="~/Images/@roomType.Image" alt="@roomType.Name">
                 }
                 <div class="card-body">
-                    <h4 class="card-title mb-3">@roomType.Name</h4>
+                    <div class="inner-tooltip">
+                        <div class="table-data__tool text-center">
+                                <a href="@Url.Action("NewRoomType", "RoomTypeManagement", new {id=roomType.ID})" class="au-btn au-btn-icon au-btn--block au-btn--orange au-btn--small">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
+                                <a href="@Url.Action("DeleteRoomType", "RoomTypeManagement", new {id = roomType.ID})" class="au-btn au-btn-icon au-btn--block au-btn--red au-btn--small">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                        </div>
+                    </div>
+                    <h4 class="card-title mb-3">@roomType.Name </h4>
                     <p class="card-text">
                         <div class="table-responsive">
                             <table class="table table-top-campaign">
                                 <thead>
-                                <tr>
-                                    <td>Room Count</td>
-                                    <td>Capacity</td>
-                                    <td>Price</td>
-                                </tr>
+                                    <tr>
+                                        <td>Room Count</td>
+                                        <td>Capacity</td>
+                                        <td>Price</td>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>@roomType.Rooms.Count</td>
-                                    <td>@roomType.Capacity</td>
-                                    <td>$@roomType.Price.ToString("N")</td>
-                                </tr>
+                                    <tr>
+                                        <td>@roomType.Rooms.Count</td>
+                                        <td>@roomType.Capacity</td>
+                                        <td>$@roomType.Price.ToString("N")</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

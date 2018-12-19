@@ -115,8 +115,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Floor" Type="int" />
+          <Property Name="RoomNo" Type="int" Nullable="false" />
           <Property Name="RoomTypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RoomTypes">
@@ -509,8 +510,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Floor" Type="Int32" />
+          <Property Name="RoomNo" Type="Int32" Nullable="false" />
           <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Rooms" FromRole="Rooms" ToRole="Books" />
           <NavigationProperty Name="RoomTypes" Relationship="OTELModel.FK_Rooms_RoomTypes1" FromRole="Rooms" ToRole="RoomTypes" />
@@ -809,6 +811,7 @@
             <EntityTypeMapping TypeName="OTELModel.Rooms">
               <MappingFragment StoreEntitySet="Rooms">
                 <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
                 <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
