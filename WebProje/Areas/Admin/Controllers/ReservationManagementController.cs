@@ -62,32 +62,25 @@ namespace WebProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult NewReservation(NewReservationViewModel model)
         {
-            Books book;
+           
             try
             {
-                if (model.Book.ID == 0)
-                {
-                    book = new Books();
-                }
-                else
-                {
-                    book = _booksManagement.Get(d => d.ID == model.Book.ID);
-                }
-                book = model.Book;
+                var room = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomTypeID;
+                var price = _roomTypesManagement.Get(r=>r.ID == room).Price;
 
                 if (model.Book.ID == 0)
                 {
-                    book.BookingDate = DateTime.Now;
+                    model.Book.BookingDate = DateTime.Now;
                 }
 
                 //TODO: Şu anda giriş yapılmış kullanıcının idsi alınacak.
                 //TODO: Discount format farkından dolayı alınamıyor ve götürülemiyor.
-                book.Night = (int)(book.DepartureDate - book.ArrivalDate).TotalDays;
-                book.Rooms = _roomsManagement.Get(r => r.ID == book.RoomID);
-                book.Customers = _customersManagement.Get(c => c.ID == book.CustomerID);
-                book.Price = (decimal) ((float) model.Book.Rooms.RoomTypes.Price * (1 - model.Book.Discount) * model.Book.Night);
+                model.Book.Discount = model.Discount / 100;
+                model.Book.Night = (int)(model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
 
-                _booksManagement.AddOrUpdate(book);
+                model.Book.Price = (decimal) ((float) price * (1 - model.Book.Discount) * model.Book.Night);
+
+                _booksManagement.AddOrUpdate(model.Book);
                 this.SuccessMessage("Reservation has been saved!");
             }
             catch (Exception e)

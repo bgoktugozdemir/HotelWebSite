@@ -8,6 +8,7 @@ namespace WebProje.Areas.Admin.Models.ReservationManagement
     public class NewReservationViewModel
     {
         public Books Book { get; set; }
+        public double Discount { get; set; }
         public List<RoomTypes> RoomTypeList { get; set; }
         public List<Rooms> RoomList { get; set; }
         public List<Customers> CustomerList { get; set; }

@@ -34,28 +34,28 @@
             <tbody>
                 @foreach (Books book in Model.BookList.Concat(Model.OldBookList))
                 {
-                <tr>
-                    <td>@book.ID</td>
-                    <td>@book.BookingDate</td>
-                    <td>@book.ArrivalDate.ToString("dd.MM.yyyy")</td>
-                    <td>@book.DepartureDate.ToString("dd.MM.yyyy")</td>
-                    <td>@((book.DepartureDate - book.ArrivalDate).TotalDays)</td>
-                    @if (book.IsCancelled)
-                    {
-                        <td class="cancelled">CANCELED</td>
-                    }
-                    else if (book.IsCheckIn)
-                    {
-                        <td class="process">Checked In</td>
-                    }
-                    else
-                    {
-                        <td class="denied">No Check In</td>
-                    }
-                    <td>@(book.Customers.Name + " " + book.Customers.Surname)</td>
-                    <td><span class="font-weight-bold">@book.Rooms.ID</span> - @book.Rooms.RoomTypes.Name</td>
-                    <td>$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
-                </tr>
+                    <tr class='clickable-row' data-href='@Url.Action("NewReservation","ReservationManagement",new {book.ID})'>
+                        <td>@book.ID</td>
+                        <td>@book.BookingDate</td>
+                        <td>@book.ArrivalDate.ToString("dd.MM.yyyy")</td>
+                        <td>@book.DepartureDate.ToString("dd.MM.yyyy")</td>
+                        <td>@((book.DepartureDate - book.ArrivalDate).TotalDays)</td>
+                        @if (book.IsCancelled)
+                        {
+                            <td class="cancelled">CANCELED</td>
+                        }
+                        else if (book.IsCheckIn)
+                        {
+                            <td class="process">Checked In</td>
+                        }
+                        else
+                        {
+                            <td class="denied">No Check In</td>
+                        }
+                        <td>@(book.Customers.Name + " " + book.Customers.Surname)</td>
+                        <td><span class="font-weight-bold">@book.Rooms.ID</span> - @book.Rooms.RoomTypes.Name</td>
+                        <td>$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -70,5 +70,18 @@
         .process, .denied, .cancelled {
             font-weight: bold;
         }
+        .clickable-row {
+            cursor: pointer;
+        }
     </style>
+}
+
+@section Script{
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
 }
