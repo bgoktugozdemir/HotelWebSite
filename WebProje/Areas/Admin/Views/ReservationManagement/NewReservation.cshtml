@@ -33,7 +33,14 @@
                     <label for="arrivaldate" class="form-control-label">Arrival Date<span class="required"> *</span></label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control datepicker", id = "arrivaldate", name = "arrivaldate", type = "date", required = "", @Value = Model.Book.ArrivalDate.ToString("yyyy-MM-dd") } })
+                    @if (Model.Book.ArrivalDate.ToString("yyyy-MM-dd") != "0001-01-01")
+                    {
+                        @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control datepicker", id = "arrivaldate", name = "arrivaldate", type = "date", required = "", @Value = Model.Book.ArrivalDate.ToString("yyyy-MM-dd") } })
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control datepicker", id = "arrivaldate", name = "arrivaldate", type = "date", required = "", @Value = DateTime.Today.ToString("yyyy-MM-dd") } })
+                    }
                     <small class="form-text text-muted">This is arrival date.</small>
                 </div>
             </div> <!--ARRIVAL DATE-->
