@@ -567,6 +567,7 @@
     <Compile Include="Areas\Admin\Controllers\RoomManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomTypeManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TestimonialManagementController.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\NewEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\ShowEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerManagement\ShowCustomerViewModel.cs" />
@@ -581,6 +582,8 @@
     <Compile Include="Areas\Admin\Models\RoomTypeManagement\ShowRoomTypeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SettingManagement\NewSettingViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SettingManagement\ShowSettingViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TestimonialManagement\NewTestimonialViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TestimonialManagement\ShowTestimonialViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -633,6 +636,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\TestimonialManagement\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

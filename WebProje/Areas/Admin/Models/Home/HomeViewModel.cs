@@ -14,5 +14,6 @@ namespace WebProje.Areas.Admin.Models.Home
         public double TotalEarning { get; set; }
         public List<RoomTypes> RoomTypeList { get; set; }
         public ChatViewModel ChatViewModel { get; set; }
+        public List<Testimonials> TestimonialList { get; set; }
     }
 }

@@ -14,14 +14,16 @@ namespace WebProje.Areas.Admin.Controllers
         private ICustomersManagement _customersManagement;
         private IRoomsManagement _roomsManagement;
         private IRoomTypesManagement _roomTypesManagement;
+        private ITestimonialsManagement _testimonialsManagement;
 
-        public HomeController(IContactFormsManagement contactFormsManagement, IBooksManagement booksManagement, ICustomersManagement customersManagement, IRoomsManagement roomsManagement, IRoomTypesManagement roomTypesManagement)
+        public HomeController(IContactFormsManagement contactFormsManagement, IBooksManagement booksManagement, ICustomersManagement customersManagement, IRoomsManagement roomsManagement, IRoomTypesManagement roomTypesManagement, ITestimonialsManagement testimonialsManagement)
         {
             _contactFormsManagement = contactFormsManagement;
             _booksManagement = booksManagement;
             _customersManagement = customersManagement;
             _roomsManagement = roomsManagement;
             _roomTypesManagement = roomTypesManagement;
+            _testimonialsManagement = testimonialsManagement;
         }
 
         // GET: Admin/Home
@@ -45,7 +47,8 @@ namespace WebProje.Areas.Admin.Controllers
                 BookingCount = _booksManagement.GetAll().Count(),
                 RoomCount = _roomsManagement.GetAll().Count(),
                 TotalEarning = totalEarning,
-                RoomTypeList = _roomTypesManagement.GetAll().ToList()
+                RoomTypeList = _roomTypesManagement.GetAll().ToList(),
+                TestimonialList = _testimonialsManagement.GetAll(t=>t.IsShow == true).OrderBy(t=>t.OrderSort).ToList()
             };
 
             return View(model);

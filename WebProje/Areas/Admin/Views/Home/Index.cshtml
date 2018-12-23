@@ -89,7 +89,7 @@
 <div class="row">
     <div class="col-lg-9">
         <h2 class="title-1 m-b-25">
-            Today's Reservations
+            Today's Reservations (@DateTime.Today.ToString("dd MMMM, dddd"))
             <a href="@Url.Action("NewReservation","ReservationManagement")" class="au-btn au-btn-icon au-btn--blue au-btn--small float-right">
                 <i class="zmdi zmdi-plus"></i>Add New Reservation
             </a>
@@ -166,7 +166,7 @@
             <div class="au-card-title" style="background-image:url('~/Areas/Admin/Images/bg-title-01.jpg');">
                 <div class="bg-overlay bg-overlay--blue"></div>
                 <h3>
-                    <i class="zmdi zmdi-account-calendar"></i>26 April, 2018
+                    <i class="zmdi zmdi-account-calendar"></i>Testimonials
                 </h3>
                 <button class="au-btn-plus">
                     <i class="zmdi zmdi-plus"></i>
@@ -174,57 +174,37 @@
             </div>
             <div class="au-task js-list-load">
                 <div class="au-task__title">
-                    <p>Tasks for John Doe</p>
+                    <p>Only Showable Testimonials (Only First 8 Testimonials)</p>
                 </div>
                 <div class="au-task-list js-scrollbar3">
-                    <div class="au-task__item au-task__item--danger">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Meeting about plan for Admin Template 2018</a>
-                            </h5>
-                            <span class="time">10:00 AM</span>
+                    @foreach (var testimonial in Model.TestimonialList)
+                    {
+                        <div class="au-task__item au-task__item--success clickable-row" data-href='@Url.Action("NewTestimonial","TestimonialManagement",new {testimonial.ID})'>
+                            <div class="au-message__item-inner">
+                                <div class="au-message__item-text">
+                                    <div class="avatar-wrap">
+                                        <div class="avatar">
+                                            @if (String.IsNullOrEmpty(testimonial.Image))
+                                            {
+                                                <img src="~/Images/Customers/default.png" alt="@testimonial.Customers.Name">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Images/Customers/@testimonial.Image" alt="@testimonial.Customers.Name">
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="text">
+                                        <h5 class="name">@testimonial.Customers.Name @testimonial.Customers.Surname</h5>
+                                        <a href="#">@testimonial.Message</a>
+                                    </div>
+                                </div>
+                                <div class="au-message__item-time">
+                                    <span><span style="font-size: 16px">@testimonial.Rate</span>/10</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="au-task__item au-task__item--warning">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Create new task for Dashboard</a>
-                            </h5>
-                            <span class="time">11:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="au-task__item au-task__item--primary">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Meeting about plan for Admin Template 2018</a>
-                            </h5>
-                            <span class="time">02:00 PM</span>
-                        </div>
-                    </div>
-                    <div class="au-task__item au-task__item--success">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Create new task for Dashboard</a>
-                            </h5>
-                            <span class="time">03:30 PM</span>
-                        </div>
-                    </div>
-                    <div class="au-task__item au-task__item--danger js-load-item">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Meeting about plan for Admin Template 2018</a>
-                            </h5>
-                            <span class="time">10:00 AM</span>
-                        </div>
-                    </div>
-                    <div class="au-task__item au-task__item--warning js-load-item">
-                        <div class="au-task__item-inner">
-                            <h5 class="task">
-                                <a href="#">Create new task for Dashboard</a>
-                            </h5>
-                            <span class="time">11:00 AM</span>
-                        </div>
-                    </div>
+                    }
                 </div>
                 <div class="au-task__footer">
                     <button class="au-btn au-btn-load js-load-btn">load more</button>
@@ -259,12 +239,7 @@
                                 <div class="au-message__item @(@form.IsRead == false ? "unread" : "")">
                                     <div class="au-message__item-inner">
                                         <div class="au-message__item-text">
-                                            <div class="avatar-wrap">
-                                                <div class="avatar">
-                                                    <img src="~/Areas/Admin/Images/icon/avatar-04.jpg" alt="@form.Name">
-                                                </div>
-                                            </div>
-                                            <div class="text">
+                                            <div class="text" style="margin-left: 0px">
                                                 <h5 class="name">@form.Name</h5>
                                                 <p>@form.Subject</p>
                                             </div>
@@ -280,11 +255,6 @@
                                 <div class="au-message__item js-load-item @(@form.IsRead == false ? "unread" : "")">
                                     <div class="au-message__item-inner">
                                         <div class="au-message__item-text">
-                                            <div class="avatar-wrap">
-                                                <div class="avatar">
-                                                    <img src="~/Areas/Admin/Images/icon/avatar-04.jpg" alt="@form.Name">
-                                                </div>
-                                            </div>
                                             <div class="text">
                                                 <h5 class="name">@form.Name</h5>
                                                 <p>@form.Subject</p>
