@@ -27,10 +27,10 @@ namespace WebProje.Areas.Admin.Controllers
             {
                 TestimonialList = _testimonialsManagement.GetAll().OrderBy(t=>t.OrderSort).ToList()
             };
-            return View();
+            return View(model);
         }
 
-        public ActionResult NewTestimonialn(int? id)
+        public ActionResult NewTestimonial(int? id)
         {
             NewTestimonialViewModel model = new NewTestimonialViewModel()
             {

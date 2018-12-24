@@ -36,7 +36,7 @@
             {
                 <tr class="tr-shadow">
                     <td>@customer.NationalID</td>
-                    <td>@customer.Name.ToUpper() @customer.Surname.ToUpper()</td>
+                    <td>@customer.Name.ToUpper()</td>
                     <td>@(customer.BirthDate.HasValue ? customer.BirthDate.Value.ToShortDateString() : String.Empty)</td>
                     @if (customer.Gender == "F")
                     {

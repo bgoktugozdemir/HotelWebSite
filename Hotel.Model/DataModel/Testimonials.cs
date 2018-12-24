@@ -15,11 +15,11 @@ namespace Hotel.Model.DataModel
     public partial class Testimonials
     {
         public int ID { get; set; }
-        public Nullable<int> OrderSort { get; set; }
+        public int OrderSort { get; set; }
         public string Image { get; set; }
-        public Nullable<double> Rate { get; set; }
+        public double Rate { get; set; }
         public string Message { get; set; }
-        public Nullable<bool> IsShow { get; set; }
+        public bool IsShow { get; set; }
         public int CustomerID { get; set; }
         public int BookID { get; set; }
     

@@ -24,7 +24,10 @@
                     <label for="customerid" class="form-control-label">Customer<span class="required"> *</span></label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.DropDownListFor(model => model.Book.CustomerID, new SelectList(Model.CustomerList, "ID", "Name"), new { htmlAttributes = new { @class = "form-control", id = "customerid", name = "customerid", placeholder = "Customer Name", type = "text", required="" } })
+                    @Html.DropDownListFor(model => model.Book.CustomerID, new SelectList(Model.CustomerList, "ID", ("Name")), new { htmlAttributes = new { @class = "form-control", id = "customerid", name = "customerid", placeholder = "Customer Name", type = "text", required="" } })
+                    <a href="@Url.Action("NewCustomer","CustomerManagement")" class="au-btn au-btn-icon au-btn--blue au-btn--small float-right">
+                        <i class="zmdi zmdi-plus"></i>Add New Customer
+                    </a>
                     <small class="form-text text-muted">This is customer's name.</small>
                 </div>
             </div> <!--CUSTOMER-->
@@ -68,7 +71,7 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <div class="input-group">
-                        @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", id = "discount", name = "discount", type = "number", placeholder = "Discount", min = "0", max = "100", step = "1"} })
+                        @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control", id = "discount", name = "discount", type = "number", placeholder = "Discount", min = "0", max = "100", step = "1", @Value=Model.Book.Discount*100} })
                         <div class="input-group-addon">
                             <i class="fa fa-percent"></i>
                         </div>

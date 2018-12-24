@@ -52,7 +52,7 @@
                         {
                             <td class="denied">No Check In</td>
                         }
-                        <td>@(book.Customers.Name + " " + book.Customers.Surname)</td>
+                        <td>@(book.Customers.Name)</td>
                         <td><span class="font-weight-bold">@book.Rooms.RoomNo</span> - @book.Rooms.RoomTypes.Name</td>
                         <td>$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
                     </tr>

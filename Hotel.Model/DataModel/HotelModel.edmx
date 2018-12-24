@@ -51,7 +51,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Surname" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="BirthDate" Type="date" />
           <Property Name="Gender" Type="char" MaxLength="1" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
@@ -174,11 +173,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderSort" Type="int" />
+          <Property Name="OrderSort" Type="int" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="255" />
-          <Property Name="Rate" Type="float" />
+          <Property Name="Rate" Type="float" Nullable="false" />
           <Property Name="Message" Type="varchar" MaxLength="255" />
-          <Property Name="IsShow" Type="bit" />
+          <Property Name="IsShow" Type="bit" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
         </EntityType>
@@ -440,7 +439,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Surname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -572,11 +570,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderSort" Type="Int32" />
+          <Property Name="OrderSort" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Rate" Type="Double" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
           <Property Name="Message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IsShow" Type="Boolean" />
+          <Property Name="IsShow" Type="Boolean" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Testimonials_Books" FromRole="Testimonials" ToRole="Books" />
@@ -746,7 +744,6 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

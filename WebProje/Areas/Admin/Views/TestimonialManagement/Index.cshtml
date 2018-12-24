@@ -1,0 +1,82 @@
+﻿@using Hotel.Model.DataModel
+@model WebProje.Areas.Admin.Models.TestimonialManagement.ShowTestimonialViewModel
+@{
+    ViewBag.Title = "Testimonial Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- RESERVATIONS DATA TABLE -->
+    <div class="table-data__tool">
+        <div class="table-data__tool-left">
+            <h3 class="title-5 m-b-35">Testimonials</h3>
+        </div>
+        <div class="table-data__tool-right">
+            <a href="@Url.Action("NewTestimonial","TestimonialManagement")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                <i class="zmdi zmdi-plus"></i>Add New Testimonial
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive m-b-40">
+        <table class="table table-borderless table-data3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>R.ID</th>
+                    <th>Room</th>
+                    <th>Message</th>
+                    <th>Rate</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Testimonials testimonial in Model.TestimonialList)
+                {
+                    <tr class='clickable-row' data-href='@Url.Action("NewTestimonial","TestimonialManagement",new {testimonial.ID})'>
+                        <td>@testimonial.ID</td>
+                        <td>@testimonial.Customers.Name</td>
+                        <td>@testimonial.Books.ID</td>
+                        <td><span style="font-weight: bolder;">@testimonial.Books.Rooms.RoomNo</span> - @testimonial.Books.Rooms.RoomTypes.Name</td>
+                        <td>@testimonial.Message</td>
+                        <td><span style="font-weight: bolder; font-size: 14px;">@testimonial.Rate</span>/10</td>
+                        @if (testimonial.IsShow)
+                        {
+                            <td class="process">Showing</td>
+                        }
+                        else
+                        {
+                            <td class="denied">Hiding</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Style
+{
+    <style>
+        table {
+            text-transform: uppercase;
+        }
+
+        .process, .denied, .cancelled {
+            font-weight: bold;
+        }
+
+        .clickable-row {
+            cursor: pointer;
+        }
+    </style>
+}
+
+@section Script{
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+}

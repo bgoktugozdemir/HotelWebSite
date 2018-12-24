@@ -128,7 +128,7 @@
                             {
                                 <td class="denied text-center"><i class="fas fa-ban"></i></td>
                             }
-                            <td>@book.Customers.Name @book.Customers.Surname</td>
+                            <td>@book.Customers.Name</td>
                             <td class="text-right">@book.Rooms.RoomNo</td>
                             <td class="text-right">@book.Rooms.RoomTypes.Capacity</td>
                             <td class="text-right">$@((float)book.Price * (1 - book.Discount) * book.Night)</td>
@@ -195,7 +195,7 @@
                                         </div>
                                     </div>
                                     <div class="text">
-                                        <h5 class="name">@testimonial.Customers.Name @testimonial.Customers.Surname</h5>
+                                        <h5 class="name">@testimonial.Customers.Name</h5>
                                         <a href="#">@testimonial.Message</a>
                                     </div>
                                 </div>
