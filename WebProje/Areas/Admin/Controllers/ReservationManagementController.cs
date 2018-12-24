@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Hotel.BI.Interface;
+using Hotel.Core.Exceptions;
 using Hotel.Model.DataModel;
 using WebProje.Areas.Admin.Models.ReservationManagement;
 
@@ -62,26 +63,46 @@ namespace WebProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult NewReservation(NewReservationViewModel model)
         {
-           
             try
             {
-                var room = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomTypeID;
-                var price = _roomTypesManagement.Get(r=>r.ID == room).Price;
+                var room = _roomsManagement.Get(r => r.ID == model.Book.RoomID);
+                var roomType = room.RoomTypeID;
+                if (model.Book.ID == 0)
+                {
+                    var books = _booksManagement.GetAll(b => b.RoomID == room.ID).OrderByDescending(b=>b.ArrivalDate).ToList();
+
+                    if (books.Count > 0)
+                    {
+                        foreach (var book in books)
+                        {
+                            if (book.CustomerID != model.Book.CustomerID && (DateHelper.IncludeDate(model.Book.ArrivalDate, book.ArrivalDate, book.DepartureDate) || DateHelper.IncludeDate(model.Book.DepartureDate, book.ArrivalDate, book.DepartureDate)))
+                            {
+                                var roomNo = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomNo;
+                                throw new UnavailableRoomException(roomNo);
+                            }
+                        }
+                    }
+                }
+
+                var price = _roomTypesManagement.Get(r => r.ID == roomType).Price;
 
                 if (model.Book.ID == 0)
                 {
                     model.Book.BookingDate = DateTime.Now;
                 }
 
-                //TODO: Şu anda giriş yapılmış kullanıcının idsi alınacak.
-                //TODO: Discount format farkından dolayı alınamıyor ve götürülemiyor.
+                //TODO: Şu anda giriş yapılmış çalışanın idsi alınacak.
+                model.Book.Night = (int) (model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
                 model.Book.Discount = model.Discount / 100;
-                model.Book.Night = (int)(model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
-
                 model.Book.Price = (decimal) ((float) price * (1 - model.Book.Discount) * model.Book.Night);
 
                 _booksManagement.AddOrUpdate(model.Book);
                 this.SuccessMessage("Reservation has been saved!");
+            }
+            catch (UnavailableRoomException e)
+            {
+                this.ErrorMessage(e.Message);
+                return RedirectToAction("NewReservation", "ReservationManagement");
             }
             catch (Exception e)
             {
