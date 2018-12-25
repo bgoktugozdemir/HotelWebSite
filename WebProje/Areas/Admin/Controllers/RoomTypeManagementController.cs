@@ -10,6 +10,7 @@ using WebProje.Areas.Admin.Models.RoomTypeManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class RoomTypeManagementController : Controller
     {
         private IRoomTypesManagement _roomTypesManagement;

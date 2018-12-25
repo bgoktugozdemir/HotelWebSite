@@ -10,6 +10,7 @@ using WebProje.Areas.Admin.Models.ReservationManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ReservationManagementController : Controller
     {
         private IBooksManagement _booksManagement;

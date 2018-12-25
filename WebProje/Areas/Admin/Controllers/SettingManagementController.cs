@@ -9,6 +9,7 @@ using WebProje.Areas.Admin.Models.SettingManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class SettingManagementController : Controller
     {
         private ISettingsManagement _settingsManagement;

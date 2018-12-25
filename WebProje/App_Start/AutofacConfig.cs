@@ -29,6 +29,7 @@ namespace WebProje.App_Start
             builder.RegisterType<BooksManagement>().As<IBooksManagement>();
             builder.RegisterType<RoomsManagement>().As<IRoomsManagement>();
             builder.RegisterType<EmployeesManagement>().As<IEmployeesManagement>();
+            builder.RegisterType<UsersManagement>().As<IUsersManagement>();
 
             builder.RegisterType<HomeController>();
             builder.RegisterType<AboutController>();

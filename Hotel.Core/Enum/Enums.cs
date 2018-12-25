@@ -17,4 +17,14 @@ namespace Hotel.Core.Enum
         [Display(Name = "Female")]
         Female = 2,
     }
+
+    public enum ShowStatus
+    {
+        [Description("Not Showing")]
+        [Display(Name = "Not Showing")]
+        NotShow = 0,
+        [Description("Showing")]
+        [Display(Name = "Showing")]
+        Show = 1,
+    }
 }

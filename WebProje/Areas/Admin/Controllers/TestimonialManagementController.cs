@@ -4,20 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Hotel.BI.Interface;
+using Hotel.Core.Enum;
 using Hotel.Model.DataModel;
 using WebProje.Areas.Admin.Models.TestimonialManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class TestimonialManagementController : Controller
     {
         private ITestimonialsManagement _testimonialsManagement;
-        private ICustomersManagement _customersManagement;
+        private IBooksManagement _bookManagement;
 
-        public TestimonialManagementController(ITestimonialsManagement testimonialsManagement, ICustomersManagement customersManagement)
+        public TestimonialManagementController(ITestimonialsManagement testimonialsManagement, IBooksManagement bookManagement)
         {
             _testimonialsManagement = testimonialsManagement;
-            _customersManagement = customersManagement;
+            _bookManagement = bookManagement;
         }
 
         // GET: Admin/TestimonialManagement
@@ -34,7 +36,8 @@ namespace WebProje.Areas.Admin.Controllers
         {
             NewTestimonialViewModel model = new NewTestimonialViewModel()
             {
-                CustomerList = _customersManagement.GetAll().ToList()
+                BookList = _bookManagement.GetAll().ToList(),
+                ShowingStatusList= EnumHelpers.ConvertEnumToList(typeof(ShowStatus))
             };
 
             if (id == null)

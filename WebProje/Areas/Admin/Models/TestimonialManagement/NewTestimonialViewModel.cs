@@ -8,6 +8,7 @@ namespace WebProje.Areas.Admin.Models.TestimonialManagement
     public class NewTestimonialViewModel
     {
         public Testimonials Testimonial { get; set; }
-        public List<Customers> CustomerList { get; set; }
+        public List<Books> BookList { get; set; }
+        public List<EnumHelpers> ShowingStatusList { get; set; }
     }
 }

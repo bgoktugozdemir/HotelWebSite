@@ -11,6 +11,7 @@ using WebProje.Areas.Admin.Models.RoomManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class RoomManagementController : Controller
     {
         private IRoomsManagement _roomsManagement;

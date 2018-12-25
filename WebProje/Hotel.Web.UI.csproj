@@ -576,6 +576,7 @@
     <Compile Include="Areas\Admin\Models\CustomerManagement\NewCustomerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Home\ChatViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Home\HomeViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Login\LoginViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ReservationManagement\NewReservationViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ReservationManagement\ShowReservationViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RoomManagement\NewRoomViewModel.cs" />
@@ -594,6 +595,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Login\CustomPrincipalSerializeModel.cs" />
+    <Compile Include="Helpers\Login\ICustomPrincipal.cs" />
+    <Compile Include="Helpers\Login\CustomPrincipal.cs" />
     <Compile Include="Models\About\AboutViewModel.cs" />
     <Compile Include="Models\Blog\BlogViewModel.cs" />
     <Compile Include="Models\Contact\ContactViewModel.cs" />

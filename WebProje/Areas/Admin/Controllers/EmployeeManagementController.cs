@@ -11,6 +11,7 @@ using WebProje.Areas.Admin.Models.EmployeeManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class EmployeeManagementController : Controller
     {
         private IEmployeesManagement _employeesManagement;

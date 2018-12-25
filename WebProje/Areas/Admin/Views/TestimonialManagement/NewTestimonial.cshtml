@@ -1,8 +1,81 @@
-﻿
+﻿@model WebProje.Areas.Admin.Models.TestimonialManagement.NewTestimonialViewModel
 @{
-    ViewBag.Title = "NewTestimonial";
+    ViewBag.Title = "New Testimonial";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<div class="card">
+    <div class="card-header">
+        New <strong>Reservation</strong>
+    </div>
+    @using (Html.BeginForm("NewTestimonial", "TestimonialManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Testimonial.ID)
+        @Html.HiddenFor(model => model.Testimonial.CustomerID)
+        <div class="card-body card-block">
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="customerid" class="form-control-label">Reservation ID<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownListFor(model => model.Testimonial.BookID, new SelectList(Model.BookList, "ID", "ID"), new { htmlAttributes = new { @class = "form-control", id = "customerid", name = "customerid", placeholder = "Customer Name", type = "text", required = "" } })
+                    <small class="form-text text-muted">This is reservation's id.</small>
+                </div>
+            </div> <!--BOOK ID-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="arrivaldate" class="form-control-label">Message<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.TextAreaFor(model=>model.Testimonial.Message, new { @class = "form-control", id = "rate", name = "rate", type = "number", placeholder="Message...", required = "", min = "0", max = "10", step = "1" })
+                    <small class="form-text text-muted">This is message from.</small>
+                </div>
+            </div> <!--MESSAGE-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="departuredate" class="form-control-label">Rating<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.EditorFor(model => model.Testimonial.Rate, new { htmlAttributes = new { @class = "form-control", id = "rate", name = "rate", type = "number", required = "", min="0", max="10", step="1" } })
+                    <small class="form-text text-muted">This is rating point.</small>
+                </div>
+            </div> <!--RATE POINT-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="title" class="form-control-label">Showing Status<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    @Html.DropDownListFor(x => x.Testimonial.IsShow, new SelectList(Model.ShowingStatusList, "ID", "Name"), "Please Select", new { @class = "form-control", name = "showingstatus", id = "showingstatus", required = "" })
+                    <small class="form-text text-muted">This is showing status.</small>
+                </div>
+            </div> <!--SHOW STATUS-->
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="phone" class="form-control-label">Order Sort<span class="required"> *</span></label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-dollar"></i>
+                        </div>
+                        @Html.EditorFor(model => model.Testimonial.OrderSort, new { htmlAttributes = new { @class = "form-control", id = "ordersort", name = "ordersort", placeholder = "Order Sort", type = "number", min="0", step="1"} })
+                    </div>
+                    <small class="form-text text-muted">This is order sort.</small>
+                </div>
+            </div> <!--ORDER SORT-->
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i> Save
+            </button>
+        </div>
+    }
+</div>
 
-<h2>NewTestimonial</h2>
-
+@section Style
+{
+    <style>
+        label .required {
+            color: red;
+        }
+    </style>
+}

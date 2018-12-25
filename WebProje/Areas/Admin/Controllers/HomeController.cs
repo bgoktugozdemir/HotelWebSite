@@ -2,11 +2,14 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using Hotel.BI.Interface;
+using Hotel.BI.Repository;
 using WebProje.Areas.Admin.Models.Home;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IContactFormsManagement _contactFormsManagement;
@@ -16,7 +19,7 @@ namespace WebProje.Areas.Admin.Controllers
         private IRoomTypesManagement _roomTypesManagement;
         private ITestimonialsManagement _testimonialsManagement;
 
-        public HomeController(IContactFormsManagement contactFormsManagement, IBooksManagement booksManagement, ICustomersManagement customersManagement, IRoomsManagement roomsManagement, IRoomTypesManagement roomTypesManagement, ITestimonialsManagement testimonialsManagement)
+        public HomeController(IContactFormsManagement contactFormsManagement, IBooksManagement booksManagement, ICustomersManagement customersManagement, IRoomsManagement roomsManagement, IRoomTypesManagement roomTypesManagement, ITestimonialsManagement testimonialsManagement) : base()
         {
             _contactFormsManagement = contactFormsManagement;
             _booksManagement = booksManagement;

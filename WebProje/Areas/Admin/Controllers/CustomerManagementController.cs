@@ -12,6 +12,7 @@ using WebProje.Areas.Admin.Models.CustomerManagement;
 
 namespace WebProje.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CustomerManagementController : Controller
     {
         private ICustomersManagement _customersManagement;

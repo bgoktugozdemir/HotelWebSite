@@ -2,26 +2,26 @@
     <div class="account-wrap">
         <div class="account-item clearfix js-item-menu">
             <div class="image">
-                <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="John Doe" />
+                <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="Ad Soyad" />
             </div>
             <div class="content">
-                <a class="js-acc-btn" href="#">john doe</a>
+                <a class="js-acc-btn" href="#">Ad Soyad</a>
             </div>
             <div class="account-dropdown js-dropdown">
                 <div class="info clearfix">
                     <div class="image">
                         <a href="#">
-                            <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="John Doe" />
+                            <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="Ad Soyad" />
                         </a>
                     </div>
                     <div class="content">
                         <h5 class="name">
-                            <a href="#">john doe</a>
+                            <a href="#">Ad Soyad</a>
                         </h5>
-                        <span class="email">john.doe@mail.com</span>
+                        <span class="email">E-Mail</span>
                     </div>
                 </div>
-                <div class="account-dropdown__body">
+                @*<div class="account-dropdown__body">
                     <div class="account-dropdown__item">
                         <a href="#">
                             <i class="zmdi zmdi-account"></i>Account
@@ -37,9 +37,9 @@
                             <i class="zmdi zmdi-money-box"></i>Billing
                         </a>
                     </div>
-                </div>
+                </div>*@
                 <div class="account-dropdown__footer">
-                    <a href="#">
+                    <a href="@Url.Action("Logout","Login")">
                         <i class="zmdi zmdi-power"></i>Logout
                     </a>
                 </div>
