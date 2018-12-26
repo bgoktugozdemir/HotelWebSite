@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,39 +69,48 @@ namespace WebProje.Areas.Admin.Controllers
             {
                 var room = _roomsManagement.Get(r => r.ID == model.Book.RoomID);
                 var roomType = room.RoomTypeID;
-                if (model.Book.ID == 0)
-                {
-                    var books = _booksManagement.GetAll(b => b.RoomID == room.ID).OrderByDescending(b=>b.ArrivalDate).ToList();
 
-                    if (books.Count > 0)
+                var books = _booksManagement.GetAll(b => b.RoomID == room.ID).OrderByDescending(b => b.ArrivalDate).AsNoTracking().ToList();
+                
+                if (books.Count > 0)
+                {
+                    foreach (var book in books)
                     {
-                        foreach (var book in books)
+                        if (book.CustomerID != model.Book.CustomerID && !(DateHelper.AvailableDate(
+                                model.Book.ArrivalDate, model.Book.DepartureDate, book.ArrivalDate,
+                                book.DepartureDate)))
                         {
-                            if (book.CustomerID != model.Book.CustomerID && (DateHelper.IncludeDate(model.Book.ArrivalDate, book.ArrivalDate, book.DepartureDate) || DateHelper.IncludeDate(model.Book.DepartureDate, book.ArrivalDate, book.DepartureDate)))
-                            {
-                                var roomNo = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomNo;
-                                throw new UnavailableRoomException(roomNo);
-                            }
+                            var roomNo = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomNo;
+                            throw new UnavailableRoomException(roomNo);
                         }
                     }
                 }
-
-                var price = _roomTypesManagement.Get(r => r.ID == roomType).Price;
-
+                
                 if (model.Book.ID == 0)
                 {
                     model.Book.BookingDate = DateTime.Now;
                 }
 
                 //TODO: Şu anda giriş yapılmış çalışanın idsi alınacak.
+
                 model.Book.Night = (int) (model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
+                if (model.Book.Night <= 0)
+                {
+                    throw new BookingDateException(model.Book.ArrivalDate, model.Book.DepartureDate);
+                }
+
                 model.Book.Discount = model.Discount / 100;
-                model.Book.Price = (decimal) ((float) price * (1 - model.Book.Discount) * model.Book.Night);
+                model.Book.Price = _roomTypesManagement.Get(r => r.ID == roomType).Price;
 
                 _booksManagement.AddOrUpdate(model.Book);
                 this.SuccessMessage("Reservation has been saved!");
             }
             catch (UnavailableRoomException e)
+            {
+                this.ErrorMessage(e.Message);
+                return RedirectToAction("NewReservation", "ReservationManagement");
+            }
+            catch (BookingDateException e)
             {
                 this.ErrorMessage(e.Message);
                 return RedirectToAction("NewReservation", "ReservationManagement");

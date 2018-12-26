@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Enum\EnumHelpers.cs" />
     <Compile Include="Enum\Enums.cs" />
+    <Compile Include="Exceptions\BookingDateException.cs" />
     <Compile Include="Exceptions\UnavailableRoom.cs" />
     <Compile Include="Helpers\DateHelpers.cs" />
     <Compile Include="Helpers\TextHelpers.cs" />

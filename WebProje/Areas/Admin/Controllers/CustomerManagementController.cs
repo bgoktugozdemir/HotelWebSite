@@ -71,11 +71,11 @@ namespace WebProje.Areas.Admin.Controllers
             {
                 _customersManagement.AddOrUpdate(model.Customer);
 
-                this.SuccessMessage("Customer has been saved!");
+                this.SuccessMessage($"<strong>{model.Customer.Name}</strong> has been saved!");
             }
             catch
             {
-                this.ErrorMessage("Customer could not be saved!");
+                this.ErrorMessage($"<strong>{model.Customer.Name}</strong> could not be saved!");
             }
 
             return RedirectToAction("Index");
@@ -83,9 +83,10 @@ namespace WebProje.Areas.Admin.Controllers
 
         public ActionResult DeleteCustomer(int id)
         {
+            var name = _customersManagement.Get(c => c.ID == id).Name;
             _customersManagement.Delete(id);
 
-            this.WarningMessage("Customer has been deleted!");
+            this.WarningMessage($"<strong>{name}</strong> has been deleted!");
 
             return RedirectToAction("Index");
         }

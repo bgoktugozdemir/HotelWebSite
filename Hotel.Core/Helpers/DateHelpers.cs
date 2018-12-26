@@ -28,5 +28,24 @@ public class DateHelper
         DateTime input = DateTime.Today;
         return (input >= date1 || input <= date2);
     }
+
+    public static bool AvailableDate(DateTime inputArrival, DateTime inputDeparture, DateTime dateArrival, DateTime dateDeparture)
+    {
+        if (inputArrival < dateArrival)
+        {
+            return (inputDeparture < dateArrival);
+        }
+        else if (inputArrival > dateArrival)
+        {
+            return (inputArrival > dateDeparture);
+        }
+
+        return false;
+    }
+    public static bool AvailableDate(DateTime date1, DateTime date2)
+    {
+        DateTime input = DateTime.Today;
+        return (input >= date1 && input <= date2);
+    }
 }
 
