@@ -54,14 +54,15 @@
     /* ===== Parallax Effect===== */
 	
 	function parallaxEffect() {
-    	$('.bg-parallax').parallax();
+        $('.bg-parallax').parallax();
 	}
 	parallaxEffect();
     
     
     $('select').niceSelect();
     $('#datetimepicker11,#datetimepicker1').datetimepicker({
-        daysOfWeekDisabled: [0, 6]
+        //daysOfWeekDisabled: [0, 6]
+        //format: 'LT'
     });
     
      /*---------gallery isotope js-----------*/

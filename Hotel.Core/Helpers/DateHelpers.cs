@@ -42,10 +42,5 @@ public class DateHelper
 
         return false;
     }
-    public static bool AvailableDate(DateTime date1, DateTime date2)
-    {
-        DateTime input = DateTime.Today;
-        return (input >= date1 && input <= date2);
-    }
 }
 

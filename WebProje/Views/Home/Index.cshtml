@@ -17,14 +17,14 @@
     </div>
     <div class="col-md-9">
         <div class="boking_table">
-            @using (Html.BeginForm("NewBooking", "HomeController", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            @using (Ajax.BeginForm("NewBooking", "Home", new AjaxOptions {HttpMethod = "POST", UpdateTargetId = "result" }, new { id="bookingForm"} ))
             {
             <div class="row">
                 <div class="col-md-4">
                     <div class="book_tabel_item">
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker11'>
-                                @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control", id = "arrivaldate", name = "arrivaldate", placeholder = "Arrival Date", required = "" } })
+                                @Html.EditorFor(model => model.Book.ArrivalDate, new { htmlAttributes = new { @class = "form-control", id = "arrivaldate", name = "arrivaldate", placeholder = "Arrival Date", required = "", autocomplete = "off" } })
                                 <span class="input-group-addon">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </span>
@@ -32,19 +32,38 @@
                         </div> <!--Arrival Date-->
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker1'>
-                                @Html.EditorFor(model => model.Book.DepartureDate, new { htmlAttributes = new { @class = "form-control", id = "departuredate", name = "departuredate", placeholder = "Departure Date", required = "" } })
+                                @Html.EditorFor(model => model.Book.DepartureDate, new { htmlAttributes = new { @class = "form-control", id = "departuredate", name = "departuredate", placeholder = "Departure Date", required = "", autocomplete = "off" } })
                                 <span class="input-group-addon">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </span>
                             </div>
                         </div> <!--Departure Date-->
+                        <div class="form-group">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.Customer.Name, new { htmlAttributes = new { @class = "form-control", id = "name", name = "name", type = "text", placeholder = "Name Surname" } })
+                                <small>(If this booking is your first time in our hotel.)</small>
+                            </div>
+                        </div> <!--Name-->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="book_tabel_item">
                         <div class="form-group">
                             <div class="input-group">
-                                @Html.DropDownListFor(model => model.Customer.Nation, new SelectList(ViewBag.CountryList), "Country", new {@class = "wide dropmenuScroll", id = "nation", required = ""})
+                                @Html.DropDownListFor(model => model.RoomTypeID, new SelectList(Model.RoomTypesList, "ID", "Name"), "Room Type", new { @class = "wide", id = "roomtype", required = "" })
+                            </div>
+                        </div> <!--Room Type-->
+                        <input type="submit" class="book_now_btn button_hover" value="Book Now" />
+                        <div class="form-group">
+                            <h3 id="result" class="text-center"></h3>
+                        </div> <!--Result-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="book_tabel_item">
+                        <div class="form-group">
+                            <div class="input-group">
+                                @Html.DropDownListFor(model => model.Customer.Nation, new SelectList(ViewBag.CountryList), "Country", new { @class = "wide dropmenuScroll", id = "nation", required = "" })
                             </div>
                         </div> <!--Nation-->
                         <div class="form-group">
@@ -55,15 +74,12 @@
                                 </span>
                             </div>
                         </div> <!--National ID-->
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="book_tabel_item">
-                        <div class="input-group">
-                            @Html.DropDownListFor(model => model.RoomTypeID, new SelectList(Model.RoomTypesList, "ID", "Name"), "Room Type", new { @class = "wide", id = "nation", required = "" })
-                        </div> <!--Room Type-->
-
-                        <a class="book_now_btn button_hover" href="#">Book Now</a>
+                        <div class="form-group">
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.Customer.Email, new { htmlAttributes = new { @class = "form-control", id = "mail", name = "mail", type = "email", placeholder = "E-Mail"} })
+                                <small>(If this booking is your first time in our hotel.)</small>
+                            </div>
+                        </div> <!--E-Mail-->
                     </div>
                 </div>
             </div>
