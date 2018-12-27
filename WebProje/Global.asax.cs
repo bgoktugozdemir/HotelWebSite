@@ -27,7 +27,7 @@ namespace WebProje
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 CustomPrincipalSerializeModel serializeModel = serializer.Deserialize<CustomPrincipalSerializeModel>(authTicket.UserData);
-                CustomPrincipal newUser = new CustomPrincipal(authTicket.Name, serializeModel.ID, serializeModel.Firstname, serializeModel.Surname, serializeModel.Roles);
+                CustomPrincipal newUser = new CustomPrincipal(authTicket.Name, serializeModel.ID, serializeModel.Firstname, serializeModel.Surname, serializeModel.Image, serializeModel.Roles);
                 HttpContext.Current.User = newUser;
             }
         }

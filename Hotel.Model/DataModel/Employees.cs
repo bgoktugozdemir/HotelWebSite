@@ -32,6 +32,7 @@ namespace Hotel.Model.DataModel
         public string Gender { get; set; }
         public System.DateTime BirthDate { get; set; }
         public string NationalID { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Books> Books { get; set; }

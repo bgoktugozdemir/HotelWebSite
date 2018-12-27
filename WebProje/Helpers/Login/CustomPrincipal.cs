@@ -6,12 +6,13 @@ using System.Web;
 
 public class CustomPrincipal : ICustomPrincipal
 {
-    public CustomPrincipal(string email, int ID, string Firstname, string Surname, List<string> Roles)
+    public CustomPrincipal(string email, int ID, string Firstname, string Surname, string Image, List<string> Roles)
     {
         this.Identity = new GenericIdentity(email);
         this.Firstname = Firstname;
         this.Surname = Surname;
         this.Mail = email;
+        this.Image = Image;
         this.ID = ID;
         this.Roles = Roles;
 
@@ -40,6 +41,11 @@ public class CustomPrincipal : ICustomPrincipal
     }
 
     public string Surname
+    {
+        get; set;
+    }
+
+    public string Image
     {
         get; set;
     }

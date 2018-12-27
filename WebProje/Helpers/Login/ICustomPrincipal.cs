@@ -10,4 +10,5 @@ public interface ICustomPrincipal : IPrincipal
     string Firstname { get; set; }
     string Surname { get; set; }
     string Mail { get; set; }
+    string Image { get; set; }
 }

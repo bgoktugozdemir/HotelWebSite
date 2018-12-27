@@ -48,7 +48,8 @@ namespace WebProje.Areas.Admin.Controllers
                     ID = user.ID,
                     Firstname = user.Employees.Name,
                     Surname = user.Employees.Surname,
-                    Mail = user.Employees.Email
+                    Mail = user.Employees.Email,
+                    Image = user.Employees.Image
                 };
                 serializeModel.Roles.Add("user");
 

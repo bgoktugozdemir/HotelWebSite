@@ -14,5 +14,6 @@ public class CustomPrincipalSerializeModel
     public string Firstname { get; set; }
     public string Surname { get; set; }
     public string Mail { get; set; }
+    public string Image { get; set; }
     public virtual List<string> Roles { get; set; }
 }

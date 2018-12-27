@@ -124,6 +124,12 @@
     <Content Include="Areas\Admin\Fonts\poppins\poppins-v5-latin-regular.svg" />
     <Content Include="Areas\Admin\Images\bg-title-01.jpg" />
     <Content Include="Areas\Admin\Images\bg-title-02.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-01.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-02.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-03.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-04.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-05.jpg" />
+    <Content Include="Areas\Admin\Images\Employees\avatar-06.jpg" />
     <Content Include="Areas\Admin\Images\icon\avatar-01.jpg" />
     <Content Include="Areas\Admin\Images\icon\avatar-02.jpg" />
     <Content Include="Areas\Admin\Images\icon\avatar-03.jpg" />

@@ -64,6 +64,7 @@ namespace WebProje.Controllers
         [HttpPost]
         public ActionResult NewBooking(HomeViewModel model)
         {
+            
             return RedirectToAction("Index");
         }
     }

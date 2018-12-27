@@ -73,6 +73,7 @@
           <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="BirthDate" Type="date" Nullable="false" />
           <Property Name="NationalID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -466,6 +467,7 @@
           <NavigationProperty Name="Books" Relationship="OTELModel.FK_Books_Employees" FromRole="Employees" ToRole="Books" />
           <NavigationProperty Name="Posts" Relationship="OTELModel.FK_Posts_Employees" FromRole="Employees" ToRole="Posts" />
           <NavigationProperty Name="Users" Relationship="OTELModel.FK_Users_Employees" FromRole="Employees" ToRole="Users" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -752,6 +754,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="OTELModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="NationalID" ColumnName="NationalID" />
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
