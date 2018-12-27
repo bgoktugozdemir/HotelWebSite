@@ -1,24 +1,25 @@
-﻿<div class="header-button">
+﻿@using System.Security.Claims
+<div class="header-button">
     <div class="account-wrap">
         <div class="account-item clearfix js-item-menu">
             <div class="image">
-                <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="Ad Soyad" />
+                <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="@((User as CustomPrincipal).Firstname) @((User as CustomPrincipal).Surname)" />
             </div>
             <div class="content">
-                <a class="js-acc-btn" href="#">Ad Soyad</a>
+                <a class="js-acc-btn" href="#">@((User as CustomPrincipal).Firstname) @((User as CustomPrincipal).Surname)</a>
             </div>
             <div class="account-dropdown js-dropdown">
                 <div class="info clearfix">
                     <div class="image">
                         <a href="#">
-                            <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="Ad Soyad" />
+                            <img src="~/Areas/Admin/Images/icon/avatar-01.jpg" alt="@((User as CustomPrincipal).Firstname) @((User as CustomPrincipal).Surname)" />
                         </a>
                     </div>
                     <div class="content">
                         <h5 class="name">
-                            <a href="#">Ad Soyad</a>
+                            <a href="#">@((User as CustomPrincipal).Firstname) @((User as CustomPrincipal).Surname)</a>
                         </h5>
-                        <span class="email">E-Mail</span>
+                        <span class="email">@((User as CustomPrincipal).Mail)</span>
                     </div>
                 </div>
                 @*<div class="account-dropdown__body">

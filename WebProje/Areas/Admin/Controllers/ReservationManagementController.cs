@@ -89,9 +89,8 @@ namespace WebProje.Areas.Admin.Controllers
                 if (model.Book.ID == 0)
                 {
                     model.Book.BookingDate = DateTime.Now;
+                    model.Book.EmployeeID = (User as CustomPrincipal).ID;
                 }
-
-                //TODO: Şu anda giriş yapılmış çalışanın idsi alınacak.
 
                 model.Book.Night = (int) (model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
                 if (model.Book.Night <= 0)

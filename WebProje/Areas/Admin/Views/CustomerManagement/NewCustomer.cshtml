@@ -41,10 +41,10 @@
             </div> <!--BIRTHDAY-->
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="gender" class="form-control-label">Gender<span class="required"> *</span></label>
+                    <label for="gender" class="form-control-label">Gender</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.DropDownListFor(x=>x.Customer.Gender, new SelectList(Model.GenderList, "Description","Name"), "Please Select", new { @class="form-control", name="gender", id="gender", required = "" })
+                    @Html.DropDownListFor(x=>x.Customer.Gender, new SelectList(Model.GenderList, "Description","Name"), "Please Select", new { @class="form-control", name="gender", id="gender"})
                     <small class="form-text text-muted">This is customer's gender</small>
                 </div>
             </div> <!--GENDER-->
@@ -53,7 +53,7 @@
                     <label for="Customer.Nation" class="form-control-label">Nation<span class="required"> *</span></label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.DropDownListFor(model => model.Customer.Nation, new SelectList(ViewBag.CountryList), new { @class = "form-control", id = "nation", required = "" })
+                    @Html.DropDownListFor(model => model.Customer.Nation, new SelectList(ViewBag.CountryList), new { @class = "form-control dropMenuScroll", id = "nation", required = "" })
                     <small class="form-text text-muted">This is customer's nation</small>
                 </div>
             </div> <!--NATION-->
@@ -97,6 +97,14 @@
     <style>
         label .required {
             color: red;
+        }
+
+        .dropmenuScroll
+        {
+            height: 300px;
+            max-height: 300px;
+            overflow-y: scroll;
+            position:absolute;
         }
     </style>
 }

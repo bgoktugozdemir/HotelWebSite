@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 
-public interface ICustomPrincipal
+public interface ICustomPrincipal : IPrincipal
 {
     int ID { get; set; }
     string Firstname { get; set; }
