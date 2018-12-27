@@ -85,7 +85,7 @@ namespace WebProje.Controllers
             if (customer == null)
             {
                 Customers newCustomer = model.Customer;
-                if (String.IsNullOrEmpty(customer.Email) || String.IsNullOrEmpty(customer.Name))
+                if (String.IsNullOrEmpty(newCustomer.Email) || String.IsNullOrEmpty(newCustomer.Name))
                 {
                     return "Your E-Mail and/or Name is empty. Try again";
                 }

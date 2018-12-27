@@ -29,27 +29,6 @@
                         <a href="#"><img class="img-fluid" src="~/Images/blog/add.jpg" alt=""></a>
                         <div class="br"></div>
                     </aside>
-                    <!--NEWSLETTER WIDGET-->
-                    <aside class="single-sidebar-widget newsletter_widget">
-                        <h4 class="widget_title">Newsletter</h4>
-                        <p>
-                            Do not miss our opportunities. Join us!
-                        </p>
-                        @Ajax.BeginForm("Index","Blog", new AjaxOptions { UpdateTargetId = "result", OnSuccess = "list" })
-                        {
-                        <div class="form-group d-flex flex-row">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                                </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
-                            </div>
-                            <input type="submit" class="bbtns" value="Subscribe"/>
-                        </div>
-                        }
-                        <p class="text-bottom">You can unsubscribe at any time</p>
-                        <div class="br"></div>
-                    </aside>
                 </div>
             </div>
         </div>
