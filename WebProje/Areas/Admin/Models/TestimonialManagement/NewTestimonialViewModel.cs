@@ -10,5 +10,6 @@ namespace WebProje.Areas.Admin.Models.TestimonialManagement
         public Testimonials Testimonial { get; set; }
         public List<Books> BookList { get; set; }
         public List<EnumHelpers> ShowingStatusList { get; set; }
+        public int ShowingStatus { get; set; }
     }
 }

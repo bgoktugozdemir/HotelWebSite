@@ -67,7 +67,9 @@
     <Compile Include="Enum\EnumHelpers.cs" />
     <Compile Include="Enum\Enums.cs" />
     <Compile Include="Exceptions\BookingDateException.cs" />
+    <Compile Include="Exceptions\WrongValueException.cs" />
     <Compile Include="Exceptions\UnavailableRoom.cs" />
+    <Compile Include="Helpers\ConvertHelpers.cs" />
     <Compile Include="Helpers\DateHelpers.cs" />
     <Compile Include="Helpers\TextHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -94,7 +94,8 @@ namespace WebProje.Controllers
             }
 
             model.Book.CustomerID = customer.ID;
-            
+            model.Book.Night = (int)(model.Book.DepartureDate - model.Book.ArrivalDate).TotalDays;
+
             if (String.IsNullOrEmpty(customer.Name))
             {
                 if (!String.IsNullOrEmpty(model.Customer.Name))

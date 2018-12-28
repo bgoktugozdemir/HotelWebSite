@@ -47,9 +47,26 @@ namespace WebProje.Areas.Admin.Controllers
             else
             {
                 model.Testimonial = _testimonialsManagement.Get(d => d.ID == id);
+
+                model.ShowingStatus = ConvertHelpers.ConvertBoolToInt(model.Testimonial.IsShow);
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult NewTestimonial(NewTestimonialViewModel model)
+        {
+            var customerid = _bookManagement.Get(b => b.ID == model.Testimonial.BookID).CustomerID;
+
+            model.Testimonial.CustomerID = customerid;
+
+            model.Testimonial.IsShow = ConvertHelpers.ConvertIntToBool(model.ShowingStatus);
+
+            _testimonialsManagement.AddOrUpdate(model.Testimonial);
+            this.SuccessMessage("This testimonial has been saved!");
+
+            return RedirectToAction("Index", "TestimonialManagement");
         }
     }
 }

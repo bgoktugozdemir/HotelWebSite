@@ -84,7 +84,7 @@
                     <label for="title" class="form-control-label">Status of Check In</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.DropDownListFor(model => model.Book.IsCheckIn, new[] { new SelectListItem { Value = "0", Text = "No Checked In" }, new SelectListItem { Text = "Checked In", Value = "1" } }, new { htmlAttributes = new { @class = "form-control", id = "checkin", name = "checkin", type = "text" } })
+                    @Html.DropDownListFor(model => model.Book.IsCheckIn, new[] { new SelectListItem { Value = "false", Text = "No Checked In" }, new SelectListItem { Text = "Checked In", Value = "true" } }, "Please Select", new { htmlAttributes = new { @class = "form-control", id = "checkin", name = "checkin", type = "text" } })
                     <small class="form-text text-muted">This is status of check in.</small>
                 </div>
             </div> <!--IS CHECKED IN-->
@@ -93,7 +93,7 @@
                     <label for="title" class="form-control-label">Status of Reservation</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    @Html.DropDownListFor(model => model.Book.IsCancelled, new[] { new SelectListItem { Value = "0", Text = "Not Cancelled"}, new SelectListItem { Text = "Cancelled", Value = "1" } }, new { htmlAttributes = new { @class = "form-control", id = "cancelled", name = "cancelled", type = "text" } })
+                    @Html.DropDownListFor(model => model.Book.IsCancelled, new[] { new SelectListItem { Value = "false", Text = "Not Cancelled"}, new SelectListItem { Text = "Cancelled", Value = "true" } }, "Please Select", new { htmlAttributes = new { @class = "form-control", id = "cancelled", name = "cancelled", type = "text" } })
                     <small class="form-text text-muted">This is status of reservation.</small>
                 </div>
             </div> <!--IS CANCELLED-->
