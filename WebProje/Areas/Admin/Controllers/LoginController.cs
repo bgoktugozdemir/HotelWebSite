@@ -20,12 +20,24 @@ namespace WebProje.Areas.Admin.Controllers
         }
 
         // GET: Admin/Login
-        public ActionResult Index()
+        public ActionResult Index(string mail)
         {
             if (Request.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                if (!String.IsNullOrEmpty(mail))
+                {
+                    LoginViewModel model = new LoginViewModel()
+                    {
+                        Email = mail
+                    };
+                    return View(model);
+                }
+            }
+
             return View();
         }
 
@@ -75,6 +87,24 @@ namespace WebProje.Areas.Admin.Controllers
             Session.Abandon();
 
             return RedirectToAction("Index", "Login");
-        }        
+        }
+
+        public ActionResult Forget()
+        {
+            LoginViewModel model = new LoginViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public string Forget(LoginViewModel model)
+        {
+            var user = _usersManagement.Get(u => u.Employees.Email == model.Email);
+            if (user != null)
+            {
+                return $"Your Password: {user.Password}";
+            }
+
+            return "This mail not found!";
+        }
     }
 }

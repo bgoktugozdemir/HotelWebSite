@@ -510,6 +510,7 @@
     <Content Include="Areas\Admin\Views\SettingManagement\NewSetting.cshtml" />
     <Content Include="Areas\Admin\Views\TestimonialManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TestimonialManagement\NewTestimonial.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Forget.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gmaps.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

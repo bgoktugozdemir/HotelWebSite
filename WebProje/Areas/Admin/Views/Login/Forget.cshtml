@@ -1,0 +1,17 @@
+﻿@model WebProje.Areas.Admin.Models.Login.LoginViewModel
+@{
+    ViewBag.Title = "Forget Password";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@using (Ajax.BeginForm("Forget", "Login", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "result" }, new { id = "forgetPassword" }))
+{
+    <div class="form-group">
+        <label>Email Address</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "au-input au-input--full", placeholder = "E-Mail", type = "email", name = "email" })
+    </div>
+    <label>
+        <a id="result" href="@Url.Action("Index", new { mail=Model.Email})"></a>
+    </label>
+    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">submit</button>
+}
