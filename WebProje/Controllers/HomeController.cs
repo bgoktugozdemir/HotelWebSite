@@ -124,6 +124,10 @@ namespace WebProje.Controllers
             foreach (var room in rooms)
             {
                 var books = _booksManagement.GetAll(b => b.RoomID == room.ID).ToList();
+                if (books.Count == 0)
+                {
+                    available = true;
+                }
                 foreach (var book in books)
                 {
                     available = DateHelper.AvailableDate(model.Book.ArrivalDate, model.Book.DepartureDate, book.ArrivalDate, book.DepartureDate);
@@ -142,7 +146,12 @@ namespace WebProje.Controllers
                 }
             }
 
-            return "Your booking has been saved!";
+            if (!available)
+            {
+                return "All rooms are reserved. Please, change room type or date and try again.";
+            }
+
+            return $"Your booking has been saved!\nRoom No: {model.Book.RoomID}\nAll details have been sent {customer.Email}";
         }
     }
 }

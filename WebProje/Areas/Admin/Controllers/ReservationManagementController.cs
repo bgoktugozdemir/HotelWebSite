@@ -47,7 +47,7 @@ namespace WebProje.Areas.Admin.Controllers
             {
                 RoomList = _roomsManagement.GetAll().ToList(),
                 RoomTypeList = _roomTypesManagement.GetAll().ToList(),
-                CustomerList = _customersManagement.GetAll().ToList()
+                CustomerList = _customersManagement.GetAll().OrderBy(c=>c.Name).ToList()
             };
 
             if (id == null)
@@ -76,9 +76,7 @@ namespace WebProje.Areas.Admin.Controllers
                 {
                     foreach (var book in books)
                     {
-                        if (book.CustomerID != model.Book.CustomerID && !(DateHelper.AvailableDate(
-                                model.Book.ArrivalDate, model.Book.DepartureDate, book.ArrivalDate,
-                                book.DepartureDate)))
+                        if (book.CustomerID != model.Book.CustomerID && !(DateHelper.AvailableDate(model.Book.ArrivalDate, model.Book.DepartureDate, book.ArrivalDate,book.DepartureDate)))
                         {
                             var roomNo = _roomsManagement.Get(r => r.ID == model.Book.RoomID).RoomNo;
                             throw new UnavailableRoomException(roomNo);
