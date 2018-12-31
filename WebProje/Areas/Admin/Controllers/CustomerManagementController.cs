@@ -16,10 +16,12 @@ namespace WebProje.Areas.Admin.Controllers
     public class CustomerManagementController : Controller
     {
         private ICustomersManagement _customersManagement;
+        private IBooksManagement _booksManagement;
 
-        public CustomerManagementController(ICustomersManagement customersManagement)
+        public CustomerManagementController(ICustomersManagement customersManagement, IBooksManagement booksManagement)
         {
             _customersManagement = customersManagement;
+            _booksManagement = booksManagement;
         }
 
         // GET: Admin/CustomerManagement
@@ -59,6 +61,7 @@ namespace WebProje.Areas.Admin.Controllers
             else
             {
                 model.Customer = _customersManagement.Get(d => d.ID == id);
+                model.BookList = _booksManagement.GetAll(b => b.CustomerID == id && !b.IsCancelled).OrderBy(b => b.ArrivalDate).ToList();
             }
 
             return View(model);

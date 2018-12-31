@@ -21,13 +21,14 @@
         <table class="table table-data2">
             <thead>
             <tr>
+                <th>nation</th>
                 <th>national id</th>
                 <th>name</th>
                 <th>birth date</th>
                 <th>gender</th>
                 <th>email</th>
                 <th>phone</th>
-                <th>nation</th>
+                <td>reservations</td>
                 <th>tooltips</th>
             </tr>
             </thead>
@@ -35,6 +36,7 @@
             @foreach (var customer in Model.CustomerList)
             {
                 <tr class="tr-shadow">
+                    <td>@customer.Nation</td>
                     <td>@customer.NationalID</td>
                     <td>@customer.Name.ToUpper()</td>
                     <td>@(customer.BirthDate.HasValue ? customer.BirthDate.Value.ToShortDateString() : String.Empty)</td>
@@ -52,7 +54,7 @@
                     <td>
                         <span class="status--process">@customer.Phone</span>
                     </td>
-                    <td>@customer.Nation</td>
+                    <td>@customer.Books.Count(b => !b.IsCancelled)</td>
                     <td>
                         <div class="table-data-feature">
                             <a href="@Url.Action("NewCustomer","CustomerManagement",new{id=customer.ID})" class="item item-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">

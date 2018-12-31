@@ -9,5 +9,6 @@ namespace WebProje.Areas.Admin.Models.CustomerManagement
     {
         public Customers Customer { get; set; }
         public List<EnumHelpers> GenderList { get; set; }
+        public List<Books> BookList { get; set; }
     }
 }
