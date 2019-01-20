@@ -42,7 +42,7 @@ namespace WebProje.Controllers
             {
                 RoomTypesList = _roomTypesManagement.GetAll().OrderBy(m => m.OrderSort).ToList(), //Get All Room Types
                 ServicesList = _servicesManagement.GetAll().OrderBy(m => m.OrderSort).ToList(), //Get All Additional Services
-                PostsList = _postsManagement.GetAll().OrderBy(m => m.OrderSort).Take(3).ToList(),
+                PostsList = _postsManagement.GetAll().OrderByDescending(m => m.CreatedAt).Take(3).ToList(),
                 Page = _pagesManagement.Get(m => m.Name == "About"), //Get About Page
                 TestimonialsList = _testimonialsManagement.GetAll(m => m.IsShow == true).OrderBy(m => m.OrderSort).ToList()//Get All Showable Testimonials
                 //TestimonialsList = _testimonialsManagement.GetAll(m => m.IsShow == true).Join(, t => t.CustomerID, c => c.ID, (t, c) => new { t, c }).OrderBy(m => m.OrderSort).ToList() //Get All Showable Testimonials

@@ -1669,6 +1669,23 @@
 
   } catch (error) {
     console.log(error);
-  }
+    }
+
+    try {
+        var inbox_wrap = $('.js-inbox');
+        var message = $('.' +
+            'au-btn-plus');
+        message.each(function () {
+            var that = $(this);
+
+            that.on('click', function () {
+                $('.au-inbox-wrap').removeClass('show-chat-box');
+            });
+        });
+
+
+    } catch (error) {
+        console.log(error);
+    }
 
 })(jQuery);

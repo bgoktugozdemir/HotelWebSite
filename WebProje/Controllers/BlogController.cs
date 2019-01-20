@@ -27,7 +27,7 @@ namespace WebProje.Controllers
         {
             BlogViewModel model = new BlogViewModel
             {
-                PostsList = _postsManagement.GetAll().OrderBy(m => m.OrderSort).ToList(),
+                PostsList = _postsManagement.GetAll().OrderByDescending(m => m.CreatedAt).ToList(),
                 Setting = _settingsManagement.Get(m=>m.Name == "hotel.name"),
                 Page = _pagesManagement.Get(p => p.Name == "blog-banner")
             };
