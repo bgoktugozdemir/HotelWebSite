@@ -52,6 +52,11 @@ namespace WebProje.Areas.Admin
         {
             controller.TempData["Alert"] = String.Format("<div class='sufee-alert alert with-close alert-{2} alert-dismissible fade show'> <span class='badge badge-pill badge-{2}'>{1}</span> {0} </div>", message, title, messageType);
         }
+
+        public static string AlertMessage(this ControllerBase controller, string message, string title, string messageType)
+        {
+            return String.Format("<div class='sufee-alert alert with-close alert-{2} alert-dismissible fade show'> <span class='badge badge-pill badge-{2}'>{1}</span> {0} </div>", message, title, messageType);
+        }
     }
 }
             

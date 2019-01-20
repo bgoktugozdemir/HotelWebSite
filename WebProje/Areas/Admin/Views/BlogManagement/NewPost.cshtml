@@ -1,0 +1,63 @@
+﻿@model WebProje.Areas.Admin.Models.BlogManagement.NewBlogViewModel
+@{
+    ViewBag.Title = "New Post";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    @using (Ajax.BeginForm("NewPost", "BlogManagement", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "result" }, new { id = "newPostForm" }))
+    {
+    <div id="result"></div>
+        <div class="card">
+            <div class="card-header">
+                New <strong>Post</strong>
+            </div>
+            @Html.HiddenFor(model => model.Post.ID)
+            @Html.HiddenFor(model => model.Post.CreatedAt)
+            @Html.HiddenFor(model => model.Post.EmployeeID)
+            @Html.HiddenFor(model => model.Post.Image)
+            @Html.HiddenFor(model => model.Post.Thumbnail)
+            <div class="row">
+                <div class="card-body card-block col-md-9">
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="title" class="form-control-label">Title</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            @Html.EditorFor(model => model.Post.Title, new { htmlAttributes = new { @class = "form-control", id = "title", name = "title", type = "text", placeholder = "Title", required = "" } })
+                            <small class="form-text text-muted">This is Post's Title</small>
+                        </div>
+                    </div> <!--TITLE-->
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="header" class="form-control-label">Header</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            @Html.EditorFor(model => model.Post.HeaderText, new { htmlAttributes = new { @class = "form-control", id = "header", name = "header", type = "text", placeholder = "Header Text", required = "" } })
+                            <small class="form-text text-muted">This is Post's Header Text</small>
+                        </div>
+                    </div> <!--HEADER TEXT-->
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="maintext" class="form-control-label">Main Text</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            @Html.TextAreaFor(model => model.Post.BodyText, new { @class = "form-control", id = "maintext", name = "maintext", rows = "6", placeholder = "Text", required="" })
+                            <small class="form-text text-muted">This is Post's Main text.</small>
+                        </div>
+                    </div> <!--MAIN TEXT-->
+                </div>
+                <div class="col-md-3">
+                    <div style="width: 137; height: 67;">
+                        <img src="~/Images/blog/main-blog/@Model.Post.Thumbnail" />
+                    </div>
+                    <div style="width: 137; height: 67;">
+                        <img src="~/Images/blog/Post/@Model.Post.Image" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+}

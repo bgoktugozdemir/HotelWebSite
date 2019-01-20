@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 public static class SystemSettings
 {
-    public static string Version = "1.2.0";
+    public static string Version = "1.2.1";
 }

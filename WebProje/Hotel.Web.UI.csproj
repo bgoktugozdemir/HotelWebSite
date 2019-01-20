@@ -257,6 +257,7 @@
     <Content Include="Images\blog\cat-post\cat-post-1.jpg" />
     <Content Include="Images\blog\cat-post\cat-post-2.jpg" />
     <Content Include="Images\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="Images\blog\main-blog\default.jpg" />
     <Content Include="Images\blog\Post\default.jpg" />
     <Content Include="Images\blog\main-blog\m-blog-1.jpg" />
     <Content Include="Images\blog\main-blog\m-blog-2.jpg" />
@@ -511,6 +512,8 @@
     <Content Include="Areas\Admin\Views\TestimonialManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\TestimonialManagement\NewTestimonial.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Forget.cshtml" />
+    <Content Include="Areas\Admin\Views\BlogManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BlogManagement\NewPost.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\gmaps.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
@@ -570,6 +573,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AlertBox.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\EmployeeManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -579,6 +583,8 @@
     <Compile Include="Areas\Admin\Controllers\RoomTypeManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingManagementController.cs" />
     <Compile Include="Areas\Admin\Controllers\TestimonialManagementController.cs" />
+    <Compile Include="Areas\Admin\Models\BlogManagement\NewBlogViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\BlogManagement\ShowBlogViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\NewEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeeManagement\ShowEmployeeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerManagement\ShowCustomerViewModel.cs" />

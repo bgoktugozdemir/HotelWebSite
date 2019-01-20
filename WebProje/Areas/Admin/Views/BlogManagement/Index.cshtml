@@ -1,0 +1,26 @@
+﻿@model WebProje.Areas.Admin.Models.BlogManagement.ShowBlogViewModel
+@{
+    ViewBag.Title = "Blog Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var post in Model.PostList)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <a href="@Url.Action("NewPost", "BlogManagement", new{id=@post.ID})">
+                    <img class="card-img-top" src="~/Images/blog/main-blog/@post.Thumbnail" alt="@post.Title">
+                    <div class="card-header bg-dark">
+                        <strong class="card-title text-light">@post.Title</strong>
+                    </div>
+                </a>
+                <div class="card-body text-white bg-light">
+                    <p class="card-text text-dark">
+                        @post.HeaderText
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

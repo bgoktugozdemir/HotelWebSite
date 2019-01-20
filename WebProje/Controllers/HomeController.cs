@@ -73,7 +73,7 @@ namespace WebProje.Controllers
             {
                 return "Arrival Date must be greater than today.";
             }
-            else if (model.Book.ArrivalDate >= model.Book.DepartureDate)
+            else if (model.Book.ArrivalDate > model.Book.DepartureDate)
             {
                 return "Departure Date must be greater than Arrival Date.";
             }
@@ -151,9 +151,7 @@ namespace WebProje.Controllers
                 return "All rooms are reserved. Please, change room type or date and try again.";
             }
 
-            return $"Your booking has been saved!\n" +
-                   $"Room No: {model.Book.Rooms.RoomNo}\n" +
-                   $"All details have been sent {customer.Email}";
+            return String.Format($"Your booking has been saved!\nRoom No: {_roomsManagement.Get(r=>r.ID == model.Book.RoomID).RoomNo}\nAll details have been sent to {customer.Email}");
         }
     }
 }
