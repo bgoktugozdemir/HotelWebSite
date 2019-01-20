@@ -237,7 +237,7 @@
                             if (Model.ContactFormsList.IndexOf(form) < 4)
                             {
                                 <div class="au-message__item @(@form.IsRead == false ? "unread" : "")">
-                                    <div class="au-message__item-inner">
+                                    <div class="au-message__item-inner" onClick="showContact(@form.ID,'@form.Name', '@form.Email', '@form.SendedAt.ToString("dd.MM.yyyy HH:mm:ss")', '@form.Message')">
                                         <div class="au-message__item-text">
                                             <div class="text" style="margin-left: 0px">
                                                 <h5 class="name">@form.Name</h5>
@@ -252,10 +252,10 @@
                             }
                             else
                             {
-                                <div class="au-message__item js-load-item @(@form.IsRead == false ? "unread" : "")">
+                                <div id="contact-@form.ID" class="au-message__item js-load-item @(@form.IsRead == false ? "unread" : "")" onClick="showContact('@form.Name', '@form.Email', '@form.SendedAt.ToString("dd.MM.yyyy HH:mm:ss")', '@form.Message')">
                                     <div class="au-message__item-inner">
                                         <div class="au-message__item-text">
-                                            <div class="text">
+                                            <div class="text" style="margin-left: 0px">
                                                 <h5 class="name">@form.Name</h5>
                                                 <p>@form.Subject</p>
                                             </div>
@@ -272,40 +272,9 @@
                         <button class="au-btn au-btn-load js-load-btn">load more</button>
                     </div>
                 </div>
+                <!--CHAT-->
                 <div class="au-chat">
-                    <div class="au-chat__title">
-                        <div class="au-chat-info">
-                            <span class="nick">
-                                <span>@Model.ContactFormsList[0].Name</span> - <a href="mailto:@Model.ContactFormsList[0].Email">@Model.ContactFormsList[0].Email</a>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="au-chat__content">
-                        <div class="recei-mess-wrap">
-                            <span class="mess-time">@Model.ContactFormsList[0].SendedAt.ToString("dd.MM.yyyy HH:mm:ss")</span>
-                            <div class="recei-mess__inner">
-                                <div class="recei-mess-list">
-                                    <div class="send-mess">@Model.ContactFormsList[0].Message</div>
-                                </div>
-                            </div>
-                        </div>
-                        @*<div class="send-mess-wrap">
-                                <span class="mess-time">30 Sec ago</span>
-                                <div class="send-mess__inner">
-                                    <div class="send-mess-list">
-                                        <div class="send-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                    </div>
-                                </div>
-                            </div>*@
-                    </div>
-                    @*<div class="au-chat-textfield">
-                            <form class="au-form-icon">
-                                <input class="au-input au-input--full au-input--h65" type="text" placeholder="Type a message">
-                                <button class="au-input-icon">
-                                    <i class="zmdi zmdi-camera"></i>
-                                </button>
-                            </form>
-                        </div>*@
+                    
                 </div>
             </div>
         </div>

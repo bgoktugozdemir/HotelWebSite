@@ -1689,3 +1689,18 @@
     }
 
 })(jQuery);
+function showContact(id, name, email, date, message) {
+    $(".au-chat").html(
+        '<div class="au-chat__title"> <div class="au-chat-info"> <span class="nick"> <span>' +
+        name +
+        '</span> - <a href="mailto:' +
+        email +
+        '">' +
+        email +
+        '</a> </span> </div> </div>  <div class="au-chat__content">' +
+        '<div class="recei-mess-wrap"> <span class="mess-time">' +
+        date +
+        '</span> <div class="recei-mess__inner"> <div class="recei-mess-list"> <div class="send-mess">' +
+        message +
+        '</div> </div> </div> </div> </div> </div>');
+}
