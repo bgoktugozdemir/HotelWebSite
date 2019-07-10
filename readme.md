@@ -24,7 +24,7 @@ First of all, we need to create DB.
 ```
 Use "WebOtel.bak" backup file for it.
 ```
-After, we will connect our project to DB.
+After that, we will connect our project to DB.
 ```
 Open "Web.config" in project.
 ```
