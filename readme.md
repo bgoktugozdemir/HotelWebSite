@@ -20,11 +20,11 @@ For example:
 ```
 
 ## How can you connect DB?
-First of all, we need to create DB. 
+First of all, database needs to be created.
 ```
 Use "WebOtel.bak" backup file for it.
 ```
-After that, we will connect our project to DB.
+After that, connect the project to DB.
 ```
 Open "Web.config" in project.
 ```
